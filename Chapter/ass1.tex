@@ -1,0 +1,217 @@
+\mytitle{ASSIGMENT 1}
+
+\section*{Problem 5}
+
+\begin{wrapfigure}[12]{L}{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+        \pgfmathsetmacro{\h}{1.5}
+        \pgfmathsetmacro{\ax}{0.5}
+        \pgfmathsetmacro{\at}{0}
+        \pgfmathsetmacro{\axx}{\ax}
+        \pgfmathsetmacro{\att}{\h}
+        \pgfmathsetmacro{\bx}{1.5}
+        \pgfmathsetmacro{\bt}{0}
+        \pgfmathsetmacro{\bxx}{\bx+0.5}
+        \pgfmathsetmacro{\btt}{\h}
+        \pgfmathsetmacro{\cx}{\ax}
+        \pgfmathsetmacro{\ct}{\at}
+        \pgfmathsetmacro{\cxx}{\ax + 0.5*\h}
+        \pgfmathsetmacro{\ctt}{\at + 0.5*\h}
+        \begin{axis}
+            [
+                axis lines  = center,
+                xlabel={$x$},
+                ylabel={$t$},
+                xmin=-.1,
+                xmax=2.5,
+                ymin=-.1,
+                ymax=2.5,
+                xtick={-1},
+                xticklabels={$g^{-1}$},
+                ytick={-1}
+                % ticks=none
+            ]
+            %
+            \coordinate (A) at (axis cs:\ax, \at) {};
+            \coordinate (AA) at (axis cs:\axx, \att) {};
+            \coordinate (B) at (axis cs:\bx, \bt) {};
+            \coordinate (BB) at (axis cs:\bxx, \btt) {};
+            \coordinate (C) at (axis cs:\cx, \ct) {};
+            \coordinate (CC) at (axis cs:\cxx, \ctt) {};
+            %
+            \draw[->] (A) -- (AA);
+            \draw[->] (B) -- (BB);
+            \draw[dotted, ->] (C) -- (CC);
+            %
+            \node[label={180:{$U^\mu$}},inner sep=2pt] at (AA) {};
+            \node[label={0:{$V^\mu$}},inner sep=2pt] at (BB) {};
+            \node[label={0:{$P^\mu$}},inner sep=2pt] at (CC) {};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Setup of experiment}
+    % \label{fig:zad1_1}
+\end{wrapfigure}
+
+We have given:
+%
+\begin{align}
+    U^\mu & = \left(c,\bs{0}\right)                                       \\
+    V^\mu & = \left(\gamma_v c,\gamma_v \bs{v}\right) \label{eq:zad1_vel} \\
+    P^\mu & = \left(\frac{h\nu}{c},\bs{p}\right)
+\end{align}
+
+We use following relation in this problem:
+%
+\begin{equation}
+    E = -P^\mu V_\mu
+\end{equation}
+%
+This expression is Lorentz invariant and can be calculated in non-moving frame.
+So we plug in \autoref{eq:zad1_vel} in this expression to obtain
+%
+\begin{multline}
+    E = -P^\mu V_\mu = \frac{h\nu}{c}\gamma_v c - \gamma_v \bs{v}\bs{p} = 
+    \gamma_v\left(h\nu - |\bs{v}||\bs{p}|\cos(\theta)\right) = 
+    \left\{|\bs{p}| = \frac{h\nu}{c}\right\} =\\
+    \gamma_vh\nu\left(1-\frac{|\bs{v}|}{c}\cos(\theta)\right)
+\end{multline}
+%
+But it is still photon, but with different energy (for moving observer) So
+%
+\begin{equation}
+    \gamma_vh\nu\left(1-\frac{|\bs{v}|}{c}\cos(\theta)\right) = h\nu'
+\end{equation}
+%
+So ratio of those two frequencies is
+%
+\begin{equation}
+    \frac{\nu'}{\nu} = \gamma_v\left(1-\frac{|\bs{v}|}{c}\cos(\theta)\right)
+\end{equation}
+%
+If $\theta = 0$ and $\frac{v}{c} \ll 1 \Rightarrow \gamma_v \simeq 1$ then we
+obtain:
+%
+\begin{equation}
+    \nu' = \nu \left(1-\frac{v}{c}\right)
+\end{equation}
+
+\newpage
+
+\mytitle{ASSIGMENT 2}
+
+\section*{Problem 1a}
+
+\begin{wrapfigure}[16]{L}{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+        \pgfmathsetmacro{\h}{5}
+        \pgfmathsetmacro{\w}{5}
+        \pgfmathsetmacro{\err}{0.2}
+        \pgfmathsetmacro{\ax}{0}
+        \pgfmathsetmacro{\ay}{\h}
+        \pgfmathsetmacro{\bx}{0}
+        \pgfmathsetmacro{\by}{0}
+        \pgfmathsetmacro{\cx}{\w}
+        \pgfmathsetmacro{\cy}{0}
+        \pgfmathsetmacro{\dx}{\w}
+        \pgfmathsetmacro{\dy}{\h}
+
+        \coordinate (A) at (\ax, \ay) {};
+        \coordinate (B) at (\bx, \by) {};
+        \coordinate (C) at (\cx, \cy) {};
+        \coordinate (D) at (\dx, \dy) {};
+        %
+        \draw[->] ($(A)+(0,-\err)$) -- node [text width=1cm, midway,align=left]{h} ($(B)+(0,\err)$);
+        \draw[->, dotted] ($(B)+(\err,0)$) -- ($(C)+(-\err,0)$);
+        \draw[->, snake it] ($(C)+(0,\err)$) -- ($(D)+(0,-\err)$);
+        \draw[->, dotted] ($(D)+(-\err,0)$) -- ($(A)+(\err,0)$);
+        %
+        \node[label={90:{\circled{1}}}, circle, fill, inner sep=2pt] at (A) {};
+        \node[label={270:{\circled{2}}}, circle, fill, inner sep=2pt] at (B) {};
+        \node[label={270:{\circled{3}}}, draw, dashed, circle, inner sep=2pt] at (C) {};
+        \node[label={90:{\circled{4}}}, draw, dashed, circle, inner sep=2pt] at (D) {};
+    \end{tikzpicture}
+    \caption{Mass falling in graitational field (1\rightarrow 2), converting to
+    photon (2\rightarrow 3), photon traveling up (3\rightarrow 4) and converting
+    back to mass (4\rightarrow 1)}
+    % \label{fig:zad1_1}
+\end{wrapfigure}
+
+Let's take a look at energy changes in above diagram:
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item $E_1 = mc^2$
+    \item $E_2 = mc^2 + mgh$
+    \item $E_3 = h\nu = mc^2 + mgh$
+    \item $E_4 = h\nu = mc^2 + mgh$
+\end{enumerate}
+but $E_4 = E_1$ because of energy conservation. It means that photon has to have
+different frequency at the height $h$ than it has at the ground. So $E_4 = h\nu'
+= mc^2$. From it follows
+%
+\begin{equation}
+    \frac{\nu}{\nu'} = \frac{mc^2+mgh}{mc^2} = 1 + \frac{gh}{c^2}
+\end{equation}
+%
+and it is easy to calculate redshift 
+%
+\begin{equation}
+    z = \frac{\nu - \nu'}{\nu'} = \frac{gh}{c^2}
+    \label{eq:prob2a_res}
+\end{equation}
+
+\section*{Problem 1b}
+
+\begin{wrapfigure}[16]{R}{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=1.8]
+        \draw (0,0) -- (0,2) -- (0.5,3) -- (1,2) -- (1, 0) -- cycle;
+        \draw[->, snake it] (0.5, 1.3) -- (0.5, 0.7);
+        \draw[<->, dashed] (1.2, 1.5) -- node [text width=1cm, midway,align=right]{h}(1.2, 0.5);
+        \draw[<-] (-.2, 1.5) -- node [text width=1cm, midway,align=left]{g}(-.2, 0.5);
+        %
+        \node[label={90:{\circled{1}}}, circle, fill, inner sep=2pt] at (0.5, 1.5) {};
+        \node[label={270:{\circled{2}}}, circle, fill, inner sep=2pt] at (0.5, 0.5) {};
+    \end{tikzpicture}
+    \caption{Two observers in a rocket sending photon}
+    % \label{fig:zad1_1}
+\end{wrapfigure}
+
+Let's calculate time which light needs to reach observer \circled{2}
+%
+\begin{equation}
+    t = \frac{s}{c} = \frac{h - \frac{gt^2}{2}}{c}
+\end{equation}
+%
+From this expression we get quadratic equation 
+%
+\begin{equation}
+    \frac{g}{2}t^2 + ct - h = 0
+\end{equation}
+%
+for which solution is given by
+%
+\begin{equation}
+    t = \frac{-c + \sqrt{c^2+2gh}}{g}
+\end{equation}
+%
+Velocity of observer \circled{2} after this time is equal 
+%
+\begin{equation}
+    v(t) = \frac{-c + \sqrt{c^2+2gh}}{g} \cdot g = -c + \sqrt{c^2+2gh}
+\end{equation}
+%
+Then redshift formula is given in following way
+%
+\begin{equation}
+    \frac{\nu'}{\nu} = 1 - \frac{v}{c} = 1 - \frac{-c + \sqrt{c^2+2gh}}{c} = 
+    2 - \sqrt{1-\frac{2gh}{c^2}} 
+\end{equation}
+%
+We can use Taylor expansion $\sqrt{1-x} = 1-\frac{x}{2}$ we get
+%
+\begin{equation}
+    \frac{\nu'}{\nu} = 2 - 1 + \frac{gh}{c^2} = 1 + \frac{gh}{c^2} 
+\end{equation}
+%
+It is exactly the same result as \autoref{eq:prob2a_res}.

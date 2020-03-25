@@ -1,0 +1,55 @@
+%! TeX program = lualatex
+%! TEX options = -synctex=1 -interaction=nonstopmode -file-line-error --shell-escape "%DOC%"
+\documentclass[a4paper,12pt]{article}
+\usepackage{luatex85,shellesc}
+\usepackage{luainputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[osf]{libertine}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1.6cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tcolorbox}
+\usepackage{todonotes}
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+
+\usetikzlibrary{calc,backgrounds, decorations.pathmorphing}
+\tikzset{snake it/.style={decorate, decoration=snake}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\def\equationautorefname{Eq.}
+\newcommand{\bs}[1]{\ensuremath{\boldsymbol{#1}}}
+\DeclareMathOperator{\di}{d\!}
+\setlength{\jot}{1em}
+
+\newcommand{\mytitle}[1]{
+	\begin{center}
+		\Large \bf
+		\textsc{#1}\\
+		\vspace{-0.5em}
+		\hspace*{0.2\linewidth} \hrulefill \hspace*{0.2\linewidth}
+		\vspace{-0.5em}
+	\end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% \begin{center}
+% 	\textsc{Assignment 2}\hfill\textsc{Michał Siemaszko}
+% \end{center}
+
+\include{Chapter/ass1}
+
+\include{Chapter/ass2}
+
+\end{document}

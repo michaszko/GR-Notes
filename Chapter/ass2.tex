@@ -1,0 +1,540 @@
+\section*{Problem 2}
+
+Observer $\mathcal{O}$ is traveling with acceleration $g$ in direction $x_1$. To
+calculate his worldline we will use following three conditions
+%
+\begin{align}
+	U^\mu U_\mu & = -1 & U^\mu A_\mu & = 0 & A^\mu A_\mu & = g^2
+\end{align}
+%
+where $U^\mu$ is four-velocity and $A^\mu$ is four-acceleration. First of them
+can be obtained by straightforward calculation, second by applying derivative
+to first equation i.e.
+%
+\begin{equation}
+	\frac{\dd}{\dd \tau} \left(U^\mu U_\mu\right) = 0 \quad \Rightarrow \quad \left(A^\mu U_\mu\right) = 0
+\end{equation}
+%
+Third is Lorentz invariant and it can be calculated in the moment of launch
+namely when $A^\mu=(0,g,0,0)$.
+
+Knowing those three we can write them in explicite form
+\begin{align}
+	-U_0^2 + \boldsymbol{U}^2    & = -1      &
+	\boldsymbol{U}\boldsymbol{A} & = U_0 A_0 &
+	-A_0^2 + \boldsymbol{A}^2    & = g^2
+\end{align}
+%
+where bolded letters mean three-vectors.
+
+We square middle equation and plug in left and right equation to obtained
+%
+\begin{equation}
+	(U_0^2 - 1)\boldsymbol{A}^2  = U_0^2  (\boldsymbol{A}^2 -g^2)
+\end{equation}
+%
+Eventually we obtain:
+%
+\begin{equation}
+	\boldsymbol{A}^2 = g^2 U_0^2
+\end{equation}
+%
+and plugin this expression to other equation we also obtain:\footnote{plug it
+	into right equation and then use left equation}
+%
+\begin{equation}
+	A_0^2 = g^2 \boldsymbol{U}^2
+\end{equation}
+%
+We can simplify those equation using the fact that this motion is one
+dimensional namely $x_2=x_3=0$ and then
+%
+\begin{align}
+	A_1 & = g U_0 & A_0 & = g U_1
+\end{align}
+%
+But $U^\mu = \dot{X^\mu}$ and $A^\mu = \ddot{X^\mu}$ \footnote{dot means
+	derivation with respect to proper time}. Substituting
+%
+\begin{align}
+	\ddot{X_1} & = g \dot{X_0} & \ddot{X_0} & = g \dot{X_1}
+\end{align}
+%
+Taking a derivative of left equation and substituting right equation into it we
+get
+%
+\begin{equation}
+	\dddot{X_1} = g^2 \dot{X_1}
+	\quad \stackrel{\text{after integration}}{\Rightarrow} \quad
+	\ddot{X_1} = g^2 X_1
+\end{equation}
+%
+Solution is
+%
+\begin{equation}
+	X_1 = A \sinh(g\tau) + B \cosh(g\tau)
+\end{equation}
+%
+Let's choose initial conditions such as $X_1(0) = g^{-1}$ and $\dot{X_1}=0$. Then
+%
+\begin{equation}
+	X_1 = g^{-1} \cosh(g\tau)
+\end{equation}
+%
+And finally we have
+%
+\begin{align}
+	X_0 & = g^{-1} \sinh(g\tau) & X_1 & = g^{-1} \cosh(g\tau) & X_2 & = 0 & X_3 & = 0
+	\label{eq:hiper}
+\end{align}
+%
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[domain=0:20]
+		\pgfmathsetmacro{\g}{1.5}
+		\pgfmathsetmacro{\gg}{1/\g}
+		\begin{axis}
+			[
+				axis lines  = center,
+				xlabel={$x$},
+				ylabel={$t$},
+				xmin=0,
+				xmax=2.5,
+				ymin=0,
+				ymax=2.5,
+				xtick={\gg},
+				xticklabels={$g^{-1}$},
+				ytick={-1}
+				% ticks=none
+			]
+
+			\pgfmathsetmacro{\a}{1.1}
+			\pgfmathsetmacro{\ta}{\gg*cosh(\g*\a)}
+			\pgfmathsetmacro{\xa}{\gg*sinh(\g*\a)}
+
+			\pgfmathsetmacro{\b}{.1}
+			\pgfmathsetmacro{\tb}{\gg*cosh(\g*\b)}
+			\pgfmathsetmacro{\xb}{\gg*sinh(\g*\b)}
+
+			\pgfmathsetmacro{\tav}{\gg*cosh(\g*(\a+\b)/2)}
+			\pgfmathsetmacro{\xav}{\gg*sinh(\g*(\a+\b)/2)}
+
+			\pgfmathsetmacro{\tp}{\tav*e^(\g*(\a-\b)/2)}
+			\pgfmathsetmacro{\xp}{\xav*e^(\g*(\a-\b)/2)}
+			%wektory bazowe
+			\pgfmathsetmacro{\ezerot}{\ta+cosh(\g*\a)}
+			\pgfmathsetmacro{\ezerox}{\xa+sinh(\g*\a)}
+			\pgfmathsetmacro{\eonet}{\ta+sinh(\g*\a)}
+			\pgfmathsetmacro{\eonex}{\xa+cosh(\g*\a)}
+
+			\coordinate (A) at (axis cs:\ta, \xa) {};
+			\coordinate (B) at (axis cs:\tb, \xb) {};
+			\coordinate (C) at (axis cs:\tp, \xp) {};
+			\coordinate (D) at (axis cs:\tav, \xav) {};
+			\coordinate (E) at (axis cs:0,0) {};
+			%baza
+			\coordinate (ezero) at (axis cs:\ezerot,\ezerox) {};
+			\coordinate (eone) at (axis cs:\eonet,\eonex) {};
+
+			\addplot[domain = 0:2.8*\gg, parametric, samples = 1000,color=blue]
+			gnuplot {\gg*cosh(\g*t),\gg*sinh(\g*t)};
+
+			% \node[label={180:{$\tau_2$}},circle,fill,inner sep=2pt] at (A) {};
+			% \node[label={180:{$\tau_1$}},circle,fill,inner sep=2pt] at (B) {};
+			% \node[label={360:{\color{red}$P$}},circle,fill,inner sep=2pt,color=red] at (C) {};
+			% \node[label={160:{\color{red}$\frac{\tau_1+\tau_2}{2}$}},circle,fill,inner sep=2pt,color=red] at (D) {};
+
+		\end{axis}
+		\begin{scope}[on background layer]
+			% \draw[dashed] (A) -- (C);
+			% \draw[dashed] (B) -- (C);
+			% \draw[dotted,color=red] (C) -- (E);
+			%baza
+			% \draw[->] (A) -- (ezero);
+			% \draw[->] (A) -- (eone);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Trajectory of $\mathcal{O}$}
+	\label{fig:zad1}
+\end{figure}
+
+% \bigskip
+
+\section*{Problem 3}
+%
+As a first basis vector we can choose four-velocity namely
+%
+\begin{equation}
+	\boldsymbol{e}_0 = \left(\dot{X_0}, \dot{X_1}, \dot{X_2}, \dot{X_3}\right) =
+	\left(\cosh(g\tau), \sinh(g\tau), 0, 0\right)
+\end{equation}
+%
+As a basis vectors in directions $x_2$ and $x_3$ we simply choose
+%
+\begin{align}
+	\boldsymbol{e}_2 = \left(0, 0, 1, 0\right) \\
+	\boldsymbol{e}_3 = \left(0, 0, 0, 1\right)
+\end{align}
+%
+And finally we choose vector $\boldsymbol{e}_1$ in a form $\boldsymbol{e}_1 =
+	\left(e_1^0, e_1^1, 0, 0\right)$ where $e_1^0$ and $e_1^1$ are chosen in order
+to satisfy $\boldsymbol{e}_0 \boldsymbol{e}_1 = 0$ and $(\boldsymbol{e}_0)^2=1$ i.e.
+%
+\begin{align}
+	-e_1^0 \cosh(g\tau) + e_1^1 \sinh(g\tau) & = 0 \\
+	-(e_1^0)^2 + (e_1^1)^2 = 1
+\end{align}
+%
+We square first equation and substitute second equation
+%
+\begin{equation}
+	(e_1^0)^2 \cosh^2(g\tau) = (1+(e_1^0)^2) \sinh^2(g\tau)
+\end{equation}
+%
+From this we obtain
+%
+\begin{align}
+	(e_1^0)^2 & = \sinh^2(g\tau) & (e_1^1)^2 & = \cosh^2(g\tau)
+\end{align}
+%
+We can choose positive solution and eventually we get
+%
+\begin{equation}
+	\boldsymbol{e}_1 = \left(\sinh(g\tau), \cosh(g\tau), 0, 0\right)
+\end{equation}
+%
+All vectors
+%
+\begin{align}
+	\boldsymbol{e}_0(\tau) & = \left(\cosh(g\tau), \sinh(g\tau), 0, 0\right) \\
+	\boldsymbol{e}_1(\tau) & = \left(\sinh(g\tau), \cosh(g\tau), 0, 0\right) \\
+	\boldsymbol{e}_2(\tau) & = \left(0, 0, 1, 0\right)                       \\
+	\boldsymbol{e}_3(\tau) & = \left(0, 0, 0, 1\right)
+\end{align}
+%
+Last thing to do is to check whether those are vectors which were obtain without
+any rotation. For this I will find a Lorentz boost which transforms initial
+basis into this one. Namely consider a boost of time-basis vector
+
+\begin{equation}
+	\begin{pmatrix}
+		\gamma       & \beta\gamma & 0 & 0 \\
+		-\beta\gamma & \gamma      & 0 & 0 \\
+		0            & 0           & 1 & 0 \\
+		0            & 0           & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 \\
+		0 \\
+		0 \\
+		0
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\gamma       \\
+		-\beta\gamma \\
+		0            \\
+		0
+	\end{pmatrix}
+\end{equation}
+%
+So $\gamma$ and $\beta$ have to satisfy:
+%
+\begin{equation}
+	\gamma = \frac{1}{\sqrt{1-v^2}} = \cosh(g\tau) \quad \Rightarrow \quad v = \tanh(g\tau)
+\end{equation}
+%
+Knowing that it is easy to calculate
+%
+\begin{equation}
+	\beta\gamma = \frac{v}{\sqrt{1-v^2}} = \sinh(g\tau)
+\end{equation}
+%
+So indeed we obtain vector $\boldsymbol{e}_0(\tau)$ only via boost (at
+$v=\tanh(g\tau)$). The same can be done with vector $\boldsymbol{e}_1(\tau)$
+
+\section*{Problem 4}
+
+We define new coordinate system $(\xi_0\equiv\tau, \xi_1, \xi_2, \xi_3)$ where
+basis vectors are those defined in problem before. We can write
+%
+\begin{equation}
+	\boldsymbol{x} = \xi^1\boldsymbol{e}_1(\tau) + \xi^2\boldsymbol{e}_2(\tau) +
+	\xi^3\boldsymbol{e}_3(\tau) + \boldsymbol{x}_\mathcal{O}(\tau)
+\end{equation}
+%
+where $\boldsymbol{x}_\mathcal{O}(\tau)$ is trajectory of moving frame.
+
+After plugging in all basis vectors explicitly we get
+%
+\begin{multline}
+	\boldsymbol{x} =
+	\begin{pmatrix}
+		t   \\
+		x_1 \\
+		x_2 \\
+		x_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\xi^1 \sinh(g\tau) \\
+		\xi^1 \cosh(g\tau) \\
+		0                  \\
+		0
+	\end{pmatrix}+
+	\begin{pmatrix}
+		0     \\
+		0     \\
+		\xi^2 \\
+		0
+	\end{pmatrix}+
+	\begin{pmatrix}
+		0 \\
+		0 \\
+		0 \\
+		\xi^3
+	\end{pmatrix}+
+	\begin{pmatrix}
+		g^{-1}\sinh(g\tau) \\
+		g^{-1}\cosh(g\tau) \\
+		0                  \\
+		0
+	\end{pmatrix}= \\
+	\begin{pmatrix}
+		g^{-1}\sinh(g\tau) + \xi^1 \sinh(g\tau) \\
+		g^{-1}\cosh(g\tau) + \xi^1 \cosh(g\tau) \\
+		\xi^2                                   \\
+		\xi^3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		(g^{-1} + \xi^1) \sinh(g\xi^0) \\
+		(g^{-1} + \xi^1) \cosh(g\xi^0) \\
+		\xi^2                          \\
+		\xi^3
+	\end{pmatrix}
+	\label{eq:motion}
+\end{multline}
+%
+Line element $\dd s^2 = \eta_{\mu\nu} \dd x^\mu \dd x^\nu$ is then equal (we use
+chain rule i.e. $\dd x^\mu = \frac{\partial x^\mu}{\partial \xi^\nu}\dd
+	\xi^\nu$)
+%
+\begin{equation}
+	\dd s^2 = - \dd t^2 + \dd x_1^2 + \dd x_2^2 + \dd x_3^2
+\end{equation}
+\begin{align}
+	\dd t   & = \frac{\partial t}{\partial \xi^\nu}\dd \xi^\nu =
+	(1 + g\xi_1)\cosh(g\xi_0) \dd \xi_0 + \sinh(g\xi_0) \dd \xi_1             \\
+	\dd x_1 & = (1 + g\xi_1)\sinh(g\xi_0) \dd \xi_0 + \cosh(g\xi_0) \dd \xi_1 \\
+	\dd x_2 & = \dd \xi_2                                                     \\
+	\dd x_3 & = \dd \xi_3
+\end{align}
+After squaring and adding them up we get
+%
+\begin{align}
+	\dd s^2 =  - & (1 + g\xi_1)^2\cosh^2(g\xi_0) \dd \xi_0^2 - \sinh^2(g\xi_0) \dd \xi_1^2 +           \\
+	             & (1 + g\xi_1)^2\sinh^2(g\xi_0) \dd \xi_0^2 + \cosh^2(g\xi_0) \dd \xi_1^2 + \nonumber \\
+	             & \dd \xi_2^2 +                                                             \nonumber \\
+	             & \dd \xi_3^2 \nonumber
+\end{align}
+After simplification
+\begin{equation}
+	\dd s^2 = -(1+g\xi_1)^2\dd\xi_0^2 + \dd\xi_1^2 + \dd\xi_2^2 + \dd\xi_3^2
+	\label{eq:action}
+\end{equation}
+
+\section*{Problem 5}
+
+For $\xi^1 \equiv \text{const}$ we can easily derive equation of motion from
+\autoref{eq:motion} namely
+%
+\begin{equation}
+	x_1^2 - t^2 = (g^{-1}+\xi^1)^2
+\end{equation}
+%
+which leads to
+%
+\begin{equation}
+	x_1(t) = \sqrt{(g^{-1}+\xi^1)^2 + t^2}
+	\label{eq:sqrt}
+\end{equation}
+%
+We take derivative twice
+%
+\begin{align}
+	\dot{x_1}(t)  & = \frac{2t}{2\sqrt{(g^{-1}+\xi^1)^2 + t^2}} \\
+	\ddot{x_1}(t) & =
+	\frac{\sqrt{(g^{-1}+\xi^1)^2 + t^2} -
+		t \frac{2t}{2\sqrt{(g^{-1}+\xi^1)^2 + t^2}}}{(g^{-1}+\xi^1)^2 + t^2} =
+	\frac{1}{\sqrt{(g^{-1}+\xi^1)^2 + t^2}} -
+	\frac{2t^2}{((g^{-1}+\xi^1)^2 + t^2)^{\frac{3}{2}}}
+\end{align}
+%
+So when $t=0$
+%
+\begin{equation}
+	\ddot{x_1}(t)\Big|_{t=0} = \frac{1}{g^{-1}+\xi^1} = \frac{g}{1+g\xi^1}
+\end{equation}
+
+
+\begin{figure}[H]
+	\centering
+	\foreach \angle in {0,0.1,0.2}
+		{
+			\resizebox{0.3\linewidth}{0.3\linewidth}{
+				\begin{tikzpicture}[domain=0:5]
+					\pgfmathsetmacro{\g}{1.5}
+					\pgfmathsetmacro{\gg}{1/\g}
+					\pgfmathsetmacro{\xii}{0.5}
+					\pgfmathsetmacro{\ggxi}{\gg+\xii}
+					\begin{axis}
+						[
+							axis lines  = center,
+							xlabel={$x$},
+							ylabel={$t$},
+							xmin=-0.1,
+							xmax=2.5,
+							ymin=-0.1,
+							ymax=2.5,
+							xtick={\gg,\ggxi},
+							xticklabels={$g^{-1}$,$g^{-1}+\xi^1$},
+							ytick={-1}
+							% ticks=none,
+						]
+
+						\pgfmathsetmacro{\g}{1.5}
+						\pgfmathsetmacro{\gg}{1/\g}
+
+						\pgfmathsetmacro{\a}{\angle}
+						\pgfmathsetmacro{\ta}{\gg*cosh(\g*\a)}
+						\pgfmathsetmacro{\xa}{\gg*sinh(\g*\a)}
+
+						\pgfmathsetmacro{\aa}{\angle}
+						\pgfmathsetmacro{\taa}{\ggxi*cosh(\g*\aa)}
+						\pgfmathsetmacro{\xaa}{\ggxi*sinh(\g*\aa)}
+
+						\pgfmathsetmacro{\b}{.1}
+						\pgfmathsetmacro{\tb}{\gg*cosh(\g*\b)}
+						\pgfmathsetmacro{\xb}{\gg*sinh(\g*\b)}
+
+						\pgfmathsetmacro{\tav}{\gg*cosh(\g*(\a+\b)/2)}
+						\pgfmathsetmacro{\xav}{\gg*sinh(\g*(\a+\b)/2)}
+
+						\pgfmathsetmacro{\tp}{\tav*e^(\g*(\a-\b)/2)}
+						\pgfmathsetmacro{\xp}{\xav*e^(\g*(\a-\b)/2)}
+						%wektory bazowe
+						\pgfmathsetmacro{\ezerot}{\ta+cosh(\g*\a)}
+						\pgfmathsetmacro{\ezerox}{\xa+sinh(\g*\a)}
+						\pgfmathsetmacro{\eonet}{\ta+sinh(\g*\a)}
+						\pgfmathsetmacro{\eonex}{\xa+cosh(\g*\a)}
+
+						\coordinate (A) at (axis cs:\ta, \xa) {};
+						\coordinate (AA) at (axis cs:\taa, \xaa) {};
+						\coordinate (B) at (axis cs:\tb, \xb) {};
+						\coordinate (C) at (axis cs:\tp, \xp) {};
+						\coordinate (D) at (axis cs:\tav, \xav) {};
+						\coordinate (E) at (axis cs:0,0) {};
+						%baza
+						\coordinate (ezero) at (axis cs:\ezerot,\ezerox) {};
+						\coordinate (eone) at (axis cs:\eonet,\eonex) {};
+
+						% \addplot[domain = 0:1.7, samples=1000, parametric, color=blue]
+						% gnuplot {sqrt((\ggxi)^2+t^2),t};	
+						\addplot[domain = 0:0.9, parametric, samples = 1000,color=blue]
+						gnuplot {\ggxi*cosh(\g*t),\ggxi*sinh(\g*t)};
+						\addplot[domain = 0:1.3, parametric, samples = 1000,color=red]
+						gnuplot {\gg*cosh(\g*t),\gg*sinh(\g*t)};
+
+						\node[label={180:{${}$}},circle,fill,inner sep=2pt] at (A) {};
+						\node[label={180:{${}$}},circle,fill,inner sep=2pt] at (AA) {};
+						% \node[label={180:{$\tau_1$}},circle,fill,inner sep=2pt] at (B) {};
+						% \node[label={360:{\color{red}$P$}},circle,fill,inner sep=2pt,color=red] at (C) {};
+						% \node[label={160:{\color{red}$\frac{\tau_1+\tau_2}{2}$}},circle,fill,inner sep=2pt,color=red] at (D) {};
+
+					\end{axis}
+					\begin{scope}[on background layer]
+						% \draw[dashed] (A) -- (C);
+						% \draw[dashed] (B) -- (C);
+						% \draw[dotted,color=red] (C) -- (E);
+						%baza
+						\draw[->] (A) -- (ezero);
+						\draw[->] (A) -- (eone);
+						% \draw[dotted] (A)+(3,3) -- (A);
+					\end{scope}
+				\end{tikzpicture}}
+		}
+	\caption{\textcolor{red}{Red} line is worldline of \autoref{eq:hiper}
+		and \textcolor{blue}{blue} is worldline of \autoref{eq:sqrt}}
+	\label{fig:zad4}
+\end{figure}
+
+\section*{Problem 6}
+
+We start with equation \autoref{eq:action}. We can simplify it and neglect other
+spatial dimensions than $\xi^1$ namely
+%
+\begin{equation}
+	\dd s^2 = -(1+g\xi^1)^2 (\dd\xi^0)^2 + (\dd\xi^1)^2
+\end{equation}
+%
+We can change the form to
+%
+\begin{equation}
+	\dd \tau = \dd s = \dd\xi^0 \sqrt{-(1+g\xi^1)^2 + \left(\frac{\dd\xi^1}{\dd\xi^0}\right)^2}
+\end{equation}
+%
+We can now plug in $\xi^1 = \xi^1_\text{em}$ and since emiter does not move in
+this frame we can set $\frac{\dd\xi^1}{\dd\xi^0} = 0$:
+%
+\begin{equation}
+	\dd \tau_\text{em} = \dd\xi^0_\text{em} (1+g\xi^1_\text{em})
+\end{equation}
+%
+We can integrate both sides and obtain equation for finite differences
+%
+\begin{equation}
+	\Delta \tau_\text{em} = \Delta \xi^0_\text{em} (1+g\xi^1_\text{em})
+\end{equation}
+%
+We can do similar thing with $\xi^1_\text{rec}$:
+%
+\begin{equation}
+	\Delta \tau_\text{rec} = \Delta \xi^0_\text{rec} (1+g\xi^1_\text{rec})
+\end{equation}
+%
+But left sides of above equations are equal (since line element is invariant
+under changing of coordinates) and we can compare them:
+%
+\begin{equation}
+	\frac{\Delta \xi^0_\text{rec}}{\Delta \xi^0_\text{em}} =
+	\frac{1+g\xi^1_\text{em}}{1+g\xi^1_\text{rec}} =
+	1 + \frac{g\xi^1_\text{em} - g\xi^1_\text{rec}}{1+g\xi^1_\text{rec}} =
+	1 - \frac{gh}{1+gh+g\xi^1_\text{em}}
+\end{equation}
+%
+where I put $h = \xi^1_\text{rec} - \xi^1_\text{em}$. After rearranging terms and
+substituting $\Delta \xi_\text{rec}^1 = \frac{1}{\nu'}$ and $\Delta
+	\xi_\text{em}^1 = \frac{1}{\nu}$
+%
+\begin{equation}
+	\frac{\Delta \xi^0_\text{em} - \Delta \xi^0_\text{rec}}{\Delta \xi^0_\text{em}} =
+	\frac{gh}{1+gh+g\xi^1_\text{em}}
+\end{equation}
+%
+\begin{equation}
+	\frac{\frac{1}{\nu} - \frac{1}{\nu'}}{\frac{1}{\nu}} =
+	\frac{gh}{1+gh+g\xi^1_\text{em}}
+	\quad \Rightarrow \quad
+	z = \frac{\nu' - \nu}{\nu'} = \frac{gh}{1+gh+g\xi^1_\text{em}}
+\end{equation}
+%
+We can now assume that $g$ is small and using Taylor expansion $\frac{1}{1+x}
+	\simeq 1-x$
+%
+\begin{gather}
+	z = gh(1-gh-g\xi^1_\text{em}) = gh - (gh)^2 - g^2h\xi^1_\text{em} \simeq gh \nonumber \\
+	z = gh
+\end{gather}
+%
+so the same result as photon in gravitational field.
