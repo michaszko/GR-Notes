@@ -1,0 +1,76 @@
+\mytitle{assigment 3}
+
+\section*{Problem 1}
+
+\begin{equation}
+    \mathcal{L}(x^\mu,\dot{x}^\mu) =
+    \frac{1}{2}g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu, \quad
+    \dot{x}^{\mu} \equiv \frac{\di x^\mu}{\dd\lambda}
+\end{equation}
+
+\begin{multline}
+    \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda =
+    \int\limits_{\lambda1}^{\lambda2}
+    \left(\frac{\partial\mathcal{L}(x^\mu,\dot{x}^\mu)}{\partial x^\sigma}\delta x^\sigma +
+    \frac{\partial\mathcal{L}(x^\mu,\dot{x}^\mu)}{\partial \dot{x}^\sigma}\delta \dot{x}^\sigma\right)\dd\lambda = \\
+    \int\limits_{\lambda1}^{\lambda2}
+    \left(\frac{1}{2}\dot{x}^\mu\dot{x}^\nu \partial_\sigma g_{\mu\nu} \delta x^\sigma +
+    \frac{1}{2}g_{\mu\nu}(\delta_{\mu\sigma} \dot{x}^\nu + \delta_{\nu\sigma} \dot{x}^\mu)\delta \dot{x}^\sigma\right)\dd\lambda
+\end{multline}
+%
+Let's take a look at second part of the integral:
+%
+\begin{multline}
+    \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left\{g_{\mu\nu}(\delta_{\mu\sigma}
+    \dot{x}^\nu + \delta_{\nu\sigma} \dot{x}^\mu)\delta \dot{x}^\sigma\right\}\dd\lambda =
+    %
+    \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left\{g_{\sigma\nu}\dot{x}^\nu + g_{\mu\sigma}\dot{x}^\mu \right\}
+    \delta\dot{x}^\sigma\dd\lambda = \\
+    %
+    \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \frac{\partial}{\partial\lambda}\left(\left\{
+    g_{\sigma\nu}\dot{x}^\nu + g_{\mu\sigma}\dot{x}^\mu
+    \right\}\delta x^\sigma\right)\dd\lambda -
+    \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \frac{\partial}{\partial\lambda}\left\{
+    g_{\sigma\nu}\dot{x}^\nu + g_{\mu\sigma}\dot{x}^\mu
+    \right\}\delta x^\sigma\dd\lambda= \\
+    %
+    \frac{1}{2}\underbrace{\left\{g_{\sigma\nu}\dot{x}^\nu + g_{\mu\sigma}\dot{x}^\mu\right\} \delta x^\sigma \Bigg|_{\lambda1}^{\lambda2}}_{=0} -
+    \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left\{
+    \partial_{\mu}g_{\sigma\nu}\dot{x}^\mu\dot{x}^\nu + g_{\sigma\nu}\ddot{x}^\nu +
+    \partial_{\nu}g_{\sigma\mu}\dot{x}^\nu\dot{x}^\mu + g_{\sigma\mu}\ddot{x}^\mu
+    \right\}\delta x^\sigma\dd\lambda \\
+    %
+\end{multline}
+\begin{equation}
+    \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda =
+    \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left(\partial_\sigma g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu -
+    \partial_{\mu}g_{\sigma\nu}\dot{x}^\mu\dot{x}^\nu - g_{\sigma\nu}\ddot{x}^\nu -
+    \partial_{\nu}g_{\sigma\mu}\dot{x}^\nu\dot{x}^\mu - g_{\sigma\mu}\ddot{x}^\mu\right)\delta x^\sigma \dd\lambda
+\end{equation}
+%
+We want
+%
+\begin{equation}
+    \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda = 0
+\end{equation}
+%
+but since $\delta x^\sigma$ can be arbitrary the rest has to be equal $0$, namely
+%
+\begin{equation}
+    \partial_\sigma g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu -
+    \partial_{\mu}g_{\sigma\nu}\dot{x}^\mu\dot{x}^\nu - g_{\sigma\nu}\ddot{x}^\nu -
+    \partial_{\nu}g_{\sigma\mu}\dot{x}^\nu\dot{x}^\mu - g_{\sigma\mu}\ddot{x}^\mu = 0
+\end{equation}
+%
+or after rearranging elements
+%
+\begin{equation}
+    \boxed{2 g_{\sigma\mu}\ddot{x}^\mu + \left(\partial_{\nu}g_{\sigma\mu} + 
+    \partial_{\mu}g_{\sigma\nu} - \partial_\sigma g_{\mu\nu}\right)\dot{x}^\mu\dot{x}^\nu = 0}
+\end{equation}
