@@ -1,13 +1,16 @@
-\mytitle{assigment 3}
+\mytitle{ASSIGMENT 3}
 
 \section*{Problem 1}
-
+Calculate EOM given the Lagrangian
+%
 \begin{equation}
-    \mathcal{L}(x^\mu,\dot{x}^\mu) =
+    \mathcal{L}_{\text{dyn}}(x^\mu,\dot{x}^\mu) =
     \frac{1}{2}g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu, \quad
     \dot{x}^{\mu} \equiv \frac{\di x^\mu}{\dd\lambda}
 \end{equation}
-
+%
+I calculate first variation of Lagrangian
+%
 \begin{multline}
     \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda =
     \int\limits_{\lambda1}^{\lambda2}
@@ -16,6 +19,7 @@
     \int\limits_{\lambda1}^{\lambda2}
     \left(\frac{1}{2}\dot{x}^\mu\dot{x}^\nu \partial_\sigma g_{\mu\nu} \delta x^\sigma +
     \frac{1}{2}g_{\mu\nu}(\delta_{\mu\sigma} \dot{x}^\nu + \delta_{\nu\sigma} \dot{x}^\mu)\delta \dot{x}^\sigma\right)\dd\lambda
+    \label{eq:ass3_prob1}
 \end{multline}
 %
 Let's take a look at second part of the integral:
@@ -46,6 +50,9 @@ Let's take a look at second part of the integral:
     \right\}\delta x^\sigma\dd\lambda \\
     %
 \end{multline}
+%
+Plugging result back into \autoref{eq:ass3_prob1} yields
+%
 \begin{equation}
     \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda =
     \frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
@@ -57,7 +64,7 @@ Let's take a look at second part of the integral:
 We want
 %
 \begin{equation}
-    \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda = 0
+   \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda = 0
 \end{equation}
 %
 but since $\delta x^\sigma$ can be arbitrary the rest has to be equal $0$, namely
@@ -71,6 +78,206 @@ but since $\delta x^\sigma$ can be arbitrary the rest has to be equal $0$, namel
 or after rearranging elements
 %
 \begin{equation}
-    \boxed{2 g_{\sigma\mu}\ddot{x}^\mu + \left(\partial_{\nu}g_{\sigma\mu} + 
-    \partial_{\mu}g_{\sigma\nu} - \partial_\sigma g_{\mu\nu}\right)\dot{x}^\mu\dot{x}^\nu = 0}
+    \boxed{2 g_{\sigma\mu}\ddot{x}^\mu + \left(\partial_{\nu}g_{\sigma\mu} +
+        \partial_{\mu}g_{\sigma\nu} - \partial_\sigma g_{\mu\nu}\right)\dot{x}^\mu\dot{x}^\nu = 0}
+\end{equation}
+
+\section*{Problem 2}
+
+Calculate the EOM given Lagrangian:
+
+\begin{equation}
+    \mathcal{L}_{\text{geo}}(x^\mu,\dot{x}^\mu) =
+    \sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}, \quad
+    \dot{x}^{\mu} \equiv \frac{\di x^\mu}{\dd\lambda}
+\end{equation}
+%
+First we calculate variation of Lagrangian
+%
+\begin{multline}
+    \delta\int\limits_{\lambda1}^{\lambda2}\mathcal{L}(x^\mu,\dot{x}^\mu)\dd\lambda =
+    %
+    \int\limits_{\lambda1}^{\lambda2}
+    \left(\frac{\partial\mathcal{L}(x^\mu,\dot{x}^\mu)}{\partial x^\sigma}\delta x^\sigma +
+    \frac{\partial\mathcal{L}(x^\mu,\dot{x}^\mu)}{\partial \dot{x}^\sigma}\delta \dot{x}^\sigma\right)\dd\lambda = \\
+    %
+    -\int\limits_{\lambda1}^{\lambda2}
+    \left(\frac{\dot{x}^\mu\dot{x}^\nu \partial_\sigma g_{\mu\nu}}{2\sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}}\delta x^\sigma +
+    \frac{g_{\mu\nu}\dot{x}^\mu\delta_{\nu\sigma}}{2\sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}} \dot{x}^\sigma +
+    \frac{g_{\mu\nu}\delta_{\mu\sigma}\dot{x}^\nu}{2\sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}} \dot{x}^\sigma\right)\dd\lambda = \\
+    %
+    -\int\limits_{\lambda1}^{\lambda2}\frac{1}{2\sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}}
+    \left(\dot{x}^\mu\dot{x}^\nu \partial_\sigma g_{\mu\nu} \delta x^\sigma +
+    g_{\mu\sigma}\dot{x}^\mu \delta \dot{x}^\sigma +
+    g_{\sigma\nu}\dot{x}^\nu \delta \dot{x}^\sigma \right)\dd\lambda
+    \label{eq:ass3_prob2_1}
+\end{multline}
+%
+I change variable of differentiating and integration from $\dd\lambda$ to
+$\dd\tau = \sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}\dd\lambda$.
+Derivatives changing as following
+%
+\begin{equation}
+    \dot{x}^{\mu} \equiv \frac{\di x^\mu}{\dd\lambda} =
+    \frac{\di x^\mu}{\dd\tau} \frac{\dd\tau}{\dd\lambda} =
+    \sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}~\frac{\di x^\mu}{\dd\tau}
+\end{equation}
+%
+and integral as following
+%
+\begin{equation}
+    \int\dd\lambda =
+    \int\frac{\dd\tau}{\sqrt{-g_{\mu\nu}[x^\mu(\lambda)]\dot{x}^\mu\dot{x}^\nu}}
+\end{equation}
+%
+After plugging in those transformations into \autoref{eq:ass3_prob2_1} we obtain
+%
+\begin{equation}
+    -\frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left(\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau} \partial_\sigma g_{\mu\nu} \delta x^\sigma +
+    \left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\} \delta \frac{\dd x^\sigma}{\dd\tau} \right)\dd\tau
+    \label{eq:ass3_prob2_2}
+\end{equation}
+%
+Now let's look at the second part of this integral and transform it (using
+Leibniz rule)
+%
+\begin{multline}
+    \left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\} \delta \frac{\dd x^\sigma}{\dd\tau} =
+    \frac{\dd}{\dd \tau} \left(\left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\}\delta x^\sigma\right) -
+    \frac{\dd}{\dd \tau} \left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\}\delta x^\sigma = \\
+    \frac{\dd}{\dd \tau} \left(\left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\}\delta x^\sigma\right) -
+    \left\{
+    \frac{\dd g_{\mu\sigma}}{\dd x^\nu}\frac{\dd x^\nu}{\dd\tau}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\mu\sigma}\frac{\dd^2 x^\mu}{\dd \tau^2} +
+    \frac{\dd g_{\sigma\nu}}{\dd x^\mu}\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}+
+    g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} \right\}\delta x^\sigma = \\
+    \frac{\dd}{\dd \tau} \left(\left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\}\delta x^\sigma\right) -
+    \left[g_{\mu\sigma}\frac{\dd^2 x^\mu}{\dd \tau^2} +
+        g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} +
+        \frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}
+        \left\{\partial_\nu g_{\mu\sigma} + \partial_\mu g_{\sigma\nu}\right\}\right]\delta x^\sigma
+\end{multline}
+%
+After plugging it into \autoref{eq:ass3_prob2_2} we obtain
+%
+\begin{multline}
+    -\frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \Bigg(\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau} \partial_\sigma g_{\mu\nu} \delta x^\sigma +
+    \frac{\dd}{\dd \tau} \left[\left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+        g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\}\delta x^\sigma\right] - \\
+    \left[g_{\mu\sigma}\frac{\dd^2 x^\mu}{\dd \tau^2} +
+        g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} +
+        \frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}
+        \left\{\partial_\nu g_{\mu\sigma} + \partial_\mu g_{\sigma\nu}\right\}\right]\delta x^\sigma\Bigg)\dd\tau = \\
+    -\frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left[
+        -2 g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} +
+        \frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}
+        \left(
+        \partial_\sigma g_{\mu\nu}  -
+        \partial_\nu g_{\mu\sigma} -
+        \partial_\mu g_{\sigma\nu}\right)\right]\delta x^\sigma \dd\tau-
+    \underbrace{\left\{g_{\mu\sigma}\frac{\dd x^\mu}{\dd\tau} +
+    g_{\sigma\nu}\frac{\dd x^\nu}{\dd\tau}\right\}\delta x^\sigma \Bigg|_{\lambda1}^{\lambda2}}_{=0} = \\
+    -\frac{1}{2}\int\limits_{\lambda1}^{\lambda2}
+    \left[
+        -2 g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} +
+        \frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}
+        \left(
+        \partial_\sigma g_{\mu\nu}  -
+        \partial_\nu g_{\mu\sigma} -
+        \partial_\mu g_{\sigma\nu}\right)\right]\delta x^\sigma \dd\tau
+\end{multline}
+%
+But this variation has to be equal zero no matter what the value of $\delta
+    x^\sigma$ is. Namely
+%
+\begin{equation}
+    -g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} +
+    \frac{1}{2}\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}
+    \left(
+    \partial_\sigma g_{\mu\nu}  -
+    \partial_\nu g_{\mu\sigma} -
+    \partial_\mu g_{\sigma\nu}\right) = 0
+\end{equation}
+%
+Changing sign
+%
+\begin{equation}
+    \boxed{g_{\sigma\nu}\frac{\dd^2 x^\nu}{\dd \tau^2} +
+        \frac{1}{2}\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}
+        \left(
+        \partial_\nu g_{\mu\sigma} +
+        \partial_\mu g_{\sigma\nu}-
+        \partial_\sigma g_{\mu\nu}\right) = 0}
+\end{equation}
+
+\section*{Problem 3}
+Following metric is given
+%
+\begin{equation}
+    g_{\mu\nu}\dd x^\mu \dd x^\nu =
+    -\left[1+2\frac{\phi(\bs{x})}{c^2}\right] \dd(ct)^2 +
+    (\dd x^1)^2 + (\dd x^2)^2 + (\dd x^3)^2, \quad \bs{x} \equiv (x^1,x^2,x^3)
+\end{equation}
+%
+Dividing both sides by $\dd t^2$ yields
+%
+\begin{multline}
+    g_{\mu\nu}\frac{\dd x^\mu}{\dd t} \frac{\dd x^\nu}{\dd t} =
+    -\left[1+2\frac{\phi(\bs{x})}{c^2}\right] \frac{\dd(ct)^2}{\dd t^2} +
+    \frac{(\dd x^1)^2}{\dd t^2} + \frac{(\dd x^2)^2}{\dd t^2} + \frac{(\dd x^3)^2}{\dd t^2} = \\
+    -\left[1+2\frac{\phi(\bs{x})}{c^2}\right] c^2 +
+    \left(\frac{\dd x^1}{\dd t}\right)^2 +
+    \left(\frac{\dd x^2}{\dd t}\right)^2 +
+    \left(\frac{\dd x^3}{\dd t}\right)^2 =
+    -\left[1+2\frac{\phi(\bs{x})}{c^2}\right] c^2 +
+    \bs{v}\cdot\bs{v} = \\
+    -c^2 \left[1+2\frac{\phi(\bs{x})}{c^2} -
+        \frac{\bs{v}^2}{c^2}\right]
+\end{multline}
+%
+Substituting this into lagrangian
+%
+\begin{equation}
+    \mathcal{L} = -mc\sqrt{-g_{\mu\nu}\frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}}
+\end{equation}
+%
+gives us
+%
+\begin{equation}
+    \boxed{\mathcal{L} = -mc \sqrt{c^2 \left[1+2\frac{\phi(\bs{x})}{c^2} -
+            \frac{\bs{v}^2}{c^2}\right]} =
+    -mc^2\sqrt{1+2\frac{\phi(\bs{x})}{c^2} -
+        \frac{\bs{v}^2}{c^2}}}
+\end{equation}
+%
+We can now assume that both $\frac{\phi(\bs{x})}{c^2}$ and
+$\frac{\bs{v}^2}{c^2}$ are small. We can taylor expand square root ($\sqrt{1+x}
+\simeq 1 + \frac{1}{2x}$) and leave only linear terms:
+%
+\begin{equation}
+    \mathcal{L} = -mc^2 \left(1 + \frac{\phi(\bs{x})}{c^2} - \frac{\bs{v}^2}{2c^2}\right) = 
+    -mc^2 - m\phi(\bs{x}) + m\frac{\bs{v}^2}{2}
+\end{equation}
+%
+But adding constants (in this case $mc^2$) to Lagrangian doesn't change equation
+of motions, so effective Lagrangian can be written as 
+%
+\begin{equation}
+    \boxed{\mathcal{L} = \frac{m\bs{v}^2}{2} - m\phi(\bs{x})}
+\end{equation}
+%
+which is exactly the Lagrangian for classical mechanics, which leads to Newton's
+law of motion, namely 
+%
+\begin{equation}
+    \frac{\dd^2 \bs{x}}{\dd t^2} = - \nabla\phi(\bs{x})
 \end{equation}
