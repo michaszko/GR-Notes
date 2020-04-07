@@ -1,0 +1,335 @@
+\mytitle{ASSIGMENT 4}
+
+\section*{Problem 1}
+
+Parallel transport of a vector $V=v^\mu\partial_\mu$ along the curve s
+$\gamma:\lambda\mapsto\left[x^1(\lambda),\dots,x^n(\lambda)\right]$:
+%
+\begin{equation}
+    \frac{\dd v^\mu}{\dd\lambda} +
+    \Gamma_{\nu\sigma}^{\mu}\left[x(\lambda)\right]v^\nu\frac{\dd x^\sigma}{\dd \lambda}=0
+\end{equation}
+%
+We change coordinates, namely $V = v^\mu\partial_\mu
+    = v^\mu\frac{\partial}{\partial x^\mu}=u^\nu\frac{\partial}{\partial y^\nu}$ and
+$\gamma:\lambda'\mapsto\left[y^1(\lambda'),\dots,y^n(\lambda')\right]$
+%
+First we want to obtain transormation rule for vectors namely
+%
+\begin{equation}
+    v^\nu\frac{\partial y^k}{\partial x^\nu}
+    = V(y^k) =
+    u^\mu\frac{\partial y^k}{\partial y^\mu} = u^k
+\end{equation}
+%
+and for $\Gamma_{\mu\sigma}^\rho=\frac{\partial^2 \xi^\mu}{\partial x^\nu \partial x^\sigma}
+    \frac{\partial x^\rho}{\partial\xi^\mu}$
+%
+\begin{multline}
+    \Gamma_{\nu\sigma}'^\rho =
+    \frac{\partial}{\partial y^\sigma}
+    \left(\frac{\partial \xi^\mu}{\partial y^\nu}\right)
+    \frac{\partial y^\rho}{\partial\xi^\mu}=
+    \frac{\partial}{\partial y^\sigma}
+    \left(\frac{\partial \xi^\mu}{\partial x^\alpha}\frac{\partial x^\alpha}{\partial y^\nu}\right)
+    \frac{\partial y^\rho}{\partial x^\beta}\frac{\partial x^\beta}{\partial\xi^\mu}=
+    \left[\frac{\partial x^\kappa}{\partial y^\sigma}
+        \frac{\partial^2 \xi^\mu}{\partial x^\alpha \partial x^\kappa}\frac{\partial x^\alpha}{\partial y^\nu} +
+        \frac{\partial \xi^\mu}{\partial x^\alpha}\frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}\right]
+    \frac{\partial y^\rho}{\partial x^\beta}\frac{\partial x^\beta}{\partial\xi^\mu}= \\
+    \underbrace{\frac{\partial^2 \xi^\mu}{\partial x^\alpha \partial x^\kappa}
+        \frac{\partial x^\beta}{\partial\xi^\mu} }_{=\Gamma_{\alpha\kappa}^\beta}
+    \frac{\partial x^\kappa}{\partial y^\sigma}
+    \frac{\partial x^\alpha}{\partial y^\nu}
+    \frac{\partial y^\rho}{\partial x^\beta}
+    +
+    \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
+    \frac{\partial y^\rho}{\partial x^\beta}
+    \underbrace{\frac{\partial \xi^\mu}{\partial x^\alpha}
+        \frac{\partial x^\beta}{\partial\xi^\mu}}_{=\delta_\alpha^\beta}=
+    \Gamma_{\alpha\kappa}^\beta
+    \frac{\partial x^\kappa}{\partial y^\sigma}
+    \frac{\partial x^\alpha}{\partial y^\nu}
+    \frac{\partial y^\rho}{\partial x^\beta}
+    +
+    \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
+    \frac{\partial y^\rho}{\partial x^\alpha}
+\end{multline}
+%
+Plugging those things into
+%
+\begin{equation}
+    \frac{\dd u^\mu}{\dd\lambda'} +
+    \Gamma_{\nu\sigma}'^{\mu}\left[y(\lambda')\right]u^\nu\frac{\dd y^\sigma}{\dd \lambda'}=0
+\end{equation}
+%
+we obtain
+%
+\begin{gather}
+    \frac{\partial v^\beta}{\partial\lambda}
+    \frac{\partial \lambda}{\partial\lambda'}
+    \frac{\partial y^\mu}{\partial x^\beta} +
+    v^\beta
+    \underbrace{\frac{\partial}{\partial \lambda'}
+        \frac{\partial y^\mu}{\partial x^\beta}}_{=0} +
+    \left\{\Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]
+    \frac{\partial x^\kappa}{\partial y^\sigma}
+    \frac{\partial x^\alpha}{\partial y^\nu}
+    \frac{\partial y^\mu}{\partial x^\beta}
+    +
+    \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
+    \frac{\partial y^\mu}{\partial x^\alpha}\right\}
+    v^\eta \frac{\partial y^\nu}{\partial x^\eta}
+    \frac{\partial y^\sigma}{\partial \lambda'}=0
+\end{gather}
+%
+Let's take a look at third term of this sum
+%
+\begin{multline}
+    \left\{\Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]
+    \frac{\partial x^\kappa}{\partial y^\sigma}
+    \frac{\partial x^\alpha}{\partial y^\nu}
+    \frac{\partial y^\mu}{\partial x^\beta}
+    +
+    \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
+    \frac{\partial y^\mu}{\partial x^\alpha}\right\}
+    v^\eta \frac{\partial y^\nu}{\partial x^\eta}
+    \frac{\partial y^\sigma}{\partial \lambda'}= \\
+    v^\eta\Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]
+    \underbrace{\frac{\partial x^\kappa}{\partial y^\sigma}
+        \frac{\partial y^\sigma}{\partial \lambda'}}_{=\frac{\partial x^\kappa}{\partial \lambda}\frac{\partial \lambda}{\partial \lambda'}}
+    \underbrace{\frac{\partial x^\alpha}{\partial y^\nu}
+        \frac{\partial y^\nu}{\partial x^\eta}}_{\delta_\eta^\alpha}
+    \frac{\partial y^\mu}{\partial x^\beta}
+    +
+    \underbrace{v^\eta \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
+        \frac{\partial y^\nu}{\partial x^\eta}
+        \frac{\partial y^\sigma}{\partial \lambda'}}_{\frac{\partial^2 x^\alpha}{\partial x^\eta \partial \lambda'}=0}
+    \frac{\partial y^\mu}{\partial x^\alpha}= \\
+    \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
+    \frac{\partial x^\kappa}{\partial \lambda}\frac{\partial \lambda}{\partial \lambda'}
+    \frac{\partial y^\mu}{\partial x^\beta}
+\end{multline}
+%
+So at the end of the day we have
+%
+\begin{equation}
+    \left(\frac{\partial v^\beta}{\partial\lambda} +
+    \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
+    \frac{\partial x^\kappa}{\partial \lambda}\right)
+    \frac{\partial \lambda}{\partial \lambda'}
+    \frac{\partial y^\mu}{\partial x^\beta} = 0
+\end{equation}
+%
+We can divide by $\frac{\partial \lambda}{\partial \lambda'}$
+%
+\begin{equation}
+    \boxed{\left(\frac{\partial v^\beta}{\partial\lambda} +
+        \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
+        \frac{\partial x^\kappa}{\partial \lambda}\right)
+        \frac{\partial y^\mu}{\partial x^\beta} = 0}
+\end{equation}
+%
+So indeed this equation is coordinate--covariant.
+
+\section*{Problem 2}
+
+Let $\gamma_{\bs{V}}$ denote the geodesic with tangent vector $\bs{V}_p$ at
+point p. $\{\bs{e}_\mu\}$ is arbitrary basis chosen at the point p and normal
+coordinates are defined as $x(q)=(x^1,\dots,x^n) \Leftrightarrow q=\gamma_{x^\mu
+        \bs{e}_\mu}$ where $p=\gamma(\lambda=0)$, $q=\gamma(\lambda=1)$ and $\{x^i\}_{i=0}^n \in \mathbb{R}$.
+
+First we know that tangent vector when parallel transport along a geodesic stays
+tangent. So let $\bs{V}_p=v^\mu \bs{e}_\mu$ but since it is parrarel transport
+$\bs{V}_p=\bs{V}_q$. If so we can write normal coordinates of point $q$ as
+$x(q)=(v^1,\dots,v^n)$. On the other hand $v^i$ is defined as
+$v^i(\lambda)=\frac{\dd x^i(\lambda)}{\dd \lambda}$. We can solve this equation
+(near point $\lambda=1$) and get expression for
+%
+\begin{equation}
+    x^i(\lambda) = v^i \lambda + x^i(0)
+    \label{eq:ass4_geodesic}
+\end{equation}
+%
+\autoref{eq:ass4_geodesic} describes straight line, because it is linear with
+respect to $\lambda$ \footnote{or equivalently $\frac{\dd^2 x^i}{\dd
+            \lambda^2}=0$}.
+%
+Substituting this expression into geodesic equation
+%
+\begin{equation}
+    \frac{\dd^2 x^\mu}{\dd \lambda^2} + \Gamma_{\sigma\rho}^\mu\frac{\dd x^\sigma}{\dd \lambda}\frac{\dd x^\rho}{\dd \lambda} = 0
+\end{equation}
+%
+gives
+%
+\begin{equation}
+    \Gamma_{\sigma\rho}^\mu v^\sigma v^\rho = 0
+    \label{eq:ass4_gamma}
+\end{equation}
+%
+But \autoref{eq:ass4_gamma} has to be satisfied for arbitrary $v^\sigma$ and
+$v^\rho$ which implies
+%
+\begin{equation}
+    \boxed{\Gamma_{\sigma\rho}^\mu = 0}
+\end{equation}
+%
+\section*{Problem 3}
+
+\subsection{\texorpdfstring{$\partial g = 0$}{TEXT}}
+
+We know that metric transforms as follow:
+%
+\begin{equation}
+    g'_{\alpha\beta} = \frac{\partial x^\mu}{\partial x'^\alpha}
+    \frac{\partial x^\nu}{\partial x'^\beta} g_{\mu\nu}
+\end{equation}
+%
+Now choosing $x^\mu = x'^\mu - \frac{1}{2} M_{\alpha\beta}^\mu x'^\alpha
+    x'^\beta $ will give us
+%
+\begin{multline}
+    g'_{\alpha\beta} = \frac{\partial
+        (x'^\mu - \frac{1}{2} M_{\lambda\sigma}^\mu x'^\lambda x'^\sigma)}{\partial x'^\alpha}
+    \frac{\partial
+        (x'^\nu - \frac{1}{2} M_{\kappa\eta}^\nu x'^\kappa x'^\eta)}{\partial x'^\beta}
+    g_{\mu\nu} =\\
+    \left(\delta^\mu_\alpha -
+    \frac{1}{2} M_{\lambda\sigma}^\mu
+    (\delta^\lambda_\alpha x'^\sigma + x'^\lambda \delta^\sigma_\alpha)\right)
+    \left(\delta^\nu_\beta -
+    \frac{1}{2} M_{\kappa\eta}^\nu
+    (\delta^\kappa_\beta x'^\eta + x'^\kappa \delta^\eta_\beta)\right)g_{\mu\nu} = \\
+    \left(\delta^\mu_\alpha -
+    \frac{1}{2} M_{\alpha\sigma}^\mu x'^\sigma -
+    \frac{1}{2} M_{\lambda\alpha}^\mu x'^\lambda\right)
+    \left(\delta^\nu_\beta -
+    \frac{1}{2} M_{\beta\eta}^\nu x'^\eta -
+    \frac{1}{2} M_{\kappa\beta}^\nu x'^\kappa\right)g_{\mu\nu} = \\
+    \left(\delta^\mu_\alpha -
+    \frac{1}{2}x'^\sigma( M_{\alpha\sigma}^\mu + M_{\sigma\alpha}^\mu)\right)
+    \left(\delta^\nu_\beta -
+    \frac{1}{2} x'^\eta (M_{\beta\eta}^\nu + M_{\eta\beta}^\nu)\right)g_{\mu\nu}
+\end{multline}
+%
+We take $\tilde{M}_{\beta\eta}^\nu = \frac{1}{2}(M_{\beta\eta}^\nu +
+    M_{\eta\beta}^\nu)$ and write (keeping only linear terms in $x$)
+%
+\begin{equation}
+    g'_{\alpha\beta} =
+    \left(\delta^\mu_\alpha -
+    x'^\sigma \tilde{M}_{\alpha\sigma}^\mu\right)
+    \left(\delta^\nu_\beta -
+    x'^\eta \tilde{M}_{\beta\eta}^\nu\right)g_{\mu\nu} =
+    g_{\alpha\beta} -
+    g_{\alpha\nu} x'^\eta \tilde{M}_{\beta\eta}^\nu -
+    g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu =
+\end{equation}
+%
+Now we differentiate both sides
+%
+\begin{multline}
+    \partial'_\lambda g'_{\alpha\beta} =
+    \partial'_\lambda g_{\alpha\beta} -
+    \partial'_\lambda (g_{\alpha\nu} x'^\eta \tilde{M}_{\beta\eta}^\nu) -
+    \partial'_\lambda (g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu) = \\
+    \partial'_\lambda g_{\alpha\beta} -
+    \partial'_\lambda g_{\alpha\nu} x'^\eta \tilde{M}_{\beta\eta}^\nu -
+    g_{\alpha\nu} \delta^\eta_\lambda \tilde{M}_{\beta\eta}^\nu -
+    \partial'_\lambda g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu -
+    g_{\mu\beta} \delta^\sigma_\lambda \tilde{M}_{\alpha\sigma}^\mu
+\end{multline}
+%
+Now we drop linear terms in $x$ (of the form $x\partial g$)
+%
+\begin{multline}
+    \partial'_\lambda g'_{\alpha\beta} =
+    \partial'_\lambda g_{\alpha\beta} -
+    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
+    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu=
+    \partial_\tau g_{\alpha\beta} \partial'_\lambda x^\tau -
+    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
+    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu=\\
+    \partial_\tau g_{\alpha\beta}
+    \left(\delta^\tau_\lambda -
+    x'^\sigma \tilde{M}_{\lambda\sigma}^\tau\right) -
+    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
+    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu \simeq
+    \partial_\lambda g_{\alpha\beta} -
+    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
+    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu
+\end{multline}
+%
+Now let's substitute Chrisroffel symbol in place of $\tilde{M}$ namely
+
+\begin{equation}
+    \tilde{M}_{\alpha\beta}^\gamma =
+    \frac{1}{2}
+    g^{\gamma\sigma}(\partial_\alpha g_{\sigma\beta}+
+    \partial_\beta g_{\sigma\alpha}-
+    \partial_\sigma g_{\alpha\beta})
+\end{equation}
+%
+We obtain (using $g_{\alpha\beta} = g_{\beta\alpha}$)
+%
+\begin{multline}
+    2\partial'_\lambda g'_{\alpha\beta} =
+    2\partial_\lambda g_{\alpha\beta} -
+    \underbrace{g_{\alpha\nu}g^{\nu\sigma}}_{=\delta_\alpha^\sigma}
+    (\partial_\beta g_{\sigma\lambda}+
+    \partial_\lambda g_{\sigma\beta}-
+    \partial_\sigma g_{\beta\lambda})-
+    \underbrace{g_{\mu\beta}g^{\mu\sigma}}_{=\delta_\beta^\sigma}
+    (\partial_\alpha g_{\sigma\lambda}+
+    \partial_\lambda g_{\sigma\alpha}-
+    \partial_\sigma g_{\alpha\lambda}) = \\
+    2\partial_\lambda g_{\alpha\beta} -
+    \partial_\beta g_{\alpha\lambda}-
+    \partial_\lambda g_{\alpha\beta}+
+    \partial_\alpha g_{\beta\lambda}-
+    \partial_\alpha g_{\beta\lambda}-
+    \partial_\lambda g_{\beta\alpha}+
+    \partial_\beta g_{\alpha\lambda}=
+    2\partial_\lambda g_{\alpha\beta} -
+    2\partial_\lambda g_{\alpha\beta} = 0
+\end{multline}
+%
+So eventually
+%
+\begin{equation}
+    \boxed{\partial'_\lambda g'_{\alpha\beta}=0}
+\end{equation}
+
+\subsection{\texorpdfstring{$g=\eta$}{TEXT}}
+
+We try following change of coordinates
+%
+\begin{equation}
+    x'^\mu = N_{~~\alpha}^{\mu~~} y^\alpha
+\end{equation}
+%
+In those coordinates metric looks like
+%
+\begin{equation}
+    g''_{\alpha\beta} = 
+    \frac{\partial x'^\mu}{\partial y^\alpha}
+    \frac{\partial x'^\nu}{\partial y^\beta} g'_{\mu\nu} = 
+    N^{\mu~~}_{~~\alpha} N^{\nu~~}_{~~\beta} g'_{\mu\nu} =
+    (N^{-1})^{~~\mu}_{\alpha~~} g'_{\mu\nu} N^{\nu~~}_{~~\beta} = 
+    (N^{-1} g' N)_{\alpha\beta}
+    \label{eq:ass4_eigen}
+\end{equation}
+%
+We can now diagonalize metric $g'$. We can write 
+%
+\begin{equation}
+    g' = C~\eta~C^{-1}
+\end{equation}
+%
+where $\eta$ is diagonal and $C$ is a matrix which consists of eigenvectors of
+$g'$. If we will choose $N=C$ then \autoref{eq:ass4_eigen} simplifies to
+%
+\begin{equation}
+    \boxed{g''_{\alpha\beta} = \eta_{\alpha\beta}}
+\end{equation}
