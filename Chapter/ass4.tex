@@ -33,9 +33,12 @@ and for $\Gamma_{\mu\sigma}^\rho=\frac{\partial^2 \xi^\mu}{\partial x^\nu \parti
     \frac{\partial}{\partial y^\sigma}
     \left(\frac{\partial \xi^\mu}{\partial x^\alpha}\frac{\partial x^\alpha}{\partial y^\nu}\right)
     \frac{\partial y^\rho}{\partial x^\beta}\frac{\partial x^\beta}{\partial\xi^\mu}=
-    \left[\frac{\partial x^\kappa}{\partial y^\sigma}
-        \frac{\partial^2 \xi^\mu}{\partial x^\alpha \partial x^\kappa}\frac{\partial x^\alpha}{\partial y^\nu} +
-        \frac{\partial \xi^\mu}{\partial x^\alpha}\frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}\right]
+    \overbrace{\left[\frac{\partial^2 \xi^\mu}{\partial x^\alpha \partial x^\kappa}
+            \frac{\partial x^\alpha}{\partial y^\nu}
+            \frac{\partial x^\kappa}{\partial y^\sigma} +
+            \frac{\partial \xi^\mu}{\partial x^\alpha}
+            \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}\right]}^{
+        \frac{\partial^2 \xi^\mu}{\partial y^\nu \partial y^\sigma}~(*)}
     \frac{\partial y^\rho}{\partial x^\beta}\frac{\partial x^\beta}{\partial\xi^\mu}= \\
     \underbrace{\frac{\partial^2 \xi^\mu}{\partial x^\alpha \partial x^\kappa}
         \frac{\partial x^\beta}{\partial\xi^\mu} }_{=\Gamma_{\alpha\kappa}^\beta}
@@ -69,9 +72,9 @@ we obtain
     \frac{\partial v^\beta}{\partial\lambda}
     \frac{\partial \lambda}{\partial\lambda'}
     \frac{\partial y^\mu}{\partial x^\beta} +
-    v^\beta
-    \underbrace{\frac{\partial}{\partial \lambda'}
-        \frac{\partial y^\mu}{\partial x^\beta}}_{=0} +
+    v^\beta\frac{\partial^2 y^\mu}{\partial x^\beta \partial x^\alpha}
+    \frac{\partial x^\alpha}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'} +
     \left\{\Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]
     \frac{\partial x^\kappa}{\partial y^\sigma}
     \frac{\partial x^\alpha}{\partial y^\nu}
@@ -94,29 +97,68 @@ Let's take a look at third term of this sum
     \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
     \frac{\partial y^\mu}{\partial x^\alpha}\right\}
     v^\eta \frac{\partial y^\nu}{\partial x^\eta}
-    \frac{\partial y^\sigma}{\partial \lambda'}= \\
+    \underbrace{\frac{\partial y^\sigma}{\partial x^\tau}
+    \frac{\partial x^\tau}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'}}_{\frac{\partial y^\sigma}{\partial \lambda'}}= \\
     v^\eta\Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]
     \underbrace{\frac{\partial x^\kappa}{\partial y^\sigma}
-        \frac{\partial y^\sigma}{\partial \lambda'}}_{=\frac{\partial x^\kappa}{\partial \lambda}\frac{\partial \lambda}{\partial \lambda'}}
+        \frac{\partial y^\sigma}{\partial x^\tau}
+        \frac{\partial x^\tau}{\partial \lambda}
+        \frac{\partial \lambda}{\partial \lambda'}}_{
+        =\frac{\partial x^\kappa}{\partial \lambda}\frac{\partial \lambda}{\partial \lambda'}}
     \underbrace{\frac{\partial x^\alpha}{\partial y^\nu}
         \frac{\partial y^\nu}{\partial x^\eta}}_{\delta_\eta^\alpha}
     \frac{\partial y^\mu}{\partial x^\beta}
     +
-    \underbrace{v^\eta \frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
+    v^\eta\underbrace{\frac{\partial^2 x^\alpha}{\partial y^\nu \partial y^\sigma}
         \frac{\partial y^\nu}{\partial x^\eta}
-        \frac{\partial y^\sigma}{\partial \lambda'}}_{\frac{\partial^2 x^\alpha}{\partial x^\eta \partial \lambda'}=0}
+        \frac{\partial y^\sigma}{\partial x^\tau}}_{
+        \frac{\partial^2 x^\alpha}{\partial x^\eta \partial x^\tau} -
+        \frac{\partial x^\alpha}{\partial y^\nu}
+        \frac{\partial^2 y^\nu}{\partial x^\eta \partial x^\tau}~(*)}
+    \frac{\partial x^\tau}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'}
     \frac{\partial y^\mu}{\partial x^\alpha}= \\
     \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
     \frac{\partial x^\kappa}{\partial \lambda}\frac{\partial \lambda}{\partial \lambda'}
-    \frac{\partial y^\mu}{\partial x^\beta}
+    \frac{\partial y^\mu}{\partial x^\beta} -
+    v^\eta\frac{\partial^2 y^\nu}{\partial x^\eta \partial x^\tau}
+    \underbrace{\frac{\partial x^\alpha}{\partial y^\nu}
+        \frac{\partial y^\mu}{\partial x^\alpha}}_{=\delta^\mu_\nu}
+    \frac{\partial x^\tau}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'}=
+    \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
+    \frac{\partial x^\kappa}{\partial \lambda}\frac{\partial \lambda}{\partial \lambda'}
+    \frac{\partial y^\mu}{\partial x^\beta} -
+    v^\eta\frac{\partial^2 y^\mu}{\partial x^\eta \partial x^\tau}
+    \frac{\partial x^\tau}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'}
 \end{multline}
 %
 So at the end of the day we have
 %
 \begin{equation}
+    \frac{\partial v^\beta}{\partial\lambda}
+    \frac{\partial \lambda}{\partial \lambda'}
+    \frac{\partial y^\mu}{\partial x^\beta} +
+    v^\beta\frac{\partial^2 y^\mu}{\partial x^\beta \partial x^\alpha}
+    \frac{\partial x^\alpha}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'}+
+    \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
+    \frac{\partial x^\kappa}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'}
+    \frac{\partial y^\mu}{\partial x^\beta}-
+    v^\eta\frac{\partial^2 y^\mu}{\partial x^\eta \partial x^\tau}
+    \frac{\partial x^\tau}{\partial \lambda}
+    \frac{\partial \lambda}{\partial \lambda'} = 0
+\end{equation}
+%
+Which simplifies to
+%
+\begin{equation}
     \left(\frac{\partial v^\beta}{\partial\lambda} +
     \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
-    \frac{\partial x^\kappa}{\partial \lambda}\right)
+    \frac{\partial x^\kappa}{\partial \lambda}\right)    
     \frac{\partial \lambda}{\partial \lambda'}
     \frac{\partial y^\mu}{\partial x^\beta} = 0
 \end{equation}
@@ -135,7 +177,7 @@ So indeed this equation is coordinate--covariant.
 \section*{Problem 2}
 
 Let $\gamma_{\bs{V}}$ denote the geodesic with tangent vector $\bs{V}_p$ at
-point p. $\{\bs{e}_\mu\}$ is arbitrary basis chosen at the point p and normal
+point $p$. $\{\bs{e}_\mu\}$ is arbitrary basis chosen at the point $p$ and normal
 coordinates are defined as $x(q)=(x^1,\dots,x^n) \Leftrightarrow q=\gamma_{x^\mu
         \bs{e}_\mu}$ where $p=\gamma(\lambda=0)$, $q=\gamma(\lambda=1)$ and $\{x^i\}_{i=0}^n \in \mathbb{R}$.
 
@@ -285,12 +327,12 @@ We obtain (using $g_{\alpha\beta} = g_{\beta\alpha}$)
     \partial_\lambda g_{\sigma\alpha}-
     \partial_\sigma g_{\alpha\lambda}) = \\
     2\partial_\lambda g_{\alpha\beta} -
-    \partial_\beta g_{\alpha\lambda}-
-    \partial_\lambda g_{\alpha\beta}+
-    \partial_\alpha g_{\beta\lambda}-
-    \partial_\alpha g_{\beta\lambda}-
-    \partial_\lambda g_{\beta\alpha}+
-    \partial_\beta g_{\alpha\lambda}=
+    \mathunderline{green}{\partial_\beta g_{\alpha\lambda}}-
+    \mathunderline{red}{\partial_\lambda g_{\alpha\beta}}+
+    \mathunderline{blue}{\partial_\alpha g_{\beta\lambda}}-
+    \mathunderline{blue}{\partial_\alpha g_{\beta\lambda}}-
+    \mathunderline{red}{\partial_\lambda g_{\beta\alpha}}+
+    \mathunderline{green}{\partial_\beta g_{\alpha\lambda}}=
     2\partial_\lambda g_{\alpha\beta} -
     2\partial_\lambda g_{\alpha\beta} = 0
 \end{multline}
@@ -312,16 +354,16 @@ We try following change of coordinates
 In those coordinates metric looks like
 %
 \begin{equation}
-    g''_{\alpha\beta} = 
+    g''_{\alpha\beta} =
     \frac{\partial x'^\mu}{\partial y^\alpha}
-    \frac{\partial x'^\nu}{\partial y^\beta} g'_{\mu\nu} = 
+    \frac{\partial x'^\nu}{\partial y^\beta} g'_{\mu\nu} =
     N^{\mu~~}_{~~\alpha} N^{\nu~~}_{~~\beta} g'_{\mu\nu} =
-    (N^{-1})^{~~\mu}_{\alpha~~} g'_{\mu\nu} N^{\nu~~}_{~~\beta} = 
+    (N^{-1})^{~~\mu}_{\alpha~~} g'_{\mu\nu} N^{\nu~~}_{~~\beta} =
     (N^{-1} g' N)_{\alpha\beta}
     \label{eq:ass4_eigen}
 \end{equation}
 %
-We can now diagonalize metric $g'$. We can write 
+We can now diagonalize metric $g'$. We can write
 %
 \begin{equation}
     g' = C~\eta~C^{-1}
