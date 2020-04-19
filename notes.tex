@@ -9,17 +9,20 @@
 \usepackage[osf]{libertine}
 \usepackage{enumerate}
 \usepackage{enumitem}
-\usepackage{tikz}
 \usepackage[margin=1.6cm]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tcolorbox}
 \usepackage{todonotes}
 \usepackage{physics}
-\usepackage{tikz}
 \usepackage{float}
 \usepackage{pgfplots}
 \usepackage{wrapfig}
 \usepackage{mathtools}
+\usepackage[capitalise]{cleveref}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\tdplotsetmaincoords{60}{115}
+\pgfplotsset{compat=newest}
 
 \usetikzlibrary{calc,backgrounds, decorations.pathmorphing}
 \tikzset{snake it/.style={decorate, decoration=snake}}
@@ -49,12 +52,14 @@
 
 \begin{document}
 
-% \include{Chapter/ass1}
+\include{Chapter/ass1}
 
-% \include{Chapter/ass2}
+\include{Chapter/ass2}
 
-% \include{Chapter/ass3}
+\include{Chapter/ass3}
 
 \include{Chapter/ass4}
+
+\include{Chapter/ass5}
 
 \end{document}

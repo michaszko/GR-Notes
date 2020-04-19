@@ -1,0 +1,630 @@
+\mytitle{ASSIGMENT 5}
+
+\section*{Problem 1a}
+
+We have given metric
+%
+\begin{equation}
+    \bs{g} = \dd\theta \otimes \dd\theta + \sin^2\theta~\dd\phi \otimes \dd\phi
+\end{equation}
+%
+Only non-zero elements are:
+%
+\begin{equation}
+    g_{11} = 1 \hspace{2cm} g_{22} = \sin^2\theta
+\end{equation}
+%
+Also rmeber that $g^{\alpha\beta} = g_{\alpha\beta}^{-1}$ Let's calculate
+connection for that metric:
+%
+\begin{equation}
+    \Gamma^\mu_{\nu\sigma} =
+    \frac{1}{2} g^{\mu\rho} \left(
+    \partial_\nu g_{\rho\sigma} +
+    \partial_\sigma g_{\rho\nu} -
+    \partial_\rho g_{\nu\sigma}\right)
+\end{equation}
+%
+It is easy to see that
+%
+\begin{equation}
+    \partial_\nu g_{\rho\sigma} =
+    \delta_{1\nu}\delta_{2\rho}\delta_{2\sigma}~2\sin\theta\cos\theta
+    \label{eq:ass5_only_non_zero}
+\end{equation}
+%
+where $\partial_1 \equiv \partial_\theta$ and $\partial_2 \equiv \partial_\phi$.
+Substituting \cref{eq:ass5_only_non_zero} into connection yields
+%
+\begin{multline}
+    \Gamma^\mu_{\nu\sigma} =
+    \frac{1}{2} g^{\mu\rho} \left(
+    \delta_{1\nu}\delta_{2\rho}\delta_{2\sigma}~2\sin\theta\cos\theta +
+    \delta_{1\sigma}\delta_{2\rho}\delta_{2\nu}~2\sin\theta\cos\theta-
+    \delta_{1\rho}\delta_{2\nu}\delta_{2\sigma}~2\sin\theta\cos\theta\right) =\\
+    \sin\theta\cos\theta\left(
+    g^{2\mu} \delta_{1\nu}\delta_{2\sigma} +
+    g^{2\mu} \delta_{1\sigma}\delta_{2\nu} -
+    g^{1\mu}\delta_{2\nu}\delta_{2\sigma}\right)
+\end{multline}
+%
+The only non--zero coefficients
+%
+\begin{equation}
+    \Gamma^1_{22} = -\sin\theta\cos\theta
+    \hspace*{2cm}
+    \Gamma^2_{12} = \Gamma^2_{21} = \frac{\cos\theta}{\sin\theta}
+    \label{eq:ass5_coeff}
+\end{equation}
+
+\section*{Problem 1b}
+
+Geodesic equation is given by
+%
+\begin{equation}
+    \frac{\partial^2 x^\sigma}{\partial \lambda^2} +
+    \Gamma^\sigma_{\mu\nu}
+    \frac{\partial x^\mu}{\partial \lambda}
+    \frac{\partial x^\nu}{\partial \lambda} = 0
+\end{equation}
+%
+Writing explicitly
+%
+\begin{subequations}
+    \begin{align}
+        \frac{\partial^2 x^1}{\partial \lambda^2} +
+        \Gamma^{1}_{\mu\nu}
+        \frac{\partial x^\mu}{\partial \lambda}
+        \frac{\partial x^\nu}{\partial \lambda} & = 0 \\
+        %
+        \frac{\partial^2 x^2}{\partial \lambda^2} +
+        \Gamma^{2}_{\mu\nu}
+        \frac{\partial x^\mu}{\partial \lambda}
+        \frac{\partial x^\nu}{\partial \lambda} & = 0
+    \end{align}
+\end{subequations}
+%
+After plugging in \cref{eq:ass5_coeff} we obtain
+%
+\begin{subequations}
+    \begin{align}
+        \frac{\partial^2 \theta}{\partial \lambda^2} -
+        \sin\theta\cos\theta
+        \frac{\partial \phi}{\partial \lambda}
+        \frac{\partial \phi}{\partial \lambda} & = 0 \\
+        %
+        \frac{\partial^2 \phi}{\partial \lambda^2} +
+        2\frac{\cos\theta}{\sin\theta}
+        \frac{\partial \theta}{\partial \lambda}
+        \frac{\partial \phi}{\partial \lambda} & = 0
+    \end{align}
+\end{subequations}
+%
+Now we can set $\theta$ and $\phi$ as affine parameters
+
+\subsection*{$\lambda \rightarrow \theta$}
+
+\begin{subequations}
+    \begin{align}
+        -\sin\theta\cos\theta
+        \frac{\partial \phi}{\partial \theta}
+        \frac{\partial \phi}{\partial \theta} & = 0 \\
+        %
+        \frac{\partial^2 \phi}{\partial \theta^2} +
+        2\frac{\cos\theta}{\sin\theta}
+        \frac{\partial \phi}{\partial \theta} & = 0
+    \end{align}
+\end{subequations}
+%
+Solution to this set of equations is trivial namely
+%
+\begin{equation}
+    \frac{\partial \phi}{\partial \theta} = 0
+    \quad \Rightarrow \quad
+    \phi = \text{const}
+\end{equation}
+%
+It means that longitudinal lines are geodesics in this metric.
+
+\subsection*{$\lambda \rightarrow \phi$}
+
+\begin{subequations}
+    \begin{align}
+        \frac{\partial^2 \theta}{\partial \phi^2} -
+        \sin\theta\cos\theta                  & = 0 \\
+        %
+        2\frac{\cos\theta}{\sin\theta}
+        \frac{\partial \theta}{\partial \phi} & = 0
+    \end{align}
+\end{subequations}
+%
+From second equation we have that
+%
+\begin{equation}
+    \frac{\partial \theta}{\partial \phi} = 0
+\end{equation}
+% 
+but it does not solve first equation for every $\theta$. This system of
+equations has solutions only when
+%
+\begin{equation}
+    \sin\theta\cos\theta = 0
+    \quad \Rightarrow \quad
+    \theta = 0 ~\vee~ \theta = \frac{\pi}{2} ~\vee~ \theta = \pi
+\end{equation}
+%
+since $\theta \in \left[0,\pi\right]$. But for $\theta = 0$ or $\theta = \pi$
+geodesic line is just one point, because those are poles. Only $\theta =
+    \frac{\pi}{2}$ gives non-trivial geodesic. This line is called equator.
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[tdplot_main_coords, scale = 3.5]
+        \coordinate (P1) at ({0},{0},{1});
+        \coordinate (P2) at ({0},{0},{-1});
+        \coordinate (O) at (0,0,0);
+        \pgfmathsetmacro{\rvec}{1.4}
+        \pgfmathsetmacro{\thetavec}{45}
+        \pgfmathsetmacro{\phivec}{60}
+
+        \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+        \shade[ball color = lightgray, opacity = 0.5] (0,0,0) circle (1cm);
+
+        \tdplotsetrotatedcoords{0}{0}{0};
+        \draw[dashed, tdplot_rotated_coords, red] (0,0,0) circle (1);
+
+        \tdplotsetrotatedcoords{-90}{90}{0};
+        \draw[dashed, tdplot_rotated_coords, blue] (1,0,0) arc (0:180:1);
+
+        \tdplotsetrotatedcoords{0}{90}{0};
+        \draw[dashed, tdplot_rotated_coords, blue] (1,0,0) arc (0:180:1);
+
+        \draw[dashed, gray] (0,0,0) -- (-1,0,0);
+        \draw[dashed, gray] (0,0,0) -- (0,-1,0);
+
+        \draw[-stealth] (0,0,0) -- (1.80,0,0) node[below left] {$x$};
+        \draw[-stealth] (0,0,0) -- (0,1.30,0) node[below right] {$y$};
+        \draw[-stealth] (0,0,0) -- (0,0,1.30) node[above] {$z$};
+        \node[right] at (P1) {$P_1$};
+        \node[right] at (P2) {$P_2$};
+
+        \draw[-stealth, color=black] (O) -- (P) node[midway,below] {};
+
+        \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\phi$}
+        \draw[dashed, color=magenta] (O) -- (Pxy);
+        \draw[dashed, color=magenta] (P) -- (Pxy);
+
+        \tdplotsetthetaplanecoords{\phivec}
+        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{\thetavec}{0}{anchor=south west}{$\theta$}
+
+        \draw[fill = lightgray!50] (P1) circle (0.5pt);
+        \draw[fill = lightgray!50] (P2) circle (0.5pt);
+    \end{tikzpicture}
+    \caption{Visualization of geodesics -- \textcolor{red}{red} line is equator,
+        \textcolor{blue}{blue} lines are two possible meridians, $P_1$ and $P_2$ are poles.}
+\end{figure}
+
+\section*{Problem 1c}
+
+\subsection*{$\theta = \frac{\pi}{2},~\phi = 0 \rightarrow \theta = 0,~ \phi = 0$}
+
+We use equation of parallel transport of vector \bs{v} along curve $\gamma$ with
+$\frac{\dd \gamma^\mu}{\dd \lambda} = w^\mu$
+%
+\begin{equation}
+    \nabla_{\bs{w}} \bs{v} = 0
+\end{equation}
+%
+We can write it explicitly
+%
+\begin{equation}
+    w^\nu \partial_\nu v^\mu + w^\nu \Gamma^\mu_{\nu\sigma} v^\sigma = 0
+\end{equation}
+%
+or substituting connections I've calculated before
+%
+\begin{subequations}
+    \begin{align}
+        w^1 \partial_1 v^1 + w^2 \partial_2 v^1 + w^2 \Gamma^1_{22} v^2                         & = 0 \\
+        w^1 \partial_1 v^2 + w^2 \partial_2 v^2 + w^1 \Gamma^2_{12} v^2 + w^2 \Gamma^2_{21} v^1 & = 0
+    \end{align}
+\end{subequations}
+%
+If we move along meridian then we can take $\lambda \rightarrow \theta$. From
+this we get coefficients $w$ namely $w^1 = \frac{\dd \theta}{\dd \theta} = 1$
+and $w^2 = \frac{\dd \phi}{\dd \theta} = 0$. Putting this and connection
+coefficients into equations we obtain
+%
+\begin{subequations}
+    \begin{align}
+        \partial_1 v^1                                     & = 0 \\
+        \partial_1 v^2 + \frac{\cos\theta}{\sin\theta} v^2 & = 0
+    \end{align}
+\end{subequations}
+%
+Second equation we multiply by $\sin\theta$ and simplify
+%
+\begin{subequations}
+    \begin{align}
+        \partial_1 v^1                        & = 0 \\
+        \partial_1 \left(v^2\sin\theta\right) & = 0
+    \end{align}
+\end{subequations}
+%
+This gives use
+%
+\begin{subequations}
+    \begin{align}
+        v^1 & = C_1                    \\
+        v^2 & = \frac{C_2}{\sin\theta}
+    \end{align}
+\end{subequations}
+%
+Constants $C_1$ and $C_2$ depends on the vector we transport:
+\begin{itemize}
+    \item for $\frac{\partial}{\partial \theta}$ we have at the beginning
+          ($\theta = \frac{\pi}{2}$) $v=(1,0)$ so $C_1 = 1$ and $C_2 = 0$ so the
+          transport
+          \begin{equation}
+              \bs{v} = (1,0) \rightarrow (1,0) = \bs{v}'
+          \end{equation}
+          does not change this vector.
+    \item for $\frac{\partial}{\partial \phi}$ we have at the beginning
+          $v=(0,1)$ so $C_1 = 0$ and $C_2 = 1$ so the transport
+          \begin{equation}
+              \bs{v} = (0,1) \rightarrow (0,\frac{1}{\sin\theta}) = \bs{v}'
+          \end{equation}
+          is undefined at point $\theta = 0$
+\end{itemize}
+
+\subsection*{$\theta = \frac{\pi}{2},~\phi = 0 \rightarrow \theta = \frac{\pi}{2},~ \phi = \frac{\pi}{4}$}
+
+%
+If we move along equator then we can take $\lambda \rightarrow \phi$. From
+this we get coefficients $w$ namely $w^1 = \frac{\dd \theta}{\dd \phi} = 0$
+and $w^2 = \frac{\dd \phi}{\dd \phi} = 1$. Putting this and connection
+coefficients into equations we obtain
+%
+\begin{subequations}
+    \begin{align}
+        \partial_2 v^1 - \sin\theta\cos\theta v^2          & = 0 \\
+        \partial_2 v^2 + \frac{\cos\theta}{\sin\theta} v^1 & = 0
+    \end{align}
+\end{subequations}
+%
+which simplifies to
+%
+\begin{subequations}
+    \begin{align}
+        \partial_2 v^1 & = 0 \\
+        \partial_2 v^2 & = 0
+    \end{align}
+\end{subequations}
+%
+because $\cos\theta \Big|_{\theta=\frac{\pi}{2}}= 0$
+%
+\begin{subequations}
+    \begin{align}
+        v^1 & = C_1 \\
+        v^2 & = C_2
+    \end{align}
+\end{subequations}
+%
+Constants $C_1$ and $C_2$ depends on the vector we transport:
+\begin{itemize}
+    \item for $\frac{\partial}{\partial \theta}$ we have at the beginning
+          ($\phi = 0$) $v=(1,0)$ so $C_1 = 1$ and $C_2 = 0$ so the
+          transport
+          \begin{equation}
+              \bs{v} = (1,0) \rightarrow (1,0) = \bs{v}'
+          \end{equation}
+          does not change this vector.
+    \item for $\frac{\partial}{\partial \phi}$ we have at the beginning
+          $v=(0,1)$ so $C_1 = 0$ and $C_2 = 1$ so the transport
+          \begin{equation}
+              \bs{v} = (0,1) \rightarrow (0,1) = \bs{v}'
+          \end{equation}
+          does not change this vector.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[tdplot_main_coords, scale = 2.5]
+        \coordinate (O) at (0,0,0);
+
+        \pgfmathsetmacro{\rvec}{1}
+        \pgfmathsetmacro{\thetavec}{45}
+        \pgfmathsetmacro{\phivec}{45}
+
+        \pgfmathsetmacro{\sinphi}{sin(\phivec)}
+        \pgfmathsetmacro{\cosphi}{cos(\phivec)}
+
+        \pgfmathsetmacro{\sintheta}{sin(\thetavec)}
+        \pgfmathsetmacro{\costheta}{cos(\thetavec)}
+
+        \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+        \shade[ball color = lightgray, opacity = 0.5] (0,0,0) circle (1cm);
+
+        \tdplotsetrotatedcoords{0}{0}{0};
+        \draw[dashed, tdplot_rotated_coords, gray] (0,0,0) circle (1);
+
+        \tdplotsetrotatedcoords{-90}{90}{0};
+        \draw[dashed, tdplot_rotated_coords, gray] (1,0,0) arc (0:180:1);
+
+        \tdplotsetrotatedcoords{0}{90}{0};
+        \draw[dashed, tdplot_rotated_coords, gray] (1,0,0) arc (0:180:1);
+
+        \draw[dashed, gray] (0,0,0) -- (-1,0,0);
+        \draw[dashed, gray] (0,0,0) -- (0,-1,0);
+
+        \draw[-stealth] (0,0,0) -- (1.80,0,0) node[below left] {$x$};
+        \draw[-stealth] (0,0,0) -- (0,1.30,0) node[below right] {$y$};
+        \draw[-stealth] (0,0,0) -- (0,0,1.30) node[above] {$z$};
+
+        \draw[-stealth, color=red]
+        (\sinphi,\cosphi,0) -- (\sinphi-\cosphi, \cosphi+\sinphi, 0) node[above]
+        {$\frac{\partial}{\partial \phi}$};
+        \draw[-stealth, color=red]
+        (\sinphi,\cosphi,0) -- (\sinphi,\cosphi,-1) node[left]
+        {$\frac{\partial}{\partial \theta}$};
+
+        \draw[-stealth, color=blue]
+        (\sintheta,0,\costheta) -- (\sintheta+\costheta,0,\costheta-\sintheta) node[left]
+        {$\frac{\partial}{\partial \theta}$};
+        \draw[-stealth, color=blue]
+        (\sintheta,0,\costheta) -- (\sintheta,1,\costheta) node[above]
+        {$\frac{\partial}{\partial \phi}$};
+
+    \end{tikzpicture}
+    \caption{Visualization of parallel transport -- \textcolor{red}{red} is
+        transport along equatoor, \textcolor{blue}{blue} is transport along
+        meridians.}
+\end{figure}
+
+\section*{Problem 2}
+
+Materic is given by
+%
+\begin{equation}
+    g_{\nu\mu} =
+    \begin{pmatrix}
+        -B(r) & 0    & 0   & 0               \\
+        0     & A(r) & 0   & 0               \\
+        0     & 0    & r^2 & 0               \\
+        0     & 0    & 0   & r^2\sin^2\theta
+    \end{pmatrix}
+\end{equation}
+%
+We can calculate connection coefficients using relation
+%
+\begin{equation}
+    \Gamma^\mu_{\nu\sigma} =
+    \frac{1}{2} g^{\mu\rho} \left(
+    \partial_\nu g_{\rho\sigma} +
+    \partial_\sigma g_{\rho\nu} -
+    \partial_\rho g_{\nu\sigma}\right)
+\end{equation}
+%
+Becasue metric is diagonal we can simplify this expression:
+%
+\begin{equation}
+    \Gamma^\mu_{\nu\sigma} =
+    \frac{1}{2} g^{\mu\mu} \left(
+    \partial_\nu g_{\mu\sigma} +
+    \partial_\sigma g_{\mu\nu} -
+    \partial_\mu g_{\nu\sigma}\right)
+\end{equation}
+%
+\begin{subequations}
+    \begin{align}
+        \Gamma^0 & =
+        -\frac{1}{2} \frac{1}{B(r)}
+        \begin{pmatrix}
+            0       & \dot{B} & 0 & 0 \\
+            \dot{B} & 0       & 0 & 0 \\
+            0       & 0       & 0 & 0 \\
+            0       & 0       & 0 & 0 \\
+        \end{pmatrix} \\
+        \Gamma^1 & =
+        \frac{1}{2} \frac{1}{A(r)}
+        \begin{pmatrix}
+            -\dot{B} & 0       & 0   & 0               \\
+            0        & \dot{A} & 0   & 0               \\
+            0        & 0       & -2r & 0               \\
+            0        & 0       & 0   & -2r\sin^2\theta \\
+        \end{pmatrix} \\
+        \Gamma^2 & =
+        \frac{1}{2} \frac{1}{r^2}
+        \begin{pmatrix}
+            0 & 0  & 0  & 0                         \\
+            0 & 0  & 2r & 0                         \\
+            0 & 2r & 0  & 0                         \\
+            0 & 0  & 0  & -r^22\sin\theta\cos\theta \\
+        \end{pmatrix} =
+        \begin{pmatrix}
+            0 & 0           & 0           & 0                     \\
+            0 & 0           & \frac{1}{r} & 0                     \\
+            0 & \frac{1}{r} & 0           & 0                     \\
+            0 & 0           & 0           & -\sin\theta\cos\theta \\
+        \end{pmatrix} \\
+        \Gamma^3 & =
+        \frac{1}{2} \frac{1}{r^2\sin^2\theta}
+        \begin{pmatrix}
+            0 & 0              & 0                        & 0                        \\
+            0 & 0              & 0                        & 2r\sin^2\theta           \\
+            0 & 0              & 0                        & r^22\sin\theta\cos\theta \\
+            0 & 2r\sin^2\theta & r^22\sin\theta\cos\theta & 0                        \\
+        \end{pmatrix} =
+        \begin{pmatrix}
+            0 & 0           & 0                             & 0                             \\
+            0 & 0           & 0                             & \frac{1}{r}                   \\
+            0 & 0           & 0                             & \frac{\cos\theta}{\sin\theta} \\
+            0 & \frac{1}{r} & \frac{\cos\theta}{\sin\theta} & 0                             \\
+        \end{pmatrix}
+    \end{align}
+\end{subequations}
+%
+Geodesic equation
+%
+\begin{equation}
+    \frac{\partial^2 x^\sigma}{\partial \lambda^2} +
+    \Gamma^\sigma_{\mu\nu}\frac{\partial x^\mu}{\partial \lambda}\frac{\partial x^\nu}{\partial \lambda} = 0
+\end{equation}
+%
+\subsection*{$\sigma = 0$}
+
+\begin{equation}
+    \frac{\partial^2 t}{\partial \lambda^2} -
+    \frac{1}{2} \frac{1}{B(t)}
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      &
+        \frac{\partial r}{\partial \lambda}      &
+        \frac{\partial \theta}{\partial \lambda} &
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0       & \dot{B} & 0 & 0 \\
+        \dot{B} & 0       & 0 & 0 \\
+        0       & 0       & 0 & 0 \\
+        0       & 0       & 0 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      \\[6pt]
+        \frac{\partial r}{\partial \lambda}      \\[6pt]
+        \frac{\partial \theta}{\partial \lambda} \\[6pt]
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix} = 0
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2 t}{\partial \lambda^2} -
+    \frac{1}{2} \frac{1}{B(t)}
+    \left(-2\dot{B} \frac{\partial t}{\partial \lambda}\frac{\partial r}{\partial \lambda}\right) = 0
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2 t}{\partial \lambda^2} +
+    \frac{\dot{B}}{B}
+    \frac{\partial t}{\partial \lambda}\frac{\partial r}{\partial \lambda} = 0
+\end{equation}
+
+\subsection*{$\sigma = 1$}
+
+\begin{equation}
+    \frac{\partial^2 r}{\partial \lambda^2} +
+    \frac{1}{2} \frac{1}{A(r)}
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      &
+        \frac{\partial r}{\partial \lambda}      &
+        \frac{\partial \theta}{\partial \lambda} &
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix}
+    \begin{pmatrix}
+        -\dot{B} & 0       & 0   & 0               \\
+        0        & \dot{A} & 0   & 0               \\
+        0        & 0       & -2r & 0               \\
+        0        & 0       & 0   & -2r\sin^2\theta \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      \\[6pt]
+        \frac{\partial r}{\partial \lambda}      \\[6pt]
+        \frac{\partial \theta}{\partial \lambda} \\[6pt]
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix} = 0
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2 r}{\partial \lambda^2} -
+    \frac{\dot{B}}{2A}\left(\frac{\partial t}{\partial \lambda}\right)^2 +
+    \frac{\dot{A}}{2A}\left(\frac{\partial r}{\partial \lambda}\right)^2 -
+    \frac{r}{A}\left(\frac{\partial \theta}{\partial \lambda}\right)^2 -
+    \frac{r\sin^2\theta}{A}\left(\frac{\partial \phi}{\partial \lambda}\right)^2 = 0
+\end{equation}
+
+\subsection*{$\sigma = 2$}
+
+\begin{equation}
+    \frac{\partial^2 \theta}{\partial \lambda^2} +
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      &
+        \frac{\partial r}{\partial \lambda}      &
+        \frac{\partial \theta}{\partial \lambda} &
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & 0           & 0           & 0                     \\
+        0 & 0           & \frac{1}{r} & 0                     \\
+        0 & \frac{1}{r} & 0           & 0                     \\
+        0 & 0           & 0           & -\sin\theta\cos\theta \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      \\[6pt]
+        \frac{\partial r}{\partial \lambda}      \\[6pt]
+        \frac{\partial \theta}{\partial \lambda} \\[6pt]
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix} = 0
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2 \theta}{\partial \lambda^2} +
+    \frac{2}{r} \frac{\partial r}{\partial \lambda}\frac{\partial \theta}{\partial \lambda} -
+    \sin\theta\cos\theta \left(\frac{\partial \phi}{\partial \lambda}\right)^2 = 0
+\end{equation}
+
+\subsection*{$\sigma = 2$}
+
+\begin{equation}
+    \frac{\partial^2 \phi}{\partial \lambda^2} +
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      &
+        \frac{\partial r}{\partial \lambda}      &
+        \frac{\partial \theta}{\partial \lambda} &
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & 0           & 0                             & 0                             \\
+        0 & 0           & 0                             & \frac{1}{r}                   \\
+        0 & 0           & 0                             & \frac{\cos\theta}{\sin\theta} \\
+        0 & \frac{1}{r} & \frac{\cos\theta}{\sin\theta} & 0                             \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{\partial t}{\partial \lambda}      \\[6pt]
+        \frac{\partial r}{\partial \lambda}      \\[6pt]
+        \frac{\partial \theta}{\partial \lambda} \\[6pt]
+        \frac{\partial \phi}{\partial \lambda}
+    \end{pmatrix} = 0
+\end{equation}
+
+\begin{equation}
+    \frac{\partial^2 \phi}{\partial \lambda^2} +
+    \frac{2}{r} \frac{\partial r}{\partial \lambda}\frac{\partial \phi}{\partial \lambda} +
+    2\frac{\cos\theta}{\sin\theta} \frac{\partial \theta}{\partial \lambda}\frac{\partial \phi}{\partial \lambda} = 0
+\end{equation}
+%
+Gathering all equations
+%
+
+\begin{subequations}
+    \begin{align}
+        0 & = \frac{\partial^2 t}{\partial \lambda^2} +
+        \frac{\dot{B}}{B}
+        \frac{\partial t}{\partial \lambda}\frac{\partial r}{\partial \lambda}       \\
+        %
+        0 & = \frac{\partial^2 r}{\partial \lambda^2} -
+        \frac{\dot{B}}{2A}\left(\frac{\partial t}{\partial \lambda}\right)^2 +
+        \frac{\dot{A}}{2A}\left(\frac{\partial r}{\partial \lambda}\right)^2 -
+        \frac{r}{A}\left(\frac{\partial \theta}{\partial \lambda}\right)^2 -
+        \frac{r\sin^2\theta}{A}\left(\frac{\partial \phi}{\partial \lambda}\right)^2 \\
+        %
+        0 & = \frac{\partial^2 \theta}{\partial \lambda^2} +
+        \frac{2}{r} \frac{\partial r}{\partial \lambda}\frac{\partial \theta}{\partial \lambda} -
+        \sin\theta\cos\theta \left(\frac{\partial \phi}{\partial \lambda}\right)^2   \\
+        %
+        0 & = \frac{\partial^2 \phi}{\partial \lambda^2} +
+        \frac{2}{r} \frac{\partial r}{\partial \lambda}\frac{\partial \phi}{\partial \lambda} +
+        2\frac{\cos\theta}{\sin\theta} \frac{\partial \theta}{\partial \lambda}\frac{\partial \phi}{\partial \lambda}
+    \end{align}
+\end{subequations}
