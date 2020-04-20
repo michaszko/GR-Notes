@@ -380,7 +380,7 @@ Constants $C_1$ and $C_2$ depends on the vector we transport:
 
     \end{tikzpicture}
     \caption{Visualization of parallel transport -- \textcolor{red}{red} is
-        transport along equatoor, \textcolor{blue}{blue} is transport along
+        transport along equator, \textcolor{blue}{blue} is transport along
         meridians.}
 \end{figure}
 
@@ -628,3 +628,90 @@ Gathering all equations
         2\frac{\cos\theta}{\sin\theta} \frac{\partial \theta}{\partial \lambda}\frac{\partial \phi}{\partial \lambda}
     \end{align}
 \end{subequations}
+
+\subsection*{Problem 3}
+
+Metric is given by
+%
+\begin{equation}
+    \bs{g} = - c^2 \left(1−2\frac{GM}{rc^2}\right) \dd t \otimes \dd t  + \dd \bs{x} \otimes \dd \bs{x}
+\end{equation}
+%
+We can calculate infinitesimal interval of two events in this metric
+%
+\begin{equation}
+    \dd s^2 = - c^2 \left(1−2\frac{GM}{rc^2}\right) \dd t^2 + \dd \bs{x}^2
+\end{equation}
+%
+Simplifying this and assuming that the person has not been moving for whole year
+we can write
+%
+\begin{equation}
+    \dd s^2 = \dd t^2 \left(- c^2 \left(1−2\frac{GM}{rc^2}\right)  +
+    \frac{\dd \bs{x}^2}{\dd t^2}\right) =
+    - \dd t^2c^2 \left(1−2\frac{GM}{rc^2}\right)
+\end{equation}
+%
+We can now calculate the proper time
+%
+\begin{equation}
+    c^2 \dd \tau^2 = \dd t^2c^2 \left(1−2\frac{GM}{rc^2}\right)
+    \quad \Rightarrow \quad
+    \dd \tau = \dd t \sqrt{1−2\frac{GM}{rc^2}}
+\end{equation}
+%
+and finite version
+%
+\begin{equation}
+    \Delta \tau = \Delta t \sqrt{1−2\frac{GM}{rc^2}}
+\end{equation}
+%
+Now I take $\Delta \tau_{0}$ to be proper time of person's feet and
+$\Delta \tau_{H}$ for head (in distance $H$ from feet). Now I can calculate the
+difference
+%
+\begin{equation}
+    \Delta \tau_{H} - \Delta \tau_{0} =
+    \Delta t \left(\sqrt{1−2\frac{GM}{(r+H)c^2}} - \sqrt{1−2\frac{GM}{rc^2}}\right)
+\end{equation}
+%
+Because expressions under square are small I can Taylor expand them (using
+$\sqrt{1-2x} \simeq 1 -x$)
+%
+\begin{equation}
+    \Delta \tau_{H} - \Delta \tau_{0} =
+    \Delta t \left(-\frac{GM}{(r+H)c^2} + \frac{GM}{rc^2} \right) =
+    \Delta t \frac{GM}{c^2} \left(\frac{1}{r} - \frac{1}{r+H}\right) =
+    \Delta t \frac{GM}{c^2r} \frac{H}{r+H}
+\end{equation}
+%
+Plugging all the constants and assuming that person has height 1.8 m
+after 1 year time difference is
+%
+\begin{equation}
+    \Delta \tau_{H} - \Delta \tau_{0} = 6.3 \times 10^{-9}~\text{s}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[domain=0:2]
+        \pgfmathsetmacro{\C}{6.96e-1}
+        \pgfmathsetmacro{\R}{6371000}
+        \pgfmathsetmacro{\dt}{31557600}
+        \begin{axis}
+            [
+            axis lines  = left,
+            xlabel={$x$~[m]},
+            ylabel={$\Delta t$~[ns]},
+            xmin=0,
+            xmax=2.4,
+            ymin=0,
+            ymax=7
+            ]
+            \addplot[very thick,blue] plot (\x, {\C*\dt*x/(\R+x)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Time difference between head and feet after one year with respect
+        to height of a person}
+    % \label{fig:zad4}
+\end{figure}
