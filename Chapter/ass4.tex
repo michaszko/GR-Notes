@@ -98,8 +98,8 @@ Let's take a look at third term of this sum
     \frac{\partial y^\mu}{\partial x^\alpha}\right\}
     v^\eta \frac{\partial y^\nu}{\partial x^\eta}
     \underbrace{\frac{\partial y^\sigma}{\partial x^\tau}
-    \frac{\partial x^\tau}{\partial \lambda}
-    \frac{\partial \lambda}{\partial \lambda'}}_{\frac{\partial y^\sigma}{\partial \lambda'}}= \\
+        \frac{\partial x^\tau}{\partial \lambda}
+        \frac{\partial \lambda}{\partial \lambda'}}_{\frac{\partial y^\sigma}{\partial \lambda'}}= \\
     v^\eta\Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]
     \underbrace{\frac{\partial x^\kappa}{\partial y^\sigma}
         \frac{\partial y^\sigma}{\partial x^\tau}
@@ -158,7 +158,7 @@ Which simplifies to
 \begin{equation}
     \left(\frac{\partial v^\beta}{\partial\lambda} +
     \Gamma_{\alpha\kappa}^\beta\left[x(\lambda)\right]v^\alpha
-    \frac{\partial x^\kappa}{\partial \lambda}\right)    
+    \frac{\partial x^\kappa}{\partial \lambda}\right)
     \frac{\partial \lambda}{\partial \lambda'}
     \frac{\partial y^\mu}{\partial x^\beta} = 0
 \end{equation}
@@ -179,7 +179,7 @@ So indeed this equation is coordinate--covariant.
 Let $\gamma_{\bs{V}}$ denote the geodesic with tangent vector $\bs{V}_p$ at
 point $p$. $\{\bs{e}_\mu\}$ is arbitrary basis chosen at the point $p$ and
 normal coordinates are defined as $x(q)=(x^1,\dots,x^n) \Leftrightarrow
-q=\gamma_{x^\mu \bs{e}_\mu}$ where $p=\gamma(\lambda=0)$, $q=\gamma(\lambda=1)$
+    q=\gamma_{x^\mu \bs{e}_\mu}$ where $p=\gamma(\lambda=0)$, $q=\gamma(\lambda=1)$
 and $\{x^i\}_{i=1}^n \in \mathbb{R}$.
 
 First we let $\bs{V}_p=v^\mu \bs{e}_\mu$. But we know, since we consider
@@ -193,7 +193,7 @@ two conditions
     x^\mu  \Big|_{\lambda=1}= v^\mu
 \end{equation}
 %
-It is easy to solve this 
+It is easy to solve this
 %
 \begin{equation}
     x^\mu\left(\lambda\right) = v^\mu \lambda + x_\mu\left(0\right)
@@ -207,7 +207,7 @@ respect to $\lambda$ \footnote{or equivalently $\frac{\dd^2 x^i}{\dd
 Substituting this expression into geodesic equation
 %
 \begin{equation}
-    \frac{\dd^2 x^\mu}{\dd \lambda^2} + 
+    \frac{\dd^2 x^\mu}{\dd \lambda^2} +
     \Gamma_{\sigma\rho}^\mu\frac{\dd x^\sigma}{\dd \lambda}\frac{\dd x^\rho}{\dd \lambda} = 0
 \end{equation}
 %
@@ -236,9 +236,16 @@ We know that metric transforms as follow:
     \frac{\partial x^\nu}{\partial x'^\beta} g_{\mu\nu}
 \end{equation}
 %
-Now choosing $x^\mu = x'^\mu - \frac{1}{2} M_{\alpha\beta}^\mu x'^\alpha
-    x'^\beta $ will give us
+Now we choose transformation $x^\mu = x'^\mu - \frac{1}{2} M_{\alpha\beta}^\mu
+    x'^\alpha x'^\beta $ with condition $x^\mu(p) = 0$. In point $p$ we have
+$x'^\mu = \frac{1}{2} M_{\alpha\beta}^\mu x'^\alpha x'^\beta $. We see that
+$x'^\mu = 0$ is (one of the) solution to this equation. We choose this
+solution.
 %
+This transformation will give us ($M$ is taken in point $p$ so it derivative is
+equal to zero)
+%
+\allowdisplaybreaks
 \begin{multline}
     g'_{\alpha\beta} = \frac{\partial
         (x'^\mu - \frac{1}{2} M_{\lambda\sigma}^\mu x'^\lambda x'^\sigma)}{\partial x'^\alpha}
@@ -264,7 +271,7 @@ Now choosing $x^\mu = x'^\mu - \frac{1}{2} M_{\alpha\beta}^\mu x'^\alpha
 \end{multline}
 %
 We take $\tilde{M}_{\beta\eta}^\nu = \frac{1}{2}(M_{\beta\eta}^\nu +
-    M_{\eta\beta}^\nu)$ and write (keeping only linear terms in $x$)
+    M_{\eta\beta}^\nu)$ and write
 %
 \begin{equation}
     g'_{\alpha\beta} =
@@ -274,38 +281,28 @@ We take $\tilde{M}_{\beta\eta}^\nu = \frac{1}{2}(M_{\beta\eta}^\nu +
     x'^\eta \tilde{M}_{\beta\eta}^\nu\right)g_{\mu\nu} =
     g_{\alpha\beta} -
     g_{\alpha\nu} x'^\eta \tilde{M}_{\beta\eta}^\nu -
-    g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu =
+    g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu +
+    x'^\sigma  x'^\eta
+    \tilde{M}_{\alpha\sigma}^\mu \tilde{M}_{\beta\eta}^\nu
 \end{equation}
 %
-Now we differentiate both sides
+Now we take derivative of both sides in point $p$ (remember that $x(p) = x'(p) =
+    0$)
 %
 \begin{multline}
     \partial'_\lambda g'_{\alpha\beta} =
     \partial'_\lambda g_{\alpha\beta} -
     \partial'_\lambda (g_{\alpha\nu} x'^\eta \tilde{M}_{\beta\eta}^\nu) -
     \partial'_\lambda (g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu) = \\
-    \partial'_\lambda g_{\alpha\beta} -
+    \left(\delta^\tau_\lambda - x'^\sigma \tilde{M}_{\lambda\sigma}^\tau\right)
+    \partial_\tau g_{\alpha\beta} -
     \partial'_\lambda g_{\alpha\nu} x'^\eta \tilde{M}_{\beta\eta}^\nu -
     g_{\alpha\nu} \delta^\eta_\lambda \tilde{M}_{\beta\eta}^\nu -
     \partial'_\lambda g_{\mu\beta} x'^\sigma \tilde{M}_{\alpha\sigma}^\mu -
-    g_{\mu\beta} \delta^\sigma_\lambda \tilde{M}_{\alpha\sigma}^\mu
-\end{multline}
-%
-Now we drop linear terms in $x$ (of the form $x\partial g$)
-%
-\begin{multline}
-    \partial'_\lambda g'_{\alpha\beta} =
-    \partial'_\lambda g_{\alpha\beta} -
-    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
-    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu=
-    \partial_\tau g_{\alpha\beta} \partial'_\lambda x^\tau -
-    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
-    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu=\\
-    \partial_\tau g_{\alpha\beta}
-    \left(\delta^\tau_\lambda -
-    x'^\sigma \tilde{M}_{\lambda\sigma}^\tau\right) -
-    g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
-    g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu \simeq
+    g_{\mu\beta} \delta^\sigma_\lambda \tilde{M}_{\alpha\sigma}^\mu = \\
+    \partial_\lambda g_{\alpha\beta} -
+    g_{\alpha\nu} \delta^\eta_\lambda \tilde{M}_{\beta\eta}^\nu -
+    g_{\mu\beta} \delta^\sigma_\lambda \tilde{M}_{\alpha\sigma}^\mu =
     \partial_\lambda g_{\alpha\beta} -
     g_{\alpha\nu} \tilde{M}_{\beta\lambda}^\nu -
     g_{\mu\beta} \tilde{M}_{\alpha\lambda}^\mu
