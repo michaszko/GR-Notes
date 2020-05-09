@@ -1,0 +1,285 @@
+% \mytitle{ASSIGMENT 6}
+
+\chapter{}
+
+\problem
+
+Show that
+%
+\begin{equation}
+    R(\bs{u},\bs{v})\bs{z} =
+    \nabla_{\bs{u}} \nabla_{\bs{v}} \bs{z} -
+    \nabla_{\bs{v}} \nabla_{\bs{u}} \bs{z} -
+    \nabla_{[\bs{u},\bs{v}]} \bs{z}
+\end{equation}
+%
+satisfies
+%
+\begin{equation}
+    R(\bs{u},\bs{v})(f\bs{z}) = f R(\bs{u},\bs{v})\bs{z}
+\end{equation}
+%
+\begin{multline}
+    R(\bs{u},\bs{v})(f\bs{z}) =
+    \nabla_{\bs{u}} \left(\nabla_{\bs{v}} (f\bs{z})\right) -
+    \nabla_{\bs{v}} \left(\nabla_{\bs{u}} (f\bs{z})\right) -
+    \nabla_{[\bs{u},\bs{v}]} (f\bs{z}) = \\
+    %
+    \nabla_{\bs{u}} \left(\nabla_{\bs{v}}f~\bs{z} + f \nabla_{\bs{v}}\bs{z}\right) -
+    \nabla_{\bs{v}} \left(\nabla_{\bs{u}}f~\bs{z} + f \nabla_{\bs{u}}\bs{z}\right) -
+    \nabla_{[\bs{u},\bs{v}]}f~\bs{z} - f~\nabla_{[\bs{u},\bs{v}]}\bs{z} = \\
+    %
+    \nabla_{\bs{u}} \left(\bs{v}(f)~\bs{z} + f \nabla_{\bs{v}}\bs{z}\right) -
+    \nabla_{\bs{v}} \left(\bs{u}(f)~\bs{z} + f \nabla_{\bs{u}}\bs{z}\right) -
+    [\bs{u},\bs{v}](f)~\bs{z} - f~\nabla_{[\bs{u},\bs{v}]}\bs{z} = \\
+    %
+    \nabla_{\bs{u}}\bs{v}(f)~\bs{z} + \bs{v}(f)\nabla_{\bs{u}}\bs{z} +
+    \nabla_{\bs{u}}f \nabla_{\bs{v}}\bs{z} + f \nabla_{\bs{u}}\nabla_{\bs{v}}\bs{z} - \\
+    \nabla_{\bs{v}}\bs{u}(f)~\bs{z} - \bs{u}(f)\nabla_{\bs{v}}\bs{z} -
+    \nabla_{\bs{v}}f \nabla_{\bs{u}}\bs{z} - f \nabla_{\bs{v}}\nabla_{\bs{u}}\bs{z} - \\
+    [\bs{u},\bs{v}](f)~\bs{z} - f~\nabla_{[\bs{u},\bs{v}]}\bs{z} = \\
+    %
+    \mathunderline{red}{\bs{u}(\bs{v}(f))~\bs{z}} +
+    \mathunderline{blue}{\bs{v}(f)\nabla_{\bs{u}}\bs{z}} +
+    \mathunderline{green}{\bs{u}(f) \nabla_{\bs{v}}\bs{z}} +
+    f \nabla_{\bs{u}}\nabla_{\bs{v}}\bs{z} - \\
+    \mathunderline{red}{\bs{v}(\bs{u}(f))~\bs{z}} -
+    \mathunderline{green}{\bs{u}(f)\nabla_{\bs{v}}\bs{z}} -
+    \mathunderline{blue}{\bs{v}(f) \nabla_{\bs{u}}\bs{z}} -
+    f \nabla_{\bs{v}}\nabla_{\bs{u}}\bs{z} - \\
+    \mathunderline{red}{[\bs{u},\bs{v}](f)~\bs{z}} - f~\nabla_{[\bs{u},\bs{v}]}\bs{z} = \\
+    f\left(\nabla_{\bs{u}} \nabla_{\bs{v}} \bs{z} -
+    \nabla_{\bs{v}} \nabla_{\bs{u}} \bs{z} -
+    \nabla_{[\bs{u},\bs{v}]} \bs{z}\right)
+\end{multline}
+
+\problem
+
+Show that
+%
+\begin{equation}
+    \delta \left(\ln \det \bs{M} \right) = \text{Tr}\left(\bs{M}^{-1}\delta \bs{M}\right)
+    \label{eq:ass6_sol2}
+\end{equation}
+%
+First we notice that
+%
+\begin{equation}
+    \delta \left(\ln \det \bs{M} \right) = 
+    \frac{\delta \det \bs{M}}{\det \bs{M}} 
+    \label{eq:ass6_prob2}
+\end{equation}
+%
+Now using following relation
+%
+\begin{equation}
+    \det(\bs{1}+\epsilon \bs{A}) = 
+    1 + \epsilon\text{Tr}\bs{A} + \mathcal{O}(\epsilon^2)
+\end{equation}
+%
+We can calculate the expression we will use later
+%
+\begin{equation}
+    \det(\bs{M}+\epsilon\delta\bs{M}) = 
+    \det(\bs{1}+\epsilon\delta\bs{M}\bs{M^{-1}})\det(\bs{M}) =
+    \det\bs{M} + \epsilon\text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M}
+\end{equation}
+%
+We can calculate derivative using its definition
+%
+\begin{multline}
+    \delta(\det \bs{M}) = 
+    \lim_{\epsilon\to0}\frac{\det(\bs{M}+\epsilon\delta\bs{M}) - \det \bs{M}}{\epsilon} =\\
+    \lim_{\epsilon\to0}\frac{\det\bs{M} + \epsilon\text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M} - \det \bs{M}}{\epsilon} =
+    \text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M}
+\end{multline}
+%
+If we plug this into \cref{eq:ass6_prob2} we obtain final result (because trace
+is cyclic).
+
+\problem
+
+Show that 
+%
+\begin{equation}
+    \Gamma_{\nu\mu}^\nu = \partial_\mu \ln \sqrt{|\bs{g}|}
+\end{equation}
+%
+We first calculate
+%
+\begin{multline}
+    \Gamma_{\nu\mu}^\nu = \frac{1}{2}g^{\nu\alpha}\left(
+        \partial_\mu g_{\nu\alpha} +
+        \partial_\nu g_{\mu\alpha} - 
+        \partial_\alpha g_{\nu\mu}
+    \right)=
+    \frac{1}{2}g^{\nu\alpha}\partial_\mu g_{\nu\alpha} +
+    \frac{1}{2}g^{\nu\alpha}\partial_\nu g_{\mu\alpha} - 
+    \frac{1}{2}g^{\nu\alpha}\partial_\alpha g_{\nu\mu} = \quad (\nu \leftrightarrow \alpha) \\
+    %
+    \frac{1}{2}g^{\nu\alpha}\partial_\mu g_{\nu\alpha} +
+    \frac{1}{2}g^{\alpha\nu}\partial_\alpha g_{\mu\nu} - 
+    \frac{1}{2}g^{\nu\alpha}\partial_\alpha g_{\nu\mu} =
+    \frac{1}{2}g^{\nu\alpha}\partial_\mu g_{\nu\alpha} =
+    \frac{1}{2}\left(\bs{g}^{-1}\right)_{\alpha\nu}\left(\partial_\mu \bs{g}\right)_{\nu\alpha} =
+    \frac{1}{2}\text{Tr}\left(\bs{g}^{-1}\partial_\mu\bs{g}\right)
+\end{multline}
+%
+And now we calculate 
+%
+\begin{equation}
+    \partial_\mu \ln \sqrt{|\bs{g}|} = 
+    \partial_\mu \ln |\sqrt{\bs{g}}|\stackrel{\cref{eq:ass6_sol2}}{=} 
+    \text{Tr}\left(\sqrt{\bs{g}^{-1}}\partial_\mu \sqrt{\bs{g}}\right) =
+    \text{Tr}\left(\bs{g}^{-\frac{1}{2}}\bs{g}^{-\frac{1}{2}}\frac{1}{2}\partial_\mu\bs{g}\right) =
+    \frac{1}{2}\text{Tr}\left(\bs{g}^{-1}\partial_\mu\bs{g}\right)
+\end{equation}
+%
+So both sides of equation are equal
+
+\problem
+
+Show that
+%
+\begin{equation}
+    \nabla_\mu A^\mu = \frac{1}{\sqrt{|\bs{g}|}}\partial_\mu
+    \left(\sqrt{|\bs{g}|}A^\mu\right) 
+\end{equation}
+%
+We start with 
+%
+\begin{multline}
+    \frac{1}{\sqrt{|\bs{g}|}}\partial_\mu
+    \left(\sqrt{|\bs{g}|}A^\mu\right) = 
+    %
+    \frac{1}{\sqrt{|\bs{g}|}}
+    \partial_\mu\sqrt{|\bs{g}|}
+    A^\mu +
+    \frac{1}{\sqrt{|\bs{g}|}}
+    \sqrt{|\bs{g}|}
+    \partial_\mu A^\mu =
+    %
+    \partial_\mu\left(\ln\sqrt{|\bs{g}|}\right)
+    A^\mu +
+    \frac{1}{\sqrt{|\bs{g}|}}
+    \sqrt{|\bs{g}|}
+    \partial_\mu A^\mu =\\
+    %
+    \Gamma_{\nu\mu}^\nu A^\mu + 
+    \partial_\mu A^\mu
+\end{multline}
+%
+So 
+%
+\begin{equation}
+    \nabla_\mu A^\mu =
+    \Gamma_{\nu\mu}^\nu A^\mu + 
+    \partial_\mu A^\mu
+\end{equation}
+%
+which is true by definition of covariant derivative
+
+\problem
+
+We start with 
+%
+\begin{equation}
+    \frac{\dd}{\dd\lambda}\left\{
+        \bs{g}\left(\partial_{\sigma^\ast}, \bs{v}\right)
+    \right\} = 0
+\end{equation}
+%
+Since we stay on geodesic we can write 
+%
+\begin{equation}
+    \frac{\dd}{\dd\lambda}\left\{
+        \bs{g}\left(\partial_{\sigma^\ast}, \bs{v}\right)
+    \right\} =
+    %
+    \nabla_{\bs{v}}\left\{
+        \bs{g}\left(\partial_{\sigma^\ast}, \bs{v}\right)
+    \right\} 
+\end{equation}
+%
+We can now expand
+%
+\begin{equation}
+    \bs{g}\left(\partial_{\sigma^\ast}, \bs{v}\right) =
+    \delta^\nu_{\sigma^\ast} g_{\nu \mu}v^\mu
+\end{equation}
+%
+So eventually
+%
+\begin{multline}
+    \nabla_{\bs{v}}\left\{
+        \delta^\nu_{\sigma^\ast} g_{\nu \mu}v^\mu
+    \right\} =
+    %
+    g_{\nu \mu}
+    \nabla_{\bs{v}}\left\{
+        \delta^\nu_{\sigma^\ast} v^\mu
+    \right\} =
+    %
+    g_{\nu \mu} \nabla_{\bs{v}}\delta^\nu_{\sigma^\ast}v^\mu +
+    g_{\nu \mu} \delta^\nu_{\sigma^\ast}\nabla_{\bs{v}} v^\mu = \\
+    %
+    g_{\nu \mu} \Gamma_{\rho \kappa}^{\nu} v^\kappa \delta^\rho_{\sigma^\ast} v^\mu +
+    g_{\nu \mu} \delta^\nu_{\sigma^\ast} v^\rho \partial_\rho v^\mu + 
+    g_{\nu \mu} \delta^\nu_{\sigma^\ast}\Gamma_{\rho \kappa}^{\mu} v^\rho v^\kappa = \\
+    %
+    g_{\nu \mu} \Gamma_{\sigma^\ast \kappa}^{\nu} v^\kappa  v^\mu +
+    g_{\sigma^\ast \mu}  v^\rho \partial_\rho v^\mu + 
+    g_{\sigma^\ast \mu} \Gamma_{\rho \kappa}^{\mu} v^\rho v^\kappa =
+\end{multline}
+%
+Now I calculate 
+%
+\begin{equation}
+    g_{\nu \mu} \Gamma_{\sigma^\ast \kappa}^{\nu} =
+    %
+    \frac{1}{2} \underbrace{g_{\nu \mu}  g^{\nu\alpha}}_{ = \delta_\mu^\alpha}
+    (\partial_\kappa g_{{\sigma^\ast}\alpha} +
+    \underbrace{\partial_{\sigma^\ast} g_{\kappa\alpha}}_{ = 0} - 
+    \partial_\alpha g_{\kappa{\sigma^\ast}}) = 
+    %
+    \frac{1}{2} 
+    (\partial_\kappa g_{{\sigma^\ast}\mu} - 
+    \partial_\mu g_{\kappa{\sigma^\ast}}) 
+\end{equation}
+%
+and 
+%
+\begin{equation}
+    g_{\sigma^\ast \mu} \Gamma_{\rho \kappa}^{\mu} = 
+    %
+    \frac{1}{2} \underbrace{g_{\sigma^\ast \mu}  g^{\mu\alpha}}_{ = \delta_{\sigma^\ast}^\alpha}
+    (\partial_\kappa g_{{\rho}\alpha} +
+    \partial_{\rho} g_{\kappa\alpha} - 
+    \partial_\alpha g_{\kappa{\rho}}) = 
+    %
+    \frac{1}{2} 
+    (\partial_\kappa g_{{\rho}\sigma^\ast} +
+    \partial_{\rho} g_{\kappa\sigma^\ast} - 
+    \underbrace{\partial_{\sigma^\ast} g_{\kappa{\rho}}}_{ = 0}) = 
+    %
+    \frac{1}{2} 
+    (\partial_\kappa g_{{\rho}\sigma^\ast} +
+    \partial_{\rho} g_{\kappa\sigma^\ast})  
+\end{equation}
+%
+Plugging down everything we have
+%
+\begin{multline}
+    g_{\nu \mu} \Gamma_{\sigma^\ast \kappa}^{\nu} v^\kappa  v^\mu +
+    g_{\sigma^\ast \mu}  v^\rho \partial_\rho v^\mu + 
+    g_{\sigma^\ast \mu} \Gamma_{\rho \kappa}^{\mu} v^\rho v^\kappa = \\
+    %
+    \frac{1}{2} \underbrace{(\partial_\kappa g_{{\sigma^\ast}\mu} - 
+    \partial_\mu g_{\kappa{\sigma^\ast}}) v^\kappa  v^\mu }_{ = 0} +
+    g_{\sigma^\ast \mu}  v^\rho \partial_\rho v^\mu + 
+    \frac{1}{2} (\partial_\kappa g_{{\rho}\sigma^\ast} +
+    \partial_{\rho} g_{\kappa\sigma^\ast})  v^\rho v^\kappa = \\
+    %
+    g_{\sigma^\ast \mu}  v^\rho \partial_\rho v^\mu + 
+    \partial_\kappa g_{{\rho}\sigma^\ast} v^\rho v^\kappa = \\
+\end{multline}

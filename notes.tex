@@ -1,24 +1,26 @@
 %! TeX program = lualatex
 %! TEX options = -synctex=1 -interaction=nonstopmode -file-line-error --shell-escape "%DOC%"
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{report}
 \usepackage{luatex85,shellesc}
 \usepackage{luainputenc}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[libertine]{newtxmath} 
 \usepackage[osf]{libertine}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage[margin=1.6cm]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tcolorbox}
-\usepackage{todonotes}
 \usepackage{physics}
 \usepackage{float}
 \usepackage{pgfplots}
 \usepackage{wrapfig}
 \usepackage{mathtools}
 \usepackage[capitalise]{cleveref}
+\usepackage{titlesec}
 % \usepackage{tikz}
 \usepackage{tikz-3dplot}
 \tdplotsetmaincoords{60}{115}
@@ -36,6 +38,8 @@
 
 \renewcommand\thesubsection{\Alph{subsection}}
 
+\newcommand{\mathunderline}[2]{\color{#1}\underline{{\color{black}#2}}\color{black}}
+
 \newcommand{\mytitle}[1]{
 	\begin{center}
 		\Large \bf
@@ -46,7 +50,28 @@
 	\end{center}
 }
 
-\newcommand{\mathunderline}[2]{\color{#1}\underline{{\color{black}#2}}\color{black}}
+\newcounter{ass}
+% \addtocounter{ass}{1}
+\titleformat{\chapter}[display]
+  {\normalfont\scshape}{}{0pt}
+  {
+	\refstepcounter{ass}
+	\vspace*{-3.5cm}	  
+	\Huge\centering Assignment~\theass\\
+	\vspace{-0.5em}
+	\hspace*{0.2\linewidth} \hrulefill \hspace*{0.2\linewidth}
+	\vspace{-0.5em}
+  }
+
+\newcounter{problem}[chapter]
+\newcommand{\problem}{
+	\refstepcounter{problem}\par\medskip\section*{Problem~\theproblem}
+	}
+
+\newcounter{subproblem}[problem]
+\newcommand{\subproblem}{
+	\refstepcounter{subproblem}\par\medskip\subsection*{Problem~\theproblem\alph{subproblem}}
+	}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -61,5 +86,7 @@
 \include{Chapter/ass4}
 
 \include{Chapter/ass5}
+
+\include{Chapter/ass6}
 
 \end{document}
