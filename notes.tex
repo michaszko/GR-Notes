@@ -1,6 +1,6 @@
 %! TeX program = lualatex
 %! TEX options = -synctex=1 -interaction=nonstopmode -file-line-error --shell-escape "%DOC%"
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt]{article}
 \usepackage{luatex85,shellesc}
 \usepackage{luainputenc}
 \usepackage{graphicx}
@@ -13,7 +13,7 @@
 \usepackage{enumitem}
 \usepackage[margin=1.6cm]{geometry}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 \usepackage{physics}
 \usepackage{float}
 \usepackage{pgfplots}
@@ -23,6 +23,9 @@
 \usepackage{titlesec}
 % \usepackage{tikz}
 \usepackage{tikz-3dplot}
+\usepackage{tensor}
+\usepackage{xifthen}
+\usepackage{cancel}
 \tdplotsetmaincoords{60}{115}
 \pgfplotsset{compat=newest}
 
@@ -50,14 +53,14 @@
 	\end{center}
 }
 
-\newcounter{ass}
-% \addtocounter{ass}{1}
-\titleformat{\chapter}[display]
-  {\normalfont\scshape}{}{0pt}
-  {
-	\refstepcounter{ass}
-	\vspace*{-3.5cm}	  
-	\Huge\centering Assignment~\theass\\
+\newcounter{chapter}
+
+\newcommand{\chapter}[1][]{
+	\refstepcounter{chapter}
+	\vspace*{-1.5cm}
+	\begin{center}
+		\Huge \textsc{Assignment}~\ifthenelse{\equal{#1}{}}{\thechapter}{#1}
+	\end{center}  
 	\vspace{-0.5em}
 	\hspace*{0.2\linewidth} \hrulefill \hspace*{0.2\linewidth}
 	\vspace{-0.5em}
@@ -88,5 +91,11 @@
 \include{Chapter/ass5}
 
 \include{Chapter/ass6}
+
+\include{Chapter/ass7}
+
+\include{Chapter/ass8}
+
+\include{Chapter/ass9}
 
 \end{document}

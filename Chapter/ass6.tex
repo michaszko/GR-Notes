@@ -62,40 +62,63 @@ Show that
     \label{eq:ass6_sol2}
 \end{equation}
 %
-First we notice that
-%
-\begin{equation}
-    \delta \left(\ln \det \bs{M} \right) = 
-    \frac{\delta \det \bs{M}}{\det \bs{M}} 
-    \label{eq:ass6_prob2}
-\end{equation}
-%
-Now using following relation
+using relation
 %
 \begin{equation}
     \det(\bs{1}+\epsilon \bs{A}) = 
     1 + \epsilon\text{Tr}\bs{A} + \mathcal{O}(\epsilon^2)
 \end{equation}
 %
-We can calculate the expression we will use later
-%
-\begin{equation}
-    \det(\bs{M}+\epsilon\delta\bs{M}) = 
-    \det(\bs{1}+\epsilon\delta\bs{M}\bs{M^{-1}})\det(\bs{M}) =
-    \det\bs{M} + \epsilon\text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M}
-\end{equation}
-%
-We can calculate derivative using its definition
+Doing straight forward calculations 
 %
 \begin{multline}
-    \delta(\det \bs{M}) = 
-    \lim_{\epsilon\to0}\frac{\det(\bs{M}+\epsilon\delta\bs{M}) - \det \bs{M}}{\epsilon} =\\
-    \lim_{\epsilon\to0}\frac{\det\bs{M} + \epsilon\text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M} - \det \bs{M}}{\epsilon} =
-    \text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M}
+    \delta(\ln \det \bs{M}) = 
+    \lim_{\epsilon\to0}\frac{\ln \det(\bs{M}+\epsilon\delta\bs{M}) - \ln \det \bs{M}}{\epsilon} =
+    \lim_{\epsilon\to0}\frac{\ln \frac{\det(\bs{M}+\epsilon\delta\bs{M})}{\det \bs{M}}}{\epsilon} =
+    \lim_{\epsilon\to0}\frac{\ln \det (\bs{1}+ \epsilon\delta\bs{M}\bs{M}^{-1})}{\epsilon} = \\
+    \lim_{\epsilon\to0}\frac{\ln \left\{1 + \text{Tr} (\epsilon\delta\bs{M}\bs{M}^{-1})\right\}}{\epsilon} =
+    /\text{I use Taylor expansion for } \ln(1+x) \simeq x/ \rightarrow \\
+    \lim_{\epsilon\to0}\frac{\text{Tr}(\epsilon\delta\bs{M}\bs{M}^{-1})}{\epsilon} = 
+    \text{Tr} (\delta\bs{M}\bs{M}^{-1})= 
+    \text{Tr} (\bs{M}^{-1}\delta\bs{M})
 \end{multline}
-%
-If we plug this into \cref{eq:ass6_prob2} we obtain final result (because trace
-is cyclic).
+%%%%%%%%%%%%%%%%%%%%%
+% Old way
+%%%%%%%%%%%%%%%%%%%%%
+% First we notice that
+% %
+% \begin{equation}
+%     \delta \left(\ln \det \bs{M} \right) = 
+%     \frac{\delta \det \bs{M}}{\det \bs{M}} 
+%     \label{eq:ass6_prob2}
+% \end{equation}
+% %
+% Now using following relation
+% %
+% \begin{equation}
+%     \det(\bs{1}+\epsilon \bs{A}) = 
+%     1 + \epsilon\text{Tr}\bs{A} + \mathcal{O}(\epsilon^2)
+% \end{equation}
+% %
+% We can calculate the expression we will use later
+% %
+% \begin{equation}
+%     \det(\bs{M}+\epsilon\delta\bs{M}) = 
+%     \det(\bs{1}+\epsilon\delta\bs{M}\bs{M^{-1}})\det(\bs{M}) =
+%     \det\bs{M} + \epsilon\text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M}
+% \end{equation}
+% %
+% We can calculate derivative using its definition
+% %
+% \begin{multline}
+%     \delta(\det \bs{M}) = 
+%     \lim_{\epsilon\to0}\frac{\det(\bs{M}+\epsilon\delta\bs{M}) - \det \bs{M}}{\epsilon} =\\
+%     \lim_{\epsilon\to0}\frac{\det\bs{M} + \epsilon\text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M} - \det \bs{M}}{\epsilon} =
+%     \text{Tr}(\delta\bs{M}\bs{M^{-1}})\det\bs{M}
+% \end{multline}
+% %
+% If we plug this into \cref{eq:ass6_prob2} we obtain final result (because trace
+% is cyclic).
 
 \problem
 
@@ -129,11 +152,20 @@ And now we calculate
 %
 \begin{equation}
     \partial_\mu \ln \sqrt{|\bs{g}|} = 
-    \partial_\mu \ln |\sqrt{\bs{g}}|\stackrel{\cref{eq:ass6_sol2}}{=} 
-    \text{Tr}\left(\sqrt{\bs{g}^{-1}}\partial_\mu \sqrt{\bs{g}}\right) =
-    \text{Tr}\left(\bs{g}^{-\frac{1}{2}}\bs{g}^{-\frac{1}{2}}\frac{1}{2}\partial_\mu\bs{g}\right) =
-    \frac{1}{2}\text{Tr}\left(\bs{g}^{-1}\partial_\mu\bs{g}\right)
+    \partial_\mu \ln |\bs{g}|^{\frac{1}{2}} = 
+    \frac{1}{2} \partial_\mu \ln |\bs{g}| \stackrel{\cref{eq:ass6_sol2}}{=}  
+    \frac{1}{2} \text{Tr}\left(\bs{g}^{-1}\partial_\mu \bs{g}\right)
 \end{equation}
+%%%%%%%%%%%%%%%
+% Old version
+%%%%%%%%%%%%%%%
+% \begin{equation}
+%     \partial_\mu \ln \sqrt{|\bs{g}|} = 
+%     \partial_\mu \ln |\sqrt{\bs{g}}|\stackrel{\cref{eq:ass6_sol2}}{=} 
+%     \text{Tr}\left(\sqrt{\bs{g}^{-1}}\partial_\mu \sqrt{\bs{g}}\right) =
+%     \text{Tr}\left(\bs{g}^{-\frac{1}{2}}\bs{g}^{-\frac{1}{2}}\frac{1}{2}\partial_\mu\bs{g}\right) =
+%     \frac{1}{2}\text{Tr}\left(\bs{g}^{-1}\partial_\mu\bs{g}\right)
+% \end{equation}
 %
 So both sides of equation are equal
 
@@ -281,5 +313,7 @@ Plugging down everything we have
     \partial_{\rho} g_{\kappa\sigma^\ast})  v^\rho v^\kappa = \\
     %
     g_{\sigma^\ast \mu}  v^\rho \partial_\rho v^\mu + 
-    \partial_\kappa g_{{\rho}\sigma^\ast} v^\rho v^\kappa = \\
+    \partial_\kappa g_{{\rho}\sigma^\ast} v^\rho v^\kappa = 
+    %
+    v^\rho \partial_\rho \left(g_{\sigma^{\star}\mu}v^\mu\right)
 \end{multline}

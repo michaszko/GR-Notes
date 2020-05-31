@@ -1,4 +1,4 @@
-\chapter{}
+\chapter
 
 \problem
 
@@ -160,7 +160,7 @@ geodesic line is just one point, because those are poles. Only $\theta =
     \frac{\pi}{2}$ gives non-trivial geodesic. This line is called equator.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}[tdplot_main_coords, scale = 3.5]
         \coordinate (P1) at ({0},{0},{1});
@@ -331,7 +331,7 @@ Constants $C_1$ and $C_2$ depends on the vector we transport:
           does not change this vector.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}[tdplot_main_coords, scale = 2.5]
         \coordinate (O) at (0,0,0);
@@ -636,36 +636,36 @@ Gathering all equations
 Metric is given by
 %
 \begin{equation}
-    \bs{g} = - c^2 \left(1−2\frac{GM}{rc^2}\right) \dd t \otimes \dd t  + \dd \bs{x} \otimes \dd \bs{x}
+    \bs{g} = - c^2 \left(1-2\frac{GM}{rc^2}\right) \dd t \otimes \dd t  + \dd \bs{x} \otimes \dd \bs{x}
 \end{equation}
 %
 We can calculate infinitesimal interval of two events in this metric
 %
 \begin{equation}
-    \dd s^2 = - c^2 \left(1−2\frac{GM}{rc^2}\right) \dd t^2 + \dd \bs{x}^2
+    \dd s^2 = - c^2 \left(1-2\frac{GM}{rc^2}\right) \dd t^2 + \dd \bs{x}^2
 \end{equation}
 %
 Simplifying this and assuming that the person has not been moving for whole year
 we can write
 %
 \begin{equation}
-    \dd s^2 = \dd t^2 \left(- c^2 \left(1−2\frac{GM}{rc^2}\right)  +
+    \dd s^2 = \dd t^2 \left(- c^2 \left(1-2\frac{GM}{rc^2}\right)  +
     \frac{\dd \bs{x}^2}{\dd t^2}\right) =
-    - \dd t^2c^2 \left(1−2\frac{GM}{rc^2}\right)
+    - \dd t^2c^2 \left(1-2\frac{GM}{rc^2}\right)
 \end{equation}
 %
 We can now calculate the proper time
 %
 \begin{equation}
-    c^2 \dd \tau^2 = \dd t^2c^2 \left(1−2\frac{GM}{rc^2}\right)
+    c^2 \dd \tau^2 = \dd t^2c^2 \left(1-2\frac{GM}{rc^2}\right)
     \quad \Rightarrow \quad
-    \dd \tau = \dd t \sqrt{1−2\frac{GM}{rc^2}}
+    \dd \tau = \dd t \sqrt{1-2\frac{GM}{rc^2}}
 \end{equation}
 %
 and finite version
 %
 \begin{equation}
-    \Delta \tau = \Delta t \sqrt{1−2\frac{GM}{rc^2}}
+    \Delta \tau = \Delta t \sqrt{1-2\frac{GM}{rc^2}}
 \end{equation}
 %
 Now I take $\Delta \tau_{0}$ to be proper time of person's feet and
@@ -674,7 +674,7 @@ difference
 %
 \begin{equation}
     \Delta \tau_{H} - \Delta \tau_{0} =
-    \Delta t \left(\sqrt{1−2\frac{GM}{(r+H)c^2}} - \sqrt{1−2\frac{GM}{rc^2}}\right)
+    \Delta t \left(\sqrt{1-2\frac{GM}{(r+H)c^2}} - \sqrt{1-2\frac{GM}{rc^2}}\right)
 \end{equation}
 %
 Because expressions under square are small I can Taylor expand them (using

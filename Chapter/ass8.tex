@@ -1,0 +1,308 @@
+\chapter[8]
+
+\problem
+
+\subsection*{a)}
+
+Schwartzschild metric is given by
+%
+\begin{equation}
+    \dd s^2 = -\left(1-\frac{2M}{r}\right) \dd t^2 +
+    \left(1-\frac{2M}{r}\right)^{-1} \dd r^2 +
+    r^2 \dd \Omega^2
+\end{equation}
+%
+Proper time is defined as $\dd \tau^2 = - \dd s^2$ so
+%
+\begin{equation}
+    \dd \tau^2 = \left(1-\frac{2M}{r}\right) \dd t^2 -
+    \left(1-\frac{2M}{r}\right)^{-1} \dd r^2 -
+    r^2 \dd \Omega^2
+\end{equation}
+%
+After rearrangement
+%
+\begin{equation}
+    \left(1-\frac{2M}{r}\right)^{-1} \dd r^2 =
+    \left(1-\frac{2M}{r}\right) \dd t^2  -
+    \dd \tau^2 -
+    r^2 \dd \Omega^2
+\end{equation}
+%
+and after division by $\left(1-\frac{2M}{r}\right)^{-1}\dd \tau^2$:
+%
+\begin{equation}
+    \left(\frac{\dd r}{\dd \tau}\right)^2 =
+    \left(1-\frac{2M}{r}\right)^2 \left(\frac{\dd t}{\dd \tau}\right)^2  -
+    \left(1-\frac{2M}{r}\right) -
+    r^2 \left(1-\frac{2M}{r}\right) \left(\frac{\dd \Omega}{\dd \tau}\right)^2.
+\end{equation}
+%
+Taking square root
+%
+\begin{equation}
+    \left|\frac{\dd r}{\dd \tau}\right| =
+    \sqrt{\left(1-\frac{2M}{r}\right)^2 \left(\frac{\dd t}{\dd \tau}\right)^2  -
+        \left(1-\frac{2M}{r}\right) -
+        r^2 \left(1-\frac{2M}{r}\right) \left(\frac{\dd \Omega}{\dd \tau}\right)^2}.
+\end{equation}
+\begin{equation}
+    \left|\frac{\dd r}{\dd \tau}\right| =
+    \sqrt{-\left(1-\frac{2M}{r}\right)}
+    \sqrt{1 -\left(1-\frac{2M}{r}\right) \left(\frac{\dd t}{\dd \tau}\right)^2  +
+        r^2 \left(\frac{\dd \Omega}{\dd \tau}\right)^2}.
+\end{equation}
+%
+We consider case $r<2M \implies \frac{2M}{r} > 1$ so
+%
+\begin{equation}
+    \left|\frac{\dd r}{\dd \tau}\right| =
+    \sqrt{\frac{2M}{r}-1}~
+    \Biggl[\,  1 + \underbrace{\left(\frac{2M}{r}-1\right) \left(\frac{\dd t}{\dd \tau}\right)^2  +
+            r^2 \left(\frac{\dd \Omega}{\dd \tau}\right)^2}_{\geq 0}
+        \,\Biggr]^{\frac{1}{2}}.
+\end{equation}
+%
+Bracket is larger than one so we can write
+%
+\begin{equation}
+    \boxed{\left|\frac{\dd r}{\dd \tau}\right| \geq \sqrt{\frac{2M}{r}-1}}
+    \label{eq:ass8_ineq}
+\end{equation}
+
+\subsection*{b)}
+
+We now assume that motion is towards the center so $\frac{\dd r}{\dd \tau} < 0$
+it means that
+%
+\begin{equation}
+    \frac{\dd r}{\dd \tau} \leq -\sqrt{\frac{2M}{r}-1}.
+\end{equation}
+%
+Rearranging terms
+%
+\begin{equation}
+    -\frac{\dd r}{\sqrt{\frac{2M}{r}-1}} \geq \dd \tau.
+\end{equation}
+%
+Integrating both sides
+%
+\begin{equation}
+    - \int \frac{\dd r}{\sqrt{\frac{2M}{r}-1}}
+    \geq \int \dd \tau.
+\end{equation}
+%
+Consider LHS
+%
+\begin{multline}
+    - \int \frac{\dd r}{\sqrt{\frac{2M}{r}-1}} =
+    \quad / x = \frac{r}{2M} / \quad =
+    - 2M \int \frac{\dd x}{\sqrt{\frac{1}{x}-1}} =
+    - 2M \int \frac{\sqrt{x}}{\sqrt{1-x}}\dd x = \\
+    \quad / y = \sqrt{x} / \quad =
+    - 2M \int \frac{y}{\sqrt{1-y^2}}~2y~\dd y =
+    \quad / z = \arcsin(y) / \quad =
+    - 4M \int \frac{\sin^2(z)}{\sqrt{1-\sin^2(z)}} \cos(z)\dd z  = \\
+    - 4M \int \frac{\sin^2(z)}{\cos(z)} \cos(z) \dd z =
+    - 4M \int \sin^2(z) \dd z =
+    \quad / \cos(2z) = \cos^2(z) - \sin^2(z) = 1 - 2\sin^2(z) / \quad = \\
+    - 2M \int \left(1 - \cos(2z)\right)  \dd z =
+    - 2M \left(z - \frac{1}{2}\sin(2z)\right)  \dd z =
+    - 2M \left[z - \sin(z)\cos(z)\right] + C= \\
+    - 2M \left[\arcsin(\sqrt{x}) - \sqrt{x}~\sqrt{1-x}\right] + C
+\end{multline}
+%
+So
+%
+\begin{equation}
+    \tau \leq
+    - 2M \left[\arcsin(\sqrt{x}) - \sqrt{x}~\sqrt{1-x}\right] \Bigg|_1^0 =
+    2M \arcsin(1) = \pi M.
+\end{equation}
+%
+Final result
+%
+\begin{equation}
+    \boxed{\tau \leq \pi M}.
+\end{equation}
+
+\subsection*{c)}
+
+Maximal time $\tau = \pi M$ is achieved when in \cref{eq:ass8_ineq} is equal
+sign. But this we get only when part
+%
+\begin{equation}
+    \left(\frac{2M}{r}-1\right) \left(\frac{\dd t}{\dd \tau}\right)^2  +
+    r^2 \left(\frac{\dd \Omega}{\dd \tau}\right)^2 = 0.
+\end{equation}
+%
+Since every term is non-negative and coefficients can not equal $0$ we deduce that
+%
+\begin{align}
+    \boxed{\frac{\dd t}{\dd \tau} = 0 \qquad \text{and} \qquad \frac{\dd \Omega}{\dd \tau} = 0}
+\end{align}
+%
+which means that angular part does not change over time. So indeed trajectory is
+radial geodesic. Also time does not longer play role of a time coordinate inside
+horizon of BH, instead radial term does it. So we can put time to be constant.
+
+\problem
+
+Schwartzschild metric is given by
+%
+\begin{equation}
+    \dd s^2 = -\left(1-\frac{2M}{r}\right) \dd t^2 +
+    \left(1-\frac{2M}{r}\right)^{-1} \dd r^2 +
+    r^2 \dd \theta^2 +
+    r^2 \sin^2\theta~ \dd \phi^2.
+\end{equation}
+%
+It does not depend on variable $t$ and $\phi$ which means that they are cyclic
+namely
+\begin{equation}
+    g(\partial_t, U) = E = \text{const}
+    \qquad \text{and} \qquad
+    g(\partial_\phi, U) = L = \text{const}
+\end{equation}
+%
+which gives
+%
+\begin{equation}
+    -\left(1-\frac{2M}{r}\right) \dot{t} = E
+    \qquad \text{and} \qquad
+    r^2 \sin^2\theta \dot{\phi} = L.
+\end{equation}
+%
+I consider circular ($r = \text{const}$) motion on the plane $\theta =
+    \frac{\pi}{2} \implies \sin^2\theta = 1$. I also know that
+%
+\begin{equation}
+    -1 = g(U,U) = -\left(1-\frac{2M}{r}\right) \dot{t}^2 +
+    r^2 \dot{\phi}^2.
+\end{equation}
+%
+Substituting constants of motion
+%
+\begin{equation}
+    -1 = -\frac{E^2}{1-\frac{2M}{r}} +
+    \frac{L^2}{r^2} \implies
+    E^2 = \left(1-\frac{2M}{r}\right)\left(\frac{L^2}{r^2} + 1\right).
+    \label{eq:ass8_const}
+\end{equation}
+%
+Taking derivative $\partial_r$ of both sides gives
+%
+\begin{equation}
+    0 = \frac{2M}{r^2}\left(\frac{L^2}{r^2} + 1\right) +
+    \left(1-\frac{2M}{r}\right) \left(-2 \frac{L^2}{r^3}\right) =
+    \frac{2ML^2}{r^4} + \frac{2M}{r^2} - \frac{2L^2}{r^3} + \frac{4ML^2}{r^4} =
+    \frac{2L^2}{r^4}\left(3M - r\right) + \frac{2M}{r^2}
+\end{equation}
+%
+and rearranging
+%
+\begin{equation}
+    L^2(r - 3M) = Mr^2
+\end{equation}
+%
+Substituting this into \cref{eq:ass8_const} gives
+%
+\begin{equation}
+    E^2 = \left(1-\frac{2M}{r}\right)\left(\frac{M}{r - 3M} + 1\right) \implies
+    E^2 (r-3M) = r\left(1-\frac{2M}{r}\right)^2
+\end{equation}
+%
+Now we want to calculate $\frac{\dd \phi}{\dd t}$. We can use now chain rule to
+evaluate this derivative:
+%
+\begin{equation}
+    \frac{\dd \phi}{\dd \tau} = \frac{\dd \phi}{\dd t} \frac{\dd t}{\dd \tau}
+    \implies
+    \frac{\dd \phi}{\dd t} = \frac{\dot{\phi}}{\dot{t}}
+\end{equation}
+%
+Substituting constants of motion
+%
+\begin{equation}
+    \boxed{\left(\frac{\dd \phi}{\dd t}\right)^2 =
+        \frac{L^2}{r^4}
+        \frac{\left(1-\frac{2M}{r}\right)^2}{E^2} =
+        \frac{M}{r^3}}
+\end{equation}
+%
+% Divide by $\dd \tau^2$
+%
+% \begin{equation}
+%     1 = \left(1-\frac{2M}{r}\right) \left(\frac{\dd t}{\dd \tau}\right)^2 -
+%     \left(1-\frac{2M}{r}\right)^{-1} \left(\frac{\dd r}{\dd \tau}\right)^2 -
+%     r^2 \left(\frac{\dd \theta}{\dd \tau}\right)^2 -
+%     r^2 \sin^2\theta~ \left(\frac{\dd \phi}{\dd \tau}\right)^2.
+% \end{equation}
+% %
+% Now I consider circular motion ($r = \text{const}$) around equator ($\theta =
+%     \frac{\pi}{2}$). So above equation simplify
+% %
+% \begin{equation}
+%     1 = \left(1-\frac{2M}{r}\right) \left(\frac{\dd t}{\dd \tau}\right)^2 -
+%     r^2  \left(\frac{\dd \phi}{\dd t}\frac{\dd t}{\dd \tau}\right)^2.
+% \end{equation}
+% %
+% Solving it for $\frac{\dd \phi}{\dd t}$ gives us
+% %
+% \begin{equation}
+%     r^2  \left(\frac{\dd \phi}{\dd t}\right)^2 =
+%     -  \left(\frac{\dd \tau}{\dd t}\right)^2  + 1-\frac{2M}{r}.
+% \end{equation}
+% %
+% In Newtonian world we would have $\tau = t$ so
+% %
+% \begin{equation}
+%     r^2  \left(\frac{\dd \phi}{\dd t}\right)^2 = -\frac{2M}{r}
+%     \quad \implies \quad
+%     \boxed{\left(\frac{\dd \phi}{\dd t}\right)^2 = -\frac{2M}{r^3}}
+% \end{equation}
+% %
+
+\problem
+
+We start with proper time in Schwartzschild metric
+%
+\begin{equation}
+    \dd \tau^2 = \left(1-\frac{2M}{r}\right) \dd t^2 -
+    \left(1-\frac{2M}{r}\right)^{-1} \dd r^2 -
+    r^2 \dd \theta^2 -
+    r^2 \sin^2\theta~ \dd \phi ^2.
+\end{equation}
+%
+For stationary object at $r=r_1$ this time is equal
+%
+\begin{equation}
+    \dd \tau_1^2 = \left(1-\frac{2M}{r_1}\right) \dd t^2.
+\end{equation}
+%
+For object freely orbiting around equator ($\theta = \frac{\pi}{2}$) proper time
+is equal
+%
+\begin{equation}
+    \dd \tau_2^2 = \left(1-\frac{2M}{r_1}\right) \dd t^2 -
+    r_1^2 ~\dd \phi =
+    \dd t^2 \left[1-\frac{2M}{r_1}  -
+        r_1^2 ~ \left(\frac{\dd \phi}{\dd t}\right)^2\right]
+\end{equation}
+%
+Substituting result from previous problem it yields
+%
+\begin{equation}
+    \dd \tau_2^2 =
+    \dd t^2 \left[1-\frac{2M}{r_1}  -
+        \frac{M}{r_1}\right]=
+    \dd t^2 \left[1-\frac{3M}{r_1}\right]
+\end{equation}
+%
+Finally
+%
+\begin{equation}
+    \boxed{\frac{\tau_1}{\tau_2} =
+        \sqrt{\frac{1-\frac{2M}{r_1}}{1-\frac{3M}{r_1}}} =
+        \sqrt{\frac{r_1-2M}{r_1-3M}}}
+\end{equation}

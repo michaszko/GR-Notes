@@ -1,0 +1,327 @@
+\chapter[7]
+
+\problem
+
+Energy -- momentum tensor of perfect fluid
+%
+\begin{equation}
+    T^{\mu\nu} = (\rho + p)\frac{u^\mu u^\nu}{c^2} + p g^{\mu\nu}.
+\end{equation}
+% 
+First thing I do is base change
+%
+\begin{equation}
+    \bs{T} = T^{\mu\nu}\partial_\mu\partial_\nu = T^{ab} \bs{e}_a\bs{e}_b =
+    T^{ab} \bs{e}_a\bs{e}_b = T^{ab} e_a^\mu e_b^\nu \partial_\mu\partial_\nu.
+\end{equation}
+%
+From this it can be seen that
+%
+\begin{equation}
+    T^{\mu\nu} = T^{ab} e_a^\mu e_b^\nu.
+\end{equation}
+%
+I multiply both sides by corresponding one-froms $\bar{e}_\mu^c \bar{e}_\nu^d$
+which satisfy $\bar{e}_\mu^c e_d^\mu = \delta^c_d$
+%
+\begin{equation}
+    T^{\mu\nu} \bar{e}^a_\mu \bar{e}^b_\nu = T^{ab}.
+\end{equation}
+%
+From it I obtain
+%
+\begin{equation}
+    T^{ab} = (\rho + p)\frac{u^\mu \bar{e}^a_\mu ~ u^\nu \bar{e}^b_\nu}{c^2} +
+    p g^{\mu\nu}\bar{e}^a_\mu \bar{e}^b_\nu.
+\end{equation}
+%
+Now I choose base $\{\bs{e}\}$ to be orthogonal (so $g_{\mu\nu}e_a^\mu e_b^\nu =
+    \eta_{ab}$ and $g^{\mu\nu}\bar{e}^a_\mu \bar{e}^b_\nu = \eta^{ab}$) and
+$u^\mu = c e^\mu_0$. Substituting those things yields
+%
+\begin{equation}
+    T^{ab} = (\rho + p)\frac{\cancel{c} e^\mu_0 \bar{e}^a_\mu ~
+        \cancel{c} e^\nu_0 \bar{e}^b_\nu}{\cancel{c^2}} +
+    p \eta^{ab} =
+    (\rho + p)\delta^a_0 ~ \delta^b_0 +
+    p \eta^{ab}.
+\end{equation}
+%
+So final result is
+%
+\begin{equation}
+    T^{ab} \overset{*}{=}
+    \begin{pmatrix}
+        \rho & 0 & 0 & 0 \\
+        0    & p & 0 & 0 \\
+        0    & 0 & p & 0 \\
+        0    & 0 & 0 & p
+    \end{pmatrix}
+\end{equation}
+
+\problem
+
+Calculate
+%
+\begin{equation}
+    \partial_\mu T^{\mu\nu} =
+    \partial_\mu \left\{(\rho + p)\frac{u^\mu u^\nu}{c^2} + p g^{\mu\nu}\right\}
+\end{equation}
+%
+\begin{multline}
+    \partial_\mu \left\{(\rho + p)\frac{u^\mu u^\nu}{c^2} + p g^{\mu\nu}\right\} =
+    \partial_\mu (\rho + p)\frac{u^\mu u^\nu}{c^2} +
+    (\rho + p)\partial_\mu\frac{u^\mu u^\nu}{c^2} +
+    \partial_\mu p~g^{\mu\nu} = \\
+    %
+    \partial_\mu \rho \frac{u^\mu u^\nu}{c^2} +
+    \partial_\mu p \frac{u^\mu u^\nu}{c^2} +
+    \frac{1}{c^2}(\rho + p)\partial_\mu u^\mu u^\nu +
+    \frac{1}{c^2}(\rho + p) u^\mu \partial_\mu u^\nu +
+    \partial_\mu p~g^{\mu\nu} = \\
+    %
+    \frac{1}{c^2}\left(
+    u^\nu u^\mu \partial_\mu \rho  +
+    u^\nu u^\mu \partial_\mu p  +
+    (\rho + p)\partial_\mu u^\mu u^\nu +
+    (\rho + p) u^\mu \partial_\mu u^\nu +
+    c^2 \partial_\mu p~g^{\mu\nu}\right)
+\end{multline}
+%
+Now we define $\frac{\dd}{\dd \tau} \equiv u^\mu \partial_\mu$ and
+plug it into equation
+%
+\begin{multline}
+    \frac{1}{c^2}\left(
+    u^\nu \frac{\dd \rho}{\dd \tau}  +
+    u^\nu u^\mu \partial_\mu p  +
+    u^\nu (\rho + p)\partial_\mu u^\mu  +
+    (\rho + p) \frac{\dd u^\nu}{\dd \tau} +
+    c^2 \partial_\mu p~g^{\mu\nu}\right) =\\
+    %
+    \frac{1}{c^2} u^\nu \left(
+    \frac{\dd \rho}{\dd \tau}  +
+    (\rho + p)\partial_\mu u^\mu \right)  +
+    \frac{1}{c^2} (\rho + p) \frac{\dd u^\nu}{\dd \tau} +
+    \left(\frac{u^\nu u^\mu}{c^2} + g^{\mu\nu}\right)  \partial_\mu p
+\end{multline}
+%
+We also define $P^{\mu\nu} \equiv \frac{u^\nu u^\mu}{c^2} + g^{\mu\nu}$. Then
+condition $\partial_\mu T^{\mu\nu} = 0$ is equivalent to
+%
+\begin{equation}
+    u^\nu \left(
+    \frac{\dd \rho}{\dd \tau}  +
+    (\rho + p)\partial_\mu u^\mu \right)  +
+    (\rho + p) \frac{\dd u^\nu}{\dd \tau} +
+    c^2 P^{\mu\nu} \partial_\mu p =0
+    \label{eq:ass7_prob1}
+\end{equation}
+%
+Now we will show that $P\indices{^\mu_\nu}$ is projector on the plane orthogonal
+to \bs{u}.
+%
+\begin{equation}
+    P\indices{^\mu_\nu} = P\indices{^\mu^\sigma} g_{\sigma\nu} =
+    \frac{u^\sigma u^\mu}{c^2} g_{\sigma\nu} + g^{\mu\sigma} g_{\sigma\nu} =
+    \frac{u_\nu u^\mu}{c^2} + \delta^\mu_\nu
+\end{equation}
+%
+\begin{enumerate}
+    \item Idempotency
+          \begin{equation}
+              P^2 = P \implies P\indices{^\mu_\rho} P\indices{^\rho_\nu} = P\indices{^\mu_\nu}
+          \end{equation}
+          \begin{multline}
+              \left(\frac{u_\rho u^\mu}{c^2} + \delta^\mu_\rho\right)
+              \left(\frac{u_\nu u^\rho}{c^2} + \delta^\rho_\nu\right) =
+              \frac{u_\rho u^\rho u^\mu u_\nu }{c^2} +
+              \frac{u_\rho u^\mu}{c^2} \delta^\rho_\nu +
+              \delta^\mu_\rho \frac{u_\nu u^\rho}{c^2} +
+              \delta^\mu_\rho  \delta^\rho_\nu = \\
+              -\frac{u^\mu u_\nu }{c^2} +
+              \frac{u_\nu u^\mu}{c^2}  +
+              \frac{u_\nu u^\mu}{c^2} +
+              \delta^\mu_\nu =
+              \frac{u_\nu u^\mu}{c^2} +
+              \delta^\mu_\nu = P\indices{^\mu_\nu}
+          \end{multline}
+    \item Gives 0 when act on \bs{u}
+          \begin{equation}
+              P\bs{u} = 0 \implies P\indices{^\mu_\nu} u^\nu =0
+          \end{equation}
+          \begin{equation}
+              \left(\frac{u_\nu u^\mu}{c^2} + \delta^\mu_\nu\right) u^\nu =
+              \frac{u^\nu u_\nu u^\mu}{c^2} + \delta^\mu_\nu u^\nu =
+              -u^\mu + u^\mu = 0
+          \end{equation}
+    \item Gives $\bs{v}$ when act on $\bs{v}\perp\bs{u}$
+          \begin{equation}
+              P\bs{v} = \bs{v} \implies P\indices{^\mu_\nu} v^\nu = v^\mu
+          \end{equation}
+          \begin{equation}
+              \left(\frac{u_\nu u^\mu}{c^2} + \delta^\mu_\nu\right) v^\nu =
+              \frac{\overbrace{v^\nu u_\nu}^{=0} u^\mu}{c^2} + \delta^\mu_\nu v^\nu =
+              v^\mu
+          \end{equation}
+\end{enumerate}
+%
+So now we can see that \cref{eq:ass7_prob1} consist of two parts which are
+orthogonal (so independent) \footnote{4-acceleration is also orthogonal to
+    4-velocity}.
+%
+\begin{subequations}
+    \begin{tcolorbox}[ams align]
+        \frac{\dd \rho}{\dd \tau}  +
+        (\rho + p)\partial_\mu u^\mu  & = 0 \\
+        (\rho + p) \frac{\dd u^\nu}{\dd \tau} +
+        c^2 P^{\mu\nu} \partial_\mu p & = 0
+    \end{tcolorbox}
+\end{subequations}
+
+\problem
+
+Now we can substitute $\frac{\dd}{\dd \tau} = u^\mu \partial_\mu$ and $u^\mu =
+    \gamma(c,v^i)$ we obtain
+%
+\begin{subequations}
+    \begin{align}
+        \frac{1}{c} u^0 \partial_t \rho +
+        u^i \partial_i \rho  +
+        \frac{1}{c} (\rho + p)\partial_t u^0 +
+        (\rho + p)\partial_i u^i      & = 0 \\
+        (\rho + p) u^\mu \partial_\mu u^\nu +
+        u^\nu u^\mu \partial_\mu p +
+        c^2 g^{\mu\nu} \partial_\mu p & = 0
+    \end{align}
+\end{subequations}
+%
+Let's first investigate first equation
+%
+\begin{multline}
+    \frac{1}{c} u^0 \partial_t \rho +
+    u^i \partial_i \rho  +
+    \frac{1}{c} (\rho + p)\partial_t u^0 +
+    (\rho + p)\partial_i u^i  = \\
+    %
+    \gamma \left(\partial_t \rho +
+    v^i \nabla_i \rho  +
+    (\rho + p)\nabla_i v^i\right)  =
+    %
+    \gamma \left(\partial_t \rho +
+    \nabla_i \left(v^i  \rho\right)  +
+    p \nabla_i v^i\right) =
+    %
+    \gamma \left(\partial_t \rho +
+    \bs{\nabla} \left(\bs{v}  \rho\right)  +
+    p \bs{\nabla} \bs{v}\right) = \\
+    %
+    /\text{neglecting terms with $p$}/ \hspace{1cm}
+    %
+    \gamma \left(\partial_t \rho +
+    \bs{\nabla} \left(\bs{v}  \rho\right)\right) = 0
+\end{multline}
+%
+which gives
+%
+\begin{equation}
+    \boxed{\partial_t \rho +
+        \bs{\nabla} \left(\bs{v}  \rho\right) = 0}
+\end{equation}
+%
+Now second equation
+%
+\begin{multline}
+    (\rho + p) u^\mu \partial_\mu u^\nu +
+    u^\nu u^\mu \partial_\mu p +
+    c^2 g^{\mu\nu} \partial_\mu p  =  \\
+    %
+    \frac{1}{c} (\rho + p) u^0 \partial_t u^\nu +
+    (\rho + p) u^i \partial_i u^\nu +
+    \frac{1}{c} u^\nu u^0 \partial_t p +
+    u^\nu u^i \partial_i p +
+    c g^{0\nu} \partial_t p +
+    c^2 g^{i\nu} \partial_i p =  \\
+    %
+    \gamma (\rho + p) \partial_t u^\nu +
+    \gamma (\rho + p) v^i \nabla_i u^\nu +
+    \gamma u^\nu \partial_t p +
+    \gamma u^\nu v^i \nabla_i p -
+    \delta^\nu_0 c \partial_t p +
+    \delta^\nu_i c^2 \nabla_i p
+\end{multline}
+%
+I split this equation into two cases: $\nu = 0$ and $\nu = i$
+\begin{itemize}
+    \item[$\nu=0$]
+          \begin{equation}
+              \gamma (\rho + p) \partial_t u^0 +
+              \gamma (\rho + p) v^i \nabla_i u^0 +
+              \gamma u^0 \partial_t p +
+              \gamma u^0 v^i \nabla_i p -
+              \delta^0_0 c \partial_t p = \\
+              %
+              \gamma^2 c \partial_t p +
+              \gamma^2 c v^i \nabla_i p -
+              c \partial_t p
+          \end{equation}
+          Plugging in $\gamma = 1$ gives
+          \begin{equation}
+              \boxed{\bs{v}\bs{\nabla}p = 0}
+          \end{equation}
+    \item[$\nu=i$]
+          \begin{multline}
+              \gamma (\rho + p) \partial_t u^i +
+              \gamma (\rho + p) v^i \nabla_i u^i +
+              \gamma u^i \partial_t p +
+              \gamma u^i v^i \nabla_i p +
+              c^2 \nabla_i p    = \\
+              %
+              \gamma (\rho + p) \partial_t v^j +
+              \gamma (\rho + p) v^i \nabla_i v^j +
+              \gamma v^j \partial_t p +
+              \gamma v^j v^i \nabla_i p +
+              c^2 \nabla_j p    = \\
+              %
+              \gamma \left(p \partial_t v^j + v^j \partial_t p\right) +
+              \gamma \left(p v^i \nabla_i v^j + v^j v^i \nabla_i p\right) +
+              \gamma \rho v^i \nabla_i v^j +
+              \gamma \rho \partial_t v^j +
+              c^2 \nabla_j p    = \\
+              %
+              \gamma \partial_t\left(p v^j\right) +
+              \gamma v^i \nabla_i \left(p  v^j\right) +
+              \gamma \rho \left(\partial_t + v^i \nabla_i\right)v^j +
+              c^2 \nabla_j p    = \\
+              %
+              \gamma \left(\partial_t +  \bs{v} \bs{\nabla}\right) \left(p \bs{v}\right) +
+              \gamma \rho \left(\partial_t + \bs{v} \bs{\nabla}\right)\bs{v} +
+              c^2 \bs{\nabla} p    = 0
+          \end{multline}
+          Dividing both sides by $c^2$, neglecting terms $\frac{p}{c^2}$ and
+          plugging $\gamma = 1$ gives us
+          %
+          \begin{equation}
+              \boxed{\frac{\rho}{c^2} \left(\partial_t + \bs{v} \bs{\nabla}\right)\bs{v} +
+                  \bs{\nabla} p    = 0}
+          \end{equation}
+\end{itemize}
+%
+Final result is
+%
+\begin{subequations}
+    \begin{tcolorbox}[ams align]
+        \partial_t \rho + \bs{\nabla}\left(\rho \bs{v}\right) & = 0              \\
+        \frac{\rho}{c^2} \left(\partial_t  +
+        \bs{v} \bs{\nabla} \right) \bs{v}                     & = -\bs{\nabla} p
+    \end{tcolorbox}
+\end{subequations}
+%
+The first equation is \textbf{continuity equations}. It states that change in
+energy density in some volume is precisely the flow of the energy desity out (or
+in) this volume. So overall energy is conserved.
+
+\smallskip
+
+The second equation is \textbf{Navier--Stockes equation} which describes motion
+of viscous fluid.

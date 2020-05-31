@@ -1,0 +1,112 @@
+\chapter
+
+\problem
+
+We start with metric
+%
+\begin{equation}
+    \dd s^2 = -\dd t ^2 + a^2(t)\dd \bs{x}^2
+\end{equation}
+%
+and we want to change coordinates $\bs{x} \to \bs{x}_p = a(t) \bs{x}$. For that
+we first need to calculate
+%
+\begin{equation}
+    \dd \bs{x} = \dd \left(\frac{\bs{x}_p}{a}\right) =
+    \frac{\dd \bs{x}_p a - \frac{\dd a}{\dd t} \dd t ~\bs{x}_p}{a^2}=
+    \frac{a \dd \bs{x}_p - \dot{a}\bs{x}_p \dd t}{a^2} =
+    \frac{\dd \bs{x}_p}{a} - \frac{\dot{a}}{a^2}\bs{x}_p \dd t.
+\end{equation}
+%
+Using that result I can now calculate term which is in the equation for line
+segment
+%
+\begin{equation}
+    a^2\dd x^2 = (a \dd x)^2 =
+    \left(\dd \bs{x}_p - \frac{\dot{a}}{a}\bs{x}_p \dd t\right)^2=
+    \dd \bs{x}_p^2 -
+    2\frac{\dot{a}}{a}\bs{x}_p \dd t \dd \bs{x}_p +
+    \left(\frac{\dot{a}}{a}\right)^2\bs{x}_p^2 \dd t^2.
+\end{equation}
+%
+Substituting this into metric gives
+%
+\begin{multline}
+    \dd s^2 = -\dd t ^2 + a^2(t)\dd \bs{x}^2 =
+    -\dd t ^2 +
+    \dd \bs{x}_p^2 -
+    2\frac{\dot{a}}{a}\bs{x}_p \dd t \dd \bs{x}_p +
+    \left(\frac{\dot{a}}{a}\right)^2\bs{x}_p^2 \dd t^2 = \\
+    \boxed{-\left(1 - \left(\frac{\dot{a}}{a}\right)^2\bs{x}_p^2\right) \dd t^2 +
+        \dd \bs{x}_p^2 -
+        2\frac{\dot{a}}{a}\bs{x}_p~\dd t \dd \bs{x}_p}
+\end{multline}
+
+\problem
+
+Line segment in 4D Euclidian space is given by
+%
+\begin{equation}
+    \dd s^2 = \dd w^2 + \dd x^2 + \dd y^2 + \dd z^2
+\end{equation}
+%
+and 4D sphere of radius $a$ can be parametrize by
+%
+\begin{subequations}
+    \begin{align}
+        w = & a \cos \chi                       \\
+        x = & a \sin \chi \sin \theta \cos \phi \\
+        y = & a \sin \chi \sin \theta \sin \phi \\
+        z = & a \sin \chi \cos \theta.
+    \end{align}
+\end{subequations}
+%
+We can calculate
+%
+\begin{subequations}
+    \begin{align}
+        \dd w = & - a \sin \chi \dd \chi                       \\
+        \dd x = & a \cos \chi \sin \theta \cos \phi \dd \chi +
+        a \sin \chi \cos \theta \cos \phi \dd \theta -
+        a \sin \chi \sin \theta \sin \phi \dd \phi             \\
+        \dd y = & a \cos \chi \sin \theta \sin \phi \dd \chi +
+        a \sin \chi \cos \theta \sin \phi \dd \theta +
+        a \sin \chi \sin \theta \cos \phi \dd \phi             \\
+        \dd z = & a \cos \chi \cos \theta \dd \chi -
+        a \sin \chi \sin \theta \dd \theta.
+    \end{align}
+\end{subequations}
+%
+and furthermore
+%
+\begin{align*}
+    \dd x^2 + \dd y^2 = a^2( & \cos^2 \chi \sin^2 \theta \dd \chi^2 +                             \\
+                             & \sin^2 \chi \cos^2 \theta \dd \theta^2 +                           \\
+                             & \sin^2 \chi \sin^2 \theta \dd \phi^2 +                             \\
+                             & 2\cos \chi \sin \chi \cos \theta \sin \theta \dd \chi \dd \theta )
+\end{align*}
+%
+and
+%
+\begin{align*}
+    \dd x^2 + \dd y^2 + \dd z^2 = a^2( & \cos^2 \chi \dd \chi^2 +              \\
+                                       & \sin^2 \chi \dd \theta^2 +            \\
+                                       & \sin^2 \chi \sin^2 \theta \dd \phi^2)
+\end{align*}
+%
+and
+%
+\begin{align*}
+    \dd w^2 + \dd x^2 + \dd y^2 + \dd z^2 = a^2( & \dd \chi^2 +                           \\
+                                                 & \sin^2 \chi \dd \theta^2 +             \\
+                                                 & \sin^2 \chi \sin^2 \theta \dd \phi^2).
+\end{align*}
+%
+So eventually
+%
+\begin{equation}
+    \boxed{\dd w^2 + \dd x^2 + \dd y^2 + \dd z^2 =
+        a^2\left( \dd \chi^2 +
+        \sin^2 \chi \left(\dd \theta^2 +
+        \sin^2 \theta \dd \phi^2\right)\right)}
+\end{equation}
