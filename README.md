@@ -4,13 +4,16 @@
 
 In *Visualizations* I put gifs I made in LaTeX to better understand some problems.  
 
-* For written test 1 
+### For written test 1 
+
 ![](https://raw.githubusercontent.com/michaszko/GR-Notes/master/Visualzations/Test_1/test.gif)
 
-* For assigment 2
+### For assigment 2
+
 ![](https://raw.githubusercontent.com/michaszko/GR-Notes/master/Visualzations/Ass2_prob5/ass2.gif)
 
-* For assigment 5
+### For assigment 5
+
 ![](https://raw.githubusercontent.com/michaszko/GR-Notes/master/Visualzations/Ass5_prob1/ass5.gif)
 
 To produce gif from pdf I used  
