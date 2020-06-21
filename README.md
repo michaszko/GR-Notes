@@ -5,13 +5,13 @@
 In *Visualizations* I put gifs I made in LaTeX to better understand some problems.  
 
 * For written test 1 
-![](/Visualizations/Test_1/test.gif)
+![](/Visualizations/Test_1/test.gif?raw=true)
 
 * For assigment 2
-![](/Visualizations/Ass2_prob5/ass2.gif)
+![](/Visualizations/Ass2_prob5/ass2.gif?raw=true)
 
 * For assigment 5
-![](/Visualizations/Ass5_prob1/ass5.gif)
+![](/Visualizations/Ass5_prob1/ass5.gif?raw=true)
 
 To produce gif from pdf I used  
 
