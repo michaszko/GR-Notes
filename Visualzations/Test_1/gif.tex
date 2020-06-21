@@ -1,0 +1,71 @@
+%! TeX program = lualatex
+%! TEX options = -synctex=1 -interaction=nonstopmode -file-line-error --shell-escape "%DOC%"
+\documentclass[tikz]{standalone}
+\usepackage{luatex85,shellesc}
+\usepackage{luainputenc}
+\usepackage{pgfplots}
+
+\usetikzlibrary{calc,backgrounds}
+
+\begin{document}
+\foreach \angle in {0.0,0.02,...,1.1}
+{
+    \centering
+	\begin{tikzpicture}[domain=0:5]
+		\begin{axis}
+			[
+				axis lines  = center,
+				xlabel={$x$},
+				ylabel={$t$},
+				xmin=-0.1,
+				xmax=2.5,
+				ymin=-0.1,
+				ymax=2.5,
+				ticks=none
+			]
+
+			\pgfmathsetmacro{\g}{1.5}
+			\pgfmathsetmacro{\gg}{1/\g}
+			\pgfmathsetmacro{\a}{\angle}
+			\pgfmathsetmacro{\ta}{\gg*cosh(\g*\a)}
+			\pgfmathsetmacro{\xa}{\gg*sinh(\g*\a)}
+			\pgfmathsetmacro{\b}{.1}
+			\pgfmathsetmacro{\tb}{\gg*cosh(\g*\b)}
+			\pgfmathsetmacro{\xb}{\gg*sinh(\g*\b)}
+			\pgfmathsetmacro{\tav}{\gg*cosh(\g*(\a+\b)/2)}
+			\pgfmathsetmacro{\xav}{\gg*sinh(\g*(\a+\b)/2)}
+			\pgfmathsetmacro{\tp}{\tav*e^(\g*(\a-\b)/2)}
+			\pgfmathsetmacro{\xp}{\xav*e^(\g*(\a-\b)/2)}
+			\pgfmathsetmacro{\ezerot}{\ta+cosh(\g*\a)}
+			\pgfmathsetmacro{\ezerox}{\xa+sinh(\g*\a)}
+			\pgfmathsetmacro{\eonet}{\ta+sinh(\g*\a)}
+			\pgfmathsetmacro{\eonex}{\xa+cosh(\g*\a)}
+
+			\coordinate (A) at (axis cs:\ta, \xa) {};
+			\coordinate (B) at (axis cs:\tb, \xb) {};
+			\coordinate (C) at (axis cs:\tp, \xp) {};
+			\coordinate (D) at (axis cs:\tav, \xav) {};
+			\coordinate (E) at (axis cs:0,0) {};
+			\coordinate (ezero) at (axis cs:\ezerot,\ezerox) {};
+			\coordinate (eone) at (axis cs:\eonet,\eonex) {};
+			
+			\addplot[domain = 0:1.2, parametric, samples = 1000,color=blue]
+			gnuplot {\gg*cosh(\g*t),\gg*sinh(\g*t)};
+
+			\node[label={180:{$\tau_2$}},circle,fill,inner sep=2pt] at (A) {};
+			\node[label={180:{$\tau_1$}},circle,fill,inner sep=2pt] at (B) {};
+			\node[label={360:{\color{red}$P$}},circle,fill,inner sep=2pt,color=red] at (C) {};
+			\node[label={160:{\color{red}$\frac{\tau_1+\tau_2}{2}$}},circle,fill,inner sep=2pt,color=red] at (D) {};
+
+		\end{axis}
+		\begin{scope}[on background layer]
+			\draw[dashed] (A) -- (C);
+			\draw[dashed] (B) -- (C);
+			\draw[dotted,color=red] (C) -- (E);
+			% Plots arrows of velocity
+			% \draw[->] (A) -- (ezero);
+			% \draw[->] (A) -- (eone);
+		\end{scope}
+	\end{tikzpicture}
+}
+\end{document}

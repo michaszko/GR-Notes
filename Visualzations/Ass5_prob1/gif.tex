@@ -1,0 +1,84 @@
+%! TeX program = lualatex
+%! TEX options = -synctex=1 -interaction=nonstopmode -file-line-error --shell-escape "%DOC%"
+\documentclass[tikz]{standalone}
+\usepackage{luatex85,shellesc}
+\usepackage{luainputenc}
+\usepackage{pgfplots}
+% \usepackage{tikz}
+\usepackage{tikz-3dplot}
+\tdplotsetmaincoords{60}{115}
+\pgfplotsset{compat=newest}
+
+\usetikzlibrary{calc,backgrounds}
+
+\begin{document}
+\foreach \angle in {89.9,87.5,...,0}
+{
+    \centering
+	\begin{tikzpicture}[tdplot_main_coords, scale = 3.5]
+        \coordinate (P1) at ({0},{0},{1});
+        \coordinate (P2) at ({0},{0},{-1});
+        \coordinate (O) at (0,0,0);
+
+        \pgfmathsetmacro{\rvec}{1.4}
+        \pgfmathsetmacro{\thetavec}{\angle}
+        \pgfmathsetmacro{\phivec}{\angle}
+
+        \pgfmathsetmacro{\x}{sin(\phivec)}
+        \pgfmathsetmacro{\y}{cos(\phivec)}
+        \pgfmathsetmacro{\dx}{-0.1}
+        \pgfmathsetmacro{\norm}{1/sqrt((\dx)^2+(\x/\y*\dx)^2)}
+
+        \pgfmathsetmacro{\xx}{sin(\thetavec)}
+        \pgfmathsetmacro{\z}{cos(\thetavec)}
+        \pgfmathsetmacro{\dxx}{0.1}
+        \pgfmathsetmacro{\normz}{1/sqrt((\dxx)^2+(\xx/\z*\dxx)^2)}
+
+        \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+        \shade[ball color = lightgray, opacity = 0.5] (0,0,0) circle (1cm);
+
+        \tdplotsetrotatedcoords{0}{0}{0};
+        \draw[dashed, tdplot_rotated_coords, gray] (0,0,0) circle (1);
+
+        \tdplotsetrotatedcoords{-90}{90}{0};
+        \draw[dashed, tdplot_rotated_coords, gray] (1,0,0) arc (0:180:1);
+
+        \tdplotsetrotatedcoords{0}{90}{0};
+        \draw[dashed, tdplot_rotated_coords, gray] (1,0,0) arc (0:180:1);
+
+        \draw[dashed, gray] (0,0,0) -- (-1,0,0);
+        \draw[dashed, gray] (0,0,0) -- (0,-1,0);
+
+        \draw[-stealth] (0,0,0) -- (1.80,0,0) node[below left] {$x$};
+        \draw[-stealth] (0,0,0) -- (0,1.30,0) node[below right] {$y$};
+        \draw[-stealth] (0,0,0) -- (0,0,1.30) node[above] {$z$};
+        % \node[right] at (P1) {$P_1$};
+        % \node[right] at (P2) {$P_2$};
+
+        % \draw[-stealth, color=black] (O) -- (P) node[midway,below] {};
+
+        \draw[-stealth, color=red] (\x,\y,0) -- (\x+\dx*\norm,
+        \y-\x/\y*\dx*\norm, 0) node[above]
+        {$\frac{\partial}{\partial \phi}$};
+        \draw[-stealth, color=red] (\x,\y,0) -- (\x,\y,-1) node[left]
+        {$\frac{\partial}{\partial \theta}$};
+
+        \draw[-stealth, color=blue] (\xx,0,\z) -- (\xx+\dxx*\normz,0,
+        \z-\xx/\z*\dxx*\normz) node[left]
+        {$\frac{\partial}{\partial \theta}$};
+        \draw[-stealth, color=blue] (\xx,0,\z) -- (\xx,1,\z) node[above]
+        {$\frac{\partial}{\partial \phi}$};
+
+        % \tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\phi$}
+        % \draw[dashed, color=gray] (O) -- (Pxy);
+        % \draw[dashed, color=gray] (P) -- (Pxy);
+
+        % \tdplotsetthetaplanecoords{\phivec}
+        % \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{\thetavec}{0}{anchor=south west}{$\theta$}
+
+        % \draw[fill = lightgray!50] (P1) circle (0.5pt);
+        % \draw[fill = lightgray!50] (P2) circle (0.5pt);
+    \end{tikzpicture}
+}
+\end{document}

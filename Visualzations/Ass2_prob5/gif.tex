@@ -1,0 +1,95 @@
+%! TeX program = lualatex
+%! TEX options = -synctex=1 -interaction=nonstopmode -file-line-error --shell-escape "%DOC%"
+\documentclass[tikz]{standalone}
+\usepackage{luatex85,shellesc}
+\usepackage{luainputenc}
+\usepackage{pgfplots}
+
+\usetikzlibrary{calc,backgrounds}
+
+\begin{document}
+\foreach \angle in {0,0.01,...,0.65}
+{
+    \centering
+	\begin{tikzpicture}[domain=0:5]
+		\pgfmathsetmacro{\g}{1.5}
+		\pgfmathsetmacro{\gg}{1/\g}
+		\pgfmathsetmacro{\xii}{0.5}
+		\pgfmathsetmacro{\ggxi}{\gg+\xii}
+		\begin{axis}
+			[
+				axis lines  = center,
+				xlabel={$x$},
+				ylabel={$t$},
+				xmin=-0.1,
+				xmax=2.5,
+				ymin=-0.1,
+				ymax=2.5,
+				xtick={\gg,\ggxi},
+				xticklabels={$g^{-1}$,$g^{-1}+\xi^1$},
+				ytick={-1}
+				% ticks=none,
+			]
+
+			\pgfmathsetmacro{\g}{1.5}
+			\pgfmathsetmacro{\gg}{1/\g}
+
+			\pgfmathsetmacro{\a}{\angle}
+			\pgfmathsetmacro{\ta}{\gg*cosh(\g*\a)}
+			\pgfmathsetmacro{\xa}{\gg*sinh(\g*\a)}
+
+			\pgfmathsetmacro{\aa}{\angle}
+			\pgfmathsetmacro{\taa}{\ggxi*cosh(\g*\aa)}
+			\pgfmathsetmacro{\xaa}{\ggxi*sinh(\g*\aa)}
+
+			\pgfmathsetmacro{\b}{.1}
+			\pgfmathsetmacro{\tb}{\gg*cosh(\g*\b)}
+			\pgfmathsetmacro{\xb}{\gg*sinh(\g*\b)}
+
+			\pgfmathsetmacro{\tav}{\gg*cosh(\g*(\a+\b)/2)}
+			\pgfmathsetmacro{\xav}{\gg*sinh(\g*(\a+\b)/2)}
+
+			\pgfmathsetmacro{\tp}{\tav*e^(\g*(\a-\b)/2)}
+			\pgfmathsetmacro{\xp}{\xav*e^(\g*(\a-\b)/2)}
+			%wektory bazowe
+			\pgfmathsetmacro{\ezerot}{\ta+cosh(\g*\a)}
+			\pgfmathsetmacro{\ezerox}{\xa+sinh(\g*\a)}
+			\pgfmathsetmacro{\eonet}{\ta+sinh(\g*\a)}
+			\pgfmathsetmacro{\eonex}{\xa+cosh(\g*\a)}
+
+			\coordinate (A) at (axis cs:\ta, \xa) {};
+			\coordinate (AA) at (axis cs:\taa, \xaa) {};
+			\coordinate (B) at (axis cs:\tb, \xb) {};
+			\coordinate (C) at (axis cs:\tp, \xp) {};
+			\coordinate (D) at (axis cs:\tav, \xav) {};
+			\coordinate (E) at (axis cs:0,0) {};
+			%baza
+			\coordinate (ezero) at (axis cs:\ezerot,\ezerox) {};
+			\coordinate (eone) at (axis cs:\eonet,\eonex) {};
+
+			% \addplot[domain = 0:1.7, samples=1000, parametric, color=blue]
+			% gnuplot {sqrt((\ggxi)^2+t^2),t};	
+			\addplot[domain = 0:0.9, parametric, samples = 1000,color=blue]
+			gnuplot {\ggxi*cosh(\g*t),\ggxi*sinh(\g*t)};		
+			\addplot[domain = 0:1.3, parametric, samples = 1000,color=red]
+			gnuplot {\gg*cosh(\g*t),\gg*sinh(\g*t)};
+
+			\node[label={180:{${}$}},circle,fill,inner sep=2pt] at (A) {};
+			\node[label={180:{${}$}},circle,fill,inner sep=2pt] at (AA) {};
+			% \node[label={180:{$\tau_1$}},circle,fill,inner sep=2pt] at (B) {};
+			% \node[label={360:{\color{red}$P$}},circle,fill,inner sep=2pt,color=red] at (C) {};
+			% \node[label={160:{\color{red}$\frac{\tau_1+\tau_2}{2}$}},circle,fill,inner sep=2pt,color=red] at (D) {};
+
+		\end{axis}
+		\begin{scope}[on background layer]
+			% \draw[dashed] (A) -- (C);
+			% \draw[dashed] (B) -- (C);
+			% \draw[dotted,color=red] (C) -- (E);
+			%baza
+			\draw[->] (A) -- (ezero);
+			\draw[->] (A) -- (eone);
+			% \draw[dotted] (A)+(3,3) -- (A);
+		\end{scope}
+	\end{tikzpicture}
+}
+\end{document}
