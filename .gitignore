@@ -283,3 +283,5 @@ TSWLatexianTemp*
 # gnuplot 
 *.gnuplot
 *.table
+*.pgf-plot.gnuplot
+*.pgf-plot.table
