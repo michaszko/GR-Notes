@@ -1,0 +1,209 @@
+\chapter[10]
+
+\problem
+
+We consider small perturbation in Minkowski metric
+%
+\begin{equation}
+    g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}
+\end{equation}
+%
+where $|h_{\mu\nu}| \ll 1$ \\
+%
+$g^{\mu\nu} = \eta^{\mu\nu} - h^{\mu\nu}$ is indeed inverse of metric
+%
+\begin{equation}
+    \delta\indices{^\mu_\sigma} = g^{\mu\nu}g_{\nu\sigma} =
+    (\eta^{\mu\nu} + h^{\mu\nu})(\eta_{\nu\sigma} - h_{\nu\sigma}) =
+    \eta^{\mu\nu}\eta_{\nu\sigma} - \eta^{\mu\nu}h_{\nu\sigma} +
+    h^{\mu\nu}\eta_{\nu\sigma} - \underbrace{h^{\mu\nu}h_{\nu\sigma}}_{=0}.
+\end{equation}
+%
+We keep only linear terms in $h_{\mu\nu}$. Let's take a look at
+%
+\begin{equation}
+    -\eta^{\mu\nu}h_{\nu\sigma} + h^{\mu\nu}\eta_{\nu\sigma} =
+    -\eta^{\mu\nu}h_{\nu\sigma} +
+    \eta_{\nu\sigma}\eta^{\nu\beta}\eta^{\mu\alpha}h_{\alpha\beta} =
+    -\eta^{\mu\nu}h_{\nu\sigma} +
+    \delta\indices{_\sigma^\beta}\eta^{\mu\alpha}h_{\alpha\beta} =
+    -\eta^{\mu\nu}h_{\nu\sigma} + \eta^{\mu\alpha}h_{\alpha\sigma} = 0.
+\end{equation}
+%
+So
+%
+\begin{equation}
+    g^{\mu\nu}g_{\nu\sigma} = \eta^{\mu\nu}\eta_{\nu\sigma} = \delta\indices{^\mu_\sigma}.
+\end{equation}
+%
+\problem
+%
+TT coordinates are defined by following conditions
+%
+\begin{equation}
+    h_{\mu0} = 0 \quad h\indices{^i_i} = 0 \quad \partial_i h^{ij} = 0.
+\end{equation}
+%
+Those coordinates are comoving coordinates to particles initially at rest.
+%
+\subproblem
+%
+To prove that I first recall geodesic equation
+%
+\begin{equation}
+    \frac{\dd^2 x^\mu}{\dd \tau^2} +
+    \Gamma\indices{^\mu_\alpha_\beta}
+    \frac{\dd x^\alpha}{\dd \tau}
+    \frac{\dd x^\beta}{\dd \tau} = 0.
+\end{equation}
+%
+Now I expand it in $\tau = 0$ using $\frac{\dd x^i}{\dd \tau} \big|_{\tau=0} =
+    0$ :
+%
+\begin{equation}
+    \frac{\dd^2 x^\mu}{\dd \tau^2} \Bigg|_{\tau=0} +
+    \Gamma\indices{^\mu_0_0}
+    \left(\frac{\dd t}{\dd \tau}\right)^2 \Bigg|_{\tau=0} = 0.
+\end{equation}
+Now I calculate $\Gamma\indices{^\mu_0_0}$
+%
+\begin{equation}
+    \Gamma\indices{^\mu_0_0} = \frac{1}{2}g^{\mu m}\left(
+    \partial_0 g_{m0} +
+    \partial_0 g_{m0} -
+    \partial_m g_{00}
+    \right) =
+    \frac{1}{2}g^{\mu m}\left(
+    \partial_0 h_{m0} +
+    \partial_0 h_{m0} -
+    \partial_m h_{00}
+    \right) = 0
+\end{equation}
+%
+using $\partial_\mu \eta_{\alpha\beta} = 0$ and $h_{\mu0} = 0$. So now it is
+visible that for resting particle there is no change in velocity ($\frac{\dd^2
+        x^\mu}{\dd \tau^2} \big|_{\tau=0} = 0$) which means that particle stays in
+place.
+%
+\subproblem
+%
+Now what is left is to show that proper time is the same as coordinate time. For
+this I will calculate
+%
+\begin{equation}
+    \dd \tau = \sqrt{-g_{\mu\nu}\dd x^\mu \dd x^\nu}.
+\end{equation}
+%
+In our case particle is at rest
+%
+\begin{equation}
+    \dd \tau = \sqrt{-g_{00}\dd t^2} =
+    \dd t \sqrt{-\eta_{00}-\smash[b]{\underbrace{h_{00}}_{=0}}} =
+    \dd t \sqrt{-\eta_{00}} = \dd t
+\end{equation}
+%
+\problem
+%
+We have given
+%
+\begin{equation}
+    h_{\mu\nu} =
+    \begin{pmatrix}
+        0 & 0        & 0        & 0 \\
+        0 & h_+      & h_\times & 0 \\
+        0 & h_\times & -h_+     & 0 \\
+        0 & 0        & 0        & 0
+    \end{pmatrix}
+    \cos\omega(t-z)
+\end{equation}
+%
+\subproblem
+%
+$\rightarrow$ It is clear that $h_{\mu0} = 0$. \\
+$\rightarrow$ To calculate trace I expand
+%
+\begin{multline}
+    h\indices{^i_i} = \eta^{ij}h_{ji} = \Tr
+    \left(\begin{pmatrix}
+            0 & 0        & 0        & 0 \\
+            0 & h_+      & h_\times & 0 \\
+            0 & h_\times & -h_+     & 0 \\
+            0 & 0        & 0        & 0
+        \end{pmatrix}
+    \begin{pmatrix}
+            -1 & 0 & 0 & 0 \\
+            0  & 1 & 0 & 0 \\
+            0  & 0 & 1 & 0 \\
+            0  & 0 & 0 & 1
+        \end{pmatrix}\right)\cos\omega(t-z)=\\
+    \cos\omega(t-z)\Tr
+    \begin{pmatrix}
+        0 & 0        & 0        & 0 \\
+        0 & h_+      & h_\times & 0 \\
+        0 & h_\times & -h_+     & 0 \\
+        0 & 0        & 0        & 0
+    \end{pmatrix} = 0
+\end{multline}
+%
+$\rightarrow$ $h_{\mu\nu}$ depends only on $t$ and $z$
+\begin{equation}
+    \partial_i h^{ij} =
+    \eta^{\alpha i}\eta^{\beta j} \partial_i h_{\alpha\beta} =
+    \eta^{\alpha t}\eta^{\beta j} \partial_t h_{\alpha\beta} +
+    \eta^{\alpha z}\eta^{\beta j} \partial_z h_{\alpha\beta} =
+    \eta^{t t}\eta^{\beta j} \partial_t \underbrace{h_{t \beta}}_{=0} +
+    \eta^{z z}\eta^{\beta j} \partial_z \underbrace{h_{z \beta}}_{=0} =0
+\end{equation}
+%
+\subproblem
+%
+\begin{itemize}
+    \item $x^\mu_1 = (t,-\frac{L}{2},0,0) \quad x^\mu_2 = (t,\frac{L}{2},0,0)
+              \quad \rightarrow \quad
+              \Delta x^\mu = (0,L,0,0)$
+          %
+          \begin{equation}
+              \Delta s = \sqrt{g_{\mu\nu}\Delta x^\mu\Delta x^\nu} =
+              \sqrt{g_{xx}L^2} =
+              L \sqrt{1+h_+\cos\omega(t-z)}
+          \end{equation}
+          %
+    \item $x^\mu_1 = (t,0,-\frac{L}{2},0) \quad x^\mu_2 = (t,0,\frac{L}{2},0)
+              \quad \rightarrow \quad
+              \Delta x^\mu = (0,L,0,0)$
+          %
+          \begin{equation}
+              \Delta s = \sqrt{g_{\mu\nu}\Delta x^\mu\Delta x^\nu} =
+              \sqrt{g_{yy}L^2} =
+              L \sqrt{1 - h_+\cos\omega(t-z)}
+          \end{equation}
+          %
+    \item $x^\mu_1 = (t,-\frac{L}{2\sqrt{2}},-\frac{L}{2\sqrt{2}},0) \quad
+              x^\mu_2 = (t,\frac{L}{2\sqrt{2}},\frac{L}{2\sqrt{2}},0)
+              \quad \rightarrow \quad
+              \Delta x^\mu = (0,\frac{L}{\sqrt{2}},\frac{L}{\sqrt{2}},0)$
+          %
+          \begin{multline}
+              \Delta s = \sqrt{g_{\mu\nu}\Delta x^\mu\Delta x^\nu} =
+              \sqrt{g_{xx}\frac{L^2}{2} + g_{yy}\frac{L^2}{2} + g_{xy}L^2} = \\
+              L\sqrt{(1 + h_+\cos\omega(t-z))\frac{1}{2} +
+                  (1 - h_+\cos\omega(t-z))\frac{1}{2} +
+                  1 + h_\times \cos\omega(t-z)} = \\
+              L\sqrt{2 + h_\times \cos\omega(t-z)}
+          \end{multline}
+          %
+    \item $x^\mu_1 = (t,-\frac{L}{2\sqrt{2}},\frac{L}{2\sqrt{2}},0) \quad
+              x^\mu_2 = (t,\frac{L}{2\sqrt{2}},-\frac{L}{2\sqrt{2}},0)
+              \quad \rightarrow \quad
+              \Delta x^\mu = (0,\frac{L}{\sqrt{2}},-\frac{L}{\sqrt{2}},0)$
+          %
+          \begin{multline}
+              \Delta s = \sqrt{g_{\mu\nu}\Delta x^\mu\Delta x^\nu} =
+              \sqrt{g_{xx}\frac{L^2}{2} + g_{yy}\frac{L^2}{2} - g_{xy}L^2} = \\
+              L\sqrt{(1 + h_+\cos\omega(t-z))\frac{1}{2} +
+                  (1 - h_+\cos\omega(t-z))\frac{1}{2} -
+                  1 - h_\times \cos\omega(t-z)} = \\
+              L\sqrt{-h_\times \cos\omega(t-z)}
+          \end{multline}
+
+\end{itemize}

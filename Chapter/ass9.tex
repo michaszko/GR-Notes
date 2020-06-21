@@ -137,7 +137,8 @@ Rewriting first equations
 %
 \begin{subequations}
     \begin{align}
-        \frac{a'^{2}}{a^4} + \frac{k}{a^2}                         & = \frac{8\pi G}{3} \rho \\
+        \frac{a'^{2}}{a^4} + \frac{k}{a^2}                         & = \frac{8\pi G}{3} \rho
+        \label{eq:ass9_fried}                                                                \\
         \frac{\rho'}{a} + 3 \left(\frac{a'}{a^2}\right) (\rho + p) & = 0.
         \label{eq:ass9_rho}
     \end{align}
@@ -220,6 +221,8 @@ Solutions
 \end{equation}
 %
 Applying initial conditions $a(0)=0, a'(0)=0$
+\footnote{Derivative is equal zero becasue of \cref{eq:ass9_fried} with $\rho =
+        a^{-3}$ at $\tau = 0$}
 %
 \begin{equation}
     a = \begin{cases}
@@ -290,20 +293,24 @@ Solutions
     \end{cases}
 \end{equation}
 %
-Applying initial conditions $a(0)=0, a'(0)=v$
+Applying initial conditions $a(0)=0, a'(0)=\sqrt{\frac{8\pi G}{3}}$
+\footnote{Derivative is equal constant because of \cref{eq:ass9_fried} with
+    $\rho = a^{-4}$ at $\tau = 0$}
 %
 \begin{equation}
-    a = \begin{cases}
-        v \sin\tau                       & \quad k=1  \\
-        v \tau                           & \quad k=0  \\
-        v~\frac{e^{\tau} - e^{-\tau}}{2} & \quad k=-1
+    a = \sqrt{\frac{8\pi G}{3}}
+    \begin{cases}
+        \sin\tau                       & \quad k=1  \\
+        \tau                           & \quad k=0  \\
+        \frac{e^{\tau} - e^{-\tau}}{2} & \quad k=-1
     \end{cases}
 \end{equation}
 %
 Simplifying it
 %
 \begin{equation}
-    \boxed{a(\tau) = v\begin{cases}
+    \boxed{a(\tau) = \sqrt{\frac{8\pi G}{3}}
+        \begin{cases}
             \sin\tau   & \quad k=1  \\
             \tau       & \quad k=0  \\
             \sinh \tau & \quad k=-1
