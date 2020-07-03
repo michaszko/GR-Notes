@@ -1,0 +1,79 @@
+\thispagestyle{empty}
+
+\begin{center}
+	\scshape
+
+	\vspace*{2cm}
+
+	\hrule
+
+	\vspace{.7cm}
+
+	{\LARGE{General relativity -- solutions }}
+
+	\vspace{.7cm}
+
+	\hrule
+
+	\vspace{2cm}
+
+	{\large{\textit{Author}:}}\\
+	{\large{Michał Siemaszko}}
+
+	\vspace*{2cm}
+
+	\begin{minipage}{0.8\linewidth}
+		\begin{flushleft}
+			\normalfont
+			Those notes were created during course on General relativity in
+			summer semester 2019/2020, so during Coronavirus pandemic. We had
+			tutorials online and we had to solve problems anyway. Instead of
+			solving them on paper and then scanning I decided to improve my
+			\LaTeX~skill with \textit{Tikz} package (for plotting). Here is my
+			final result.
+		\end{flushleft}
+	\end{minipage}
+
+	\vspace*{2cm}
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[domain=0:20]
+			\pgfmathsetmacro{\g}{1.5}
+			\pgfmathsetmacro{\gg}{1/\g}
+			\begin{axis}
+				[
+					axis lines  = center,
+					xlabel={$\tau$},
+					ylabel={$a(\tau)$},
+					xmin=0,
+					xmax=3.5,
+					ymin=0,
+					ymax=3.5,
+					ticks=none
+				]
+
+				\addplot[domain = 0:3.14, samples = 1000,color=blue, thick]
+				gnuplot {sin(x)};
+				\addplot[domain = 0:3.14, samples = 1000,color=red, thick]
+				gnuplot {x};
+				\addplot[domain = 0:3.14, samples = 1000,color=green, thick]
+				gnuplot {sinh(x)};
+
+				\node[inner sep=2pt,text=red] at (2.5,2) {$k=0$};
+				\node[inner sep=2pt,text=green] at (.5,1.5) {$k=-1$};
+				\node[inner sep=2pt,text=blue] at (1.5,.5) {$k=1$};
+			\end{axis}
+		\end{tikzpicture}
+		% \caption{Radiation dominated universe}
+	\end{figure}
+
+	\vfill
+
+	\vspace{1cm}
+
+	{\large{\today}}
+
+	\upshape
+
+\end{center}
